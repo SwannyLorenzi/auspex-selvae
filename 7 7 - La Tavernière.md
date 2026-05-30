@@ -1,5 +1,15 @@
 # 7 7 \- La Tavernière
 
+# Personnage
+
+## Nom
+
+7 7, dit "La Tavernière"
+
+## Description
+
+7 7 est une femme humaine de taille moyenne et de corpulence un peu forte. Cheveux roux mi longs, yeux verts
+
 # Progression
 
 **Niveau :** 5  
@@ -15,22 +25,27 @@ Alchimiste
 
 # Caractéristiques
 
+## Principales
+
 **Force 11** \+1 \+1 avantage  
 **Intellect 13** \+3  
 **Perception 15** \+5 (= Intellect \+ 2 bonus equipement)  
 **Volonté 9** \-1  
-**Agilité 8** \-2 \+1 avantage   
+**Agilité 8** \-2 \+1 avantage
+
+## Dérivées
+
 **Vitesse 8**  
 **Taille/Gabarit 1**  
-**Défense 14+2** (= 13 base \+ 1 boost \+ bouclier)  
-**Puissance 3**  
-**Santé** (= Force) **23**  
+**Défense 14+2** (= 13 base \+ 1 boost \+ 2 bouclier)  
+**Puissance 3**
+**Santé** (= Force + bonus de niveaux) **23**  
 **Vitesse de guérison** (= Santé/4) **5**
 
 # Talents
 
 **Immunités :** maladies, poison, endormi, fatigué, malade, empoisonné  
-**Clef**  
+**Clef**
 **Corps mécanique**  
 **Tour de magie** \+1 sort niv 0 à chaque découverte d’une tradition  
 **Perception de la magie**  
@@ -40,6 +55,8 @@ Alchimiste
 **Contresort**
 
 # Magie
+
+## (Hors tradition)
 
 **Perception de la magie** (0)
 
@@ -80,7 +97,7 @@ Alchimiste
 
 # Equipement
 
-**Argent :** 28co 3ca 4cc éclat  
+**Argent :** 28 or, 3 argent, 4 cuivre, 0 éclat  
 **Amplificateur de force :** \+1 avantage aux tests de Force, \+1 dégâts au corps à corps  
 **Stabilisateur gyroscopique :** \+1 avantage aux tests d'Agilité, \+1 Défense  
 **Module de sens supérieur :** \+2 Perception  
