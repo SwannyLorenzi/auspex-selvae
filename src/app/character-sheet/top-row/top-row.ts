@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Identity } from './identity/identity';
+import { Progression } from './progression/progression';
+import { Professions } from './professions/professions';
 
 interface Character {
   name: string;
@@ -7,7 +10,7 @@ interface Character {
   description: string;
 }
 
-interface Progression {
+interface ProgressionData {
   level: number;
   ancestry: string;
   apprentice: string;
@@ -17,12 +20,12 @@ interface Progression {
 
 @Component({
   selector: 'app-top-row',
-  imports: [],
+  imports: [Identity, Progression, Professions],
   templateUrl: './top-row.html',
   styleUrl: './top-row.scss',
 })
 export class TopRow {
-  @Input() character!: Character;
-  @Input() progression!: Progression;
-  @Input() professions: string[] = [];
+   @Input() character!: Character;
+   @Input() progression!: ProgressionData;
+   @Input() professions: string[] = [];
 }

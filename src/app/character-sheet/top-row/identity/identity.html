@@ -1,0 +1,8 @@
+<div class="card">
+   <h1>{{ character.name }}</h1>
+   @if (character.nickname) {
+     <span class="nickname">dit "{{ character.nickname }}"</span>
+   }
+   <p class="player-name"><strong>Joueur :</strong> {{ character.playerName }}</p>
+   <p class="description">{{ character.description }}</p>
+</div>
