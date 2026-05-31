@@ -1,0 +1,26 @@
+<h3>Principales</h3>
+<div class="attributes-grid">
+  @for (attr of attributes; track attr.name) {
+    <div class="attribute-card">
+      <div class="attribute-name">{{ attr.name }}</div>
+      <div class="attribute-value">{{ attr.value }}</div>
+      <div class="attribute-modifier">
+        {{ getModifierText(attr.modifier) }}
+        @if (attr.advantages > 0) {
+          <span class="advantage">{{ getAdvantageText(attr.advantages) }}</span>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+<h3>Dérivées</h3>
+<div class="derived-grid">
+  @for (stat of derivedStats; track stat.name) {
+    <div class="derived-card">
+      <div class="derived-name">{{ stat.name }}</div>
+      <div class="derived-value">{{ stat.value }}</div>
+      <div class="derived-formula">{{ stat.formula }}</div>
+    </div>
+  }
+</div>

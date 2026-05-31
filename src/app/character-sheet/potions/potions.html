@@ -1,0 +1,11 @@
+<ul class="list">
+   @for (potion of potions; track potion.name) {
+     <li>
+       <strong>{{ potion.name }}</strong>
+       <span class="potion-cost">{{ potion.cost }}</span>
+       @if (potion.effect) {
+         <span class="potion-effect">{{ potion.effect }}</span>
+       }
+     </li>
+   }
+</ul>

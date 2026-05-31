@@ -1,0 +1,32 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0ebe3;
+    line-height: 1.5;
+
+     &:last-child {
+      border-bottom: none;
+     }
+
+    strong {
+      color: #5a4a3a;
+     }
+
+     .potion-cost {
+      margin-left: 0.5rem;
+      font-style: italic;
+      color: #8b4513;
+     }
+
+     .potion-effect {
+      display: block;
+      margin-left: 1rem;
+      color: #666;
+      font-size: 0.95rem;
+     }
+   }
+}

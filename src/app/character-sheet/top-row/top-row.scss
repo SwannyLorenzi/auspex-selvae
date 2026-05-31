@@ -1,0 +1,73 @@
+:host {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.col-identity h1 {
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+  color: #8b4513;
+}
+
+.col-identity .nickname {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.col-identity .player-name {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0.5rem 0 0 0;
+}
+
+.col-identity .description {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.col-progression h2,
+.col-professions h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.75rem 0;
+  color: #8b4513;
+  border-bottom: 1px solid #d4c4a8;
+  padding-bottom: 0.25rem;
+}
+
+.progression-list .prop {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0ebe3;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin-top: 0.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

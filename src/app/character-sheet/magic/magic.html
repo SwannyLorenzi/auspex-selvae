@@ -1,0 +1,13 @@
+@for (tradition of traditions; track tradition.name) {
+  <div class="tradition">
+     <h3>{{ tradition.name }}</h3>
+     <ul class="spell-list">
+       @for (spell of tradition.spells; track spell.name) {
+         <li>
+           <strong>{{ spell.name }}</strong>
+           <span class="spell-level">({{ spell.level }})</span>
+         </li>
+       }
+     </ul>
+   </div>
+}

@@ -1,0 +1,10 @@
+<ul class="list">
+   @for (item of equipment; track item.name) {
+     <li>
+       <strong>{{ item.name }}</strong>
+       @if (item.description) {
+         <span class="item-desc">{{ item.description }}</span>
+       }
+     </li>
+   }
+</ul>

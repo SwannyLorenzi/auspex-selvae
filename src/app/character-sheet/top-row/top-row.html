@@ -1,0 +1,48 @@
+<!-- Column 1: Identity -->
+<div class="col-identity">
+  <h1>{{ character.name }}</h1>
+  @if (character.nickname) {
+    <span class="nickname">dit "{{ character.nickname }}"</span>
+  }
+  <p class="player-name"><strong>Joueur :</strong> {{ character.playerName }}</p>
+  <p class="description">{{ character.description }}</p>
+</div>
+
+<!-- Column 2: Progression -->
+<div class="col-progression">
+  <h2>Progression</h2>
+  <div class="progression-list">
+    <div class="prop">
+      <span class="label">Niveau</span>
+      <span class="value">{{ progression.level }}</span>
+    </div>
+    <div class="prop">
+      <span class="label">Ascendance</span>
+      <span class="value">{{ progression.ancestry }}</span>
+    </div>
+    <div class="prop">
+      <span class="label">Apprenti</span>
+      <span class="value">{{ progression.apprentice }}</span>
+    </div>
+    <div class="prop">
+      <span class="label">Expert</span>
+      <span class="value">{{ progression.expert }}</span>
+    </div>
+    @if (progression.master) {
+      <div class="prop">
+        <span class="label">Maître</span>
+        <span class="value">{{ progression.master }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Column 3: Professions -->
+<div class="col-professions">
+  <h2>Professions</h2>
+  <ul class="list">
+    @for (prof of professions; track prof) {
+      <li>{{ prof }}</li>
+    }
+  </ul>
+</div>

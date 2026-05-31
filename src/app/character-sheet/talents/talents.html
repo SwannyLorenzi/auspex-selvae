@@ -1,0 +1,10 @@
+<ul class="list">
+  @for (talent of talents; track talent.name) {
+    <li>
+      <strong>{{ talent.name }}</strong>
+      @if (talent.description) {
+        <span class="talent-desc">{{ talent.description }}</span>
+      }
+    </li>
+  }
+</ul>
