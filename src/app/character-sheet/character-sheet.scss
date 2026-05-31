@@ -2,38 +2,39 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Georgia', serif;
-  color: #2c2c2c;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #e8d5b7;
+  background-color: #1a1a1a;
 }
 
 // Sections
 .section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: #faf8f5;
-  border: 1px solid #e0d5c5;
+  background-color: #252525;
+  border: 1px solid #3a3a3a;
   border-radius: 8px;
 
    h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
-    color: #8b4513;
-    border-bottom: 1px solid #d4c4a8;
+    color: #c8a45e;
+    border-bottom: 1px solid #3a3a3a;
     padding-bottom: 0.5rem;
-     }
+      }
 
      h3 {
     margin: 1rem 0 0.5rem 0;
     font-size: 1.2rem;
-    color: #6b5b3e;
-     }
+    color: #d4a853;
+      }
 
      .section-subtitle {
     font-style: italic;
-    color: #888;
+    color: #7a7a7a;
     margin: 0.25rem 0 1rem 0;
     font-size: 0.9rem;
-     }
+      }
 }
 
 // Top row (3-column grid for identity, progression, professions)
@@ -47,12 +48,12 @@
 
 // Responsive
 @media (max-width: 768px) {
-     .character-sheet {
+      .character-sheet {
     padding: 1rem;
-     }
+      }
 
-     .top-row {
+      .top-row {
     grid-template-columns: 1fr;
     gap: 1rem;
-     }
+      }
 }
