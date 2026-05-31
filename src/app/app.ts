@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HelloWorld } from './hello-world/hello-world';
+import { CharacterSheet } from './character-sheet/character-sheet';
 
 @Component({
-   selector: 'app-root',
-   imports: [HelloWorld],
-   templateUrl: './app.html',
-   styleUrl: './app.scss',
+  selector: 'app-root',
+  imports: [CharacterSheet],
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {}
