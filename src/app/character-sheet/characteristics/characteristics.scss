@@ -1,41 +1,43 @@
+@import '../variables';
+
 .attributes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 
-   .attribute-card {
+    .attribute-card {
     text-align: center;
     padding: 1rem;
-    background: linear-gradient(135deg, #2a2a2a 0%, #252525 100%);
-    border: 1px solid #3a3a3a;
+    background: linear-gradient(135deg, $color-bg-card-light 0%, $color-bg-card 100%);
+    border: 1px solid $color-border;
     border-radius: 6px;
 
-     .attribute-name {
+      .attribute-name {
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #7a7a7a;
-     }
+      color: $color-text-muted;
+      }
 
-     .attribute-value {
+      .attribute-value {
       font-size: 2rem;
       font-weight: bold;
-      color: #c8a45e;
+      color: $color-gold-primary;
       margin: 0.25rem 0;
-     }
+      }
 
-     .attribute-modifier {
+      .attribute-modifier {
       font-size: 1rem;
-      color: #9a8a7a;
+      color: $color-text-tertiary;
 
-       .advantage {
+        .advantage {
         display: block;
         font-size: 0.8rem;
-        color: #5cb87a;
-       }
-     }
-   }
+        color: $color-accent-green;
+        }
+      }
+    }
 }
 
 .derived-grid {
@@ -43,30 +45,30 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.75rem;
 
-   .derived-card {
+    .derived-card {
     padding: 0.75rem;
-    background-color: #2a2a2a;
-    border: 1px solid #3a3a3a;
+    background-color: $color-bg-card-light;
+    border: 1px solid $color-border;
     border-radius: 4px;
     text-align: center;
 
-     .derived-name {
+      .derived-name {
       font-size: 0.85rem;
-      color: #7a7a7a;
+      color: $color-text-muted;
       text-transform: uppercase;
-     }
+      }
 
-     .derived-value {
+      .derived-value {
       font-size: 1.5rem;
       font-weight: bold;
-      color: #e8d5b7;
+      color: $color-text-primary;
       margin: 0.25rem 0;
-     }
+      }
 
-     .derived-formula {
+      .derived-formula {
       font-size: 0.75rem;
-      color: #5a5a5a;
+      color: $color-text-disabled;
       font-style: italic;
-     }
-   }
+      }
+    }
 }

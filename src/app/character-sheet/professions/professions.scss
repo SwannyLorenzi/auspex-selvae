@@ -1,34 +1,36 @@
+@import '../variables';
+
 .card {
-  background-color: #252525;
-  border: 1px solid #3a3a3a;
+  background-color: $color-bg-card;
+  border: 1px solid $color-border;
   border-radius: 8px;
   padding: 1.5rem;
 
    h2 {
     margin: 0 0 0.75rem 0;
     font-size: 1.2rem;
-    color: #c8a45e;
-    border-bottom: 1px solid #3a3a3a;
+    color: $color-gold-primary;
+    border-bottom: 1px solid $color-border;
     padding-bottom: 0.25rem;
-      }
+       }
 
-      .list {
+       .list {
     list-style: none;
     padding: 0;
     margin: 0;
 
      li {
       padding: 0.5rem 0;
-      border-bottom: 1px solid #3a3a3a;
+      border-bottom: 1px solid $color-border;
       line-height: 1.5;
 
-         &:last-child {
+          &:last-child {
       border-bottom: none;
-         }
+          }
 
        strong {
-      color: #d4a853;
+      color: $color-gold-secondary;
+          }
          }
-        }
-      }
+       }
 }

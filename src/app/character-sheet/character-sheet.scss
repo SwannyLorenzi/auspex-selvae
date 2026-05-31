@@ -1,37 +1,39 @@
+@import './variables';
+
 .character-sheet {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  color: #e8d5b7;
-  background-color: #1a1a1a;
+  color: $color-text-primary;
+  background-color: $color-bg-main;
 }
 
 // Sections
 .section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: #252525;
-  border: 1px solid #3a3a3a;
+  background-color: $color-bg-card;
+  border: 1px solid $color-border;
   border-radius: 8px;
 
    h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
-    color: #c8a45e;
-    border-bottom: 1px solid #3a3a3a;
+    color: $color-gold-primary;
+    border-bottom: 1px solid $color-border;
     padding-bottom: 0.5rem;
       }
 
      h3 {
     margin: 1rem 0 0.5rem 0;
     font-size: 1.2rem;
-    color: #d4a853;
+    color: $color-gold-secondary;
       }
 
      .section-subtitle {
     font-style: italic;
-    color: #7a7a7a;
+    color: $color-text-muted;
     margin: 0.25rem 0 1rem 0;
     font-size: 0.9rem;
       }
@@ -48,12 +50,12 @@
 
 // Responsive
 @media (max-width: 768px) {
-      .character-sheet {
+       .character-sheet {
     padding: 1rem;
-      }
+       }
 
-      .top-row {
+       .top-row {
     grid-template-columns: 1fr;
     gap: 1rem;
-      }
+       }
 }
