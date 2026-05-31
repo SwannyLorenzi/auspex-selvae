@@ -1,0 +1,19 @@
+{
+     "extends": "./tsconfig.json",
+     "compilerOptions": {
+       "outDir": "./out-tsc/spec",
+       "types": [
+         "vitest/globals"
+       ],
+       "baseUrl": ".",
+       "paths": {
+         "~/*": ["src/*"]
+       }
+     },
+     "include": [
+       "src/**/*.d.ts",
+       "src/**/*.spec.ts",
+       "src/**/*.assert.ts",
+       "src/test-setup.ts"
+     ]
+   }
