@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CharacterSheet } from './character-sheet';
-import { TopRow } from './top-row/top-row';
+import { Identity } from './identity/identity';
+import { Progression } from './progression/progression';
+import { Professions } from './professions/professions';
 import { Characteristics } from './characteristics/characteristics';
 import { Talents } from './talents/talents';
 import { Magic } from './magic/magic';
@@ -17,30 +19,42 @@ describe('CharacterSheet', () => {
     fixture = await TestBed.configureTestingModule({
       imports: [
         CharacterSheet,
-        TopRow,
+        Identity,
+        Progression,
+        Professions,
         Characteristics,
         Talents,
         Magic,
         Potions,
         Equipment,
-      ],
-      }).compileComponents();
+        ],
+        }).compileComponents();
 
     component = fixture.componentInstance;
     fixture.detectChanges();
-    });
+      });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    });
+      });
 
-  it('should render top-row component', () => {
-    const topRow = fixture.nativeElement.querySelector('app-top-row');
-    expect(topRow).toBeTruthy();
-    });
+  it('should render identity component', () => {
+    const identity = fixture.nativeElement.querySelector('app-identity');
+    expect(identity).toBeTruthy();
+      });
+
+  it('should render progression component', () => {
+    const progression = fixture.nativeElement.querySelector('app-progression');
+    expect(progression).toBeTruthy();
+      });
+
+  it('should render professions component', () => {
+    const professions = fixture.nativeElement.querySelector('app-professions');
+    expect(professions).toBeTruthy();
+      });
 
   it('should render characteristics component', () => {
     const characteristics = fixture.nativeElement.querySelector('app-characteristics');
     expect(characteristics).toBeTruthy();
-    });
+      });
 });

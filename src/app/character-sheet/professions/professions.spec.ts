@@ -7,12 +7,12 @@ describe('Professions', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Professions],
-      }).compileComponents();
+       }).compileComponents();
 
     fixture = TestBed.createComponent<Professions>(Professions);
-    });
+     });
 
   it('should create', () => {
     expect(fixture.component).toBeTruthy();
-    });
+     });
 });

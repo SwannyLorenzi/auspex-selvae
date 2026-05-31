@@ -1,36 +1,36 @@
 <div class="character-sheet">
-    <app-top-row
-      [character]="character"
-      [progression]="progression"
-      [professions]="professions"
-    ></app-top-row>
+     <div class="top-row">
+       <app-identity [character]="character"></app-identity>
+       <app-progression [progression]="progression"></app-progression>
+       <app-professions [professions]="professions"></app-professions>
+     </div>
 
-    <section class="section characteristics-section">
-      <h2>Caractéristiques</h2>
-      <app-characteristics
-        [attributes]="attributes"
-        [derivedStats]="derivedStats"
-      ></app-characteristics>
-    </section>
+     <section class="section characteristics-section">
+       <h2>Caractéristiques</h2>
+       <app-characteristics
+         [attributes]="attributes"
+         [derivedStats]="derivedStats"
+       ></app-characteristics>
+     </section>
 
-    <section class="section talent-section">
-      <h2>Talents</h2>
-      <app-talents [talents]="talents"></app-talents>
-    </section>
+     <section class="section talent-section">
+       <h2>Talents</h2>
+       <app-talents [talents]="talents"></app-talents>
+     </section>
 
-    <section class="section magic-section">
-      <h2>Magie</h2>
-      <app-magic [traditions]="traditions"></app-magic>
-    </section>
+     <section class="section magic-section">
+       <h2>Magie</h2>
+       <app-magic [traditions]="traditions"></app-magic>
+     </section>
 
-    <section class="section potions-section">
-      <h2>Livre du Grand-Brasseur</h2>
-      <p class="section-subtitle">Recettes de potions</p>
-      <app-potions [potions]="potions"></app-potions>
-    </section>
+     <section class="section potions-section">
+       <h2>Livre du Grand-Brasseur</h2>
+       <p class="section-subtitle">Recettes de potions</p>
+       <app-potions [potions]="potions"></app-potions>
+     </section>
 
-    <section class="section equipment-section">
-      <h2>Equipement</h2>
-      <app-equipment [equipment]="equipment"></app-equipment>
-    </section>
+     <section class="section equipment-section">
+       <h2>Equipement</h2>
+       <app-equipment [equipment]="equipment"></app-equipment>
+     </section>
 </div>

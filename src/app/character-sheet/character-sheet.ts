@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { TopRow } from './top-row/top-row';
+import { Identity } from './identity/identity';
+import { Progression } from './progression/progression';
+import { Professions } from './professions/professions';
 import { Characteristics } from './characteristics/characteristics';
 import { Talents } from './talents/talents';
 import { Magic } from './magic/magic';
@@ -48,7 +50,7 @@ interface EquipmentItem {
 
 @Component({
   selector: 'app-character-sheet',
-  imports: [TopRow, Characteristics, Talents, Magic, Potions, Equipment],
+  imports: [Identity, Progression, Professions, Characteristics, Talents, Magic, Potions, Equipment],
   templateUrl: './character-sheet.html',
   styleUrl: './character-sheet.scss',
 })

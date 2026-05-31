@@ -16,24 +16,24 @@
     padding: 0.5rem 0;
     border-bottom: 1px solid #f0ebe3;
 
-      &:last-child {
+       &:last-child {
       border-bottom: none;
-      }
+       }
 
-      .label {
+       .label {
       display: block;
       font-size: 0.8rem;
       color: #888;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      }
+       }
 
-      .value {
+       .value {
       display: block;
       font-size: 1.1rem;
       font-weight: bold;
       color: #2c2c2c;
       margin-top: 0.15rem;
-      }
-    }
+       }
+     }
 }

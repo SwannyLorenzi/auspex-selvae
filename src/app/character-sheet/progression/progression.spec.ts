@@ -7,12 +7,12 @@ describe('Progression', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Progression],
-      }).compileComponents();
+       }).compileComponents();
 
     fixture = TestBed.createComponent<Progression>(Progression);
-    });
+     });
 
   it('should create', () => {
     expect(fixture.component).toBeTruthy();
-    });
+     });
 });

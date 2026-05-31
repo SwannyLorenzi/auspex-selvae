@@ -7,7 +7,7 @@ describe('Identity', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Identity],
-      }).compileComponents();
+       }).compileComponents();
 
     fixture = TestBed.createComponent<Identity>(Identity);
     });

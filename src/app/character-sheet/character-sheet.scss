@@ -20,25 +20,39 @@
     color: #8b4513;
     border-bottom: 1px solid #d4c4a8;
     padding-bottom: 0.5rem;
-   }
+     }
 
-   h3 {
+     h3 {
     margin: 1rem 0 0.5rem 0;
     font-size: 1.2rem;
     color: #6b5b3e;
-   }
+     }
 
-   .section-subtitle {
+     .section-subtitle {
     font-style: italic;
     color: #888;
     margin: 0.25rem 0 1rem 0;
     font-size: 0.9rem;
-   }
+     }
+}
+
+// Top row (3-column grid for identity, progression, professions)
+.top-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
 }
 
 // Responsive
 @media (max-width: 768px) {
-   .character-sheet {
+     .character-sheet {
     padding: 1rem;
-   }
+     }
+
+     .top-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+     }
 }
