@@ -2,35 +2,35 @@
 
 .card {
   background-color: $color-bg-card;
-  border: 1px solid $color-border;
-  border-radius: 8px;
+  border: 0.0625rem solid $color-border;
+  border-radius: 0.5rem;
   padding: 1.5rem;
 
    h2 {
     margin: 0 0 0.75rem 0;
     font-size: 1.2rem;
     color: $color-gold-primary;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 0.0625rem solid $color-border;
     padding-bottom: 0.25rem;
-       }
+        }
 
-       .list {
+        .list {
     list-style: none;
     padding: 0;
     margin: 0;
 
      li {
       padding: 0.5rem 0;
-      border-bottom: 1px solid $color-border;
+      border-bottom: 0.0625rem solid $color-border;
       line-height: 1.5;
 
-          &:last-child {
+           &:last-child {
       border-bottom: none;
-          }
+           }
 
        strong {
       color: $color-gold-secondary;
+           }
           }
-         }
-       }
+        }
 }

@@ -2,37 +2,37 @@
 
 .card {
   background-color: $color-bg-card;
-  border: 1px solid $color-border;
-  border-radius: 8px;
+  border: 0.0625rem solid $color-border;
+  border-radius: 0.5rem;
   padding: 1.5rem;
 
    h1 {
     font-size: 2rem;
     margin: 0 0 0.25rem 0;
     color: $color-gold-primary;
-      }
+       }
 
-      .nickname {
+       .nickname {
     display: inline-block;
     font-size: 1.1rem;
     color: $color-text-tertiary;
     font-style: italic;
-      }
+       }
 
-      .player-name {
+       .player-name {
     font-size: 0.95rem;
     color: $color-text-tertiary;
     margin: 0.5rem 0 0 0;
-      }
+       }
 
-      .player-name strong {
+       .player-name strong {
     color: $color-text-secondary;
-      }
+       }
 
-      .description {
+       .description {
     margin-top: 0.75rem;
     font-size: 0.95rem;
     line-height: 1.6;
     color: $color-text-secondary;
-      }
+       }
 }

@@ -16,6 +16,8 @@ It is intended to be used as static web site, no database or backdend server so 
 - KEEP CODE SIMPLE : few files, explicit names and structure.
 - DO NOT TRY TO TEST THE HTML FILE by launching a web server or a browser
 - DO NOT GIT COMMIT CHANGES
+- Always use `rem` units in CSS (1rem = 16px). Never use `px` in CSS files.
+- Always use existing CSS variables for colors, never hardcode a color.
 
 ## TTRPG specific rules
 

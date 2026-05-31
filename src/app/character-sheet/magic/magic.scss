@@ -5,25 +5,25 @@
 
   h3 {
     margin-bottom: 0.5rem;
-      }
+       }
 
-      .spell-list {
+       .spell-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
     gap: 0.5rem;
 
      li {
       border-bottom: none;
       padding: 0.25rem 0;
 
-         .spell-level {
+          .spell-level {
         color: $color-text-muted;
         font-size: 0.9rem;
         margin-left: 0.25rem;
+          }
          }
-        }
-      }
+       }
 }
