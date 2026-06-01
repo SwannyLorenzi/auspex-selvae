@@ -8,7 +8,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "fiche": {
+    "auspex-selvae": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fiche:build:production"
+              "buildTarget": "auspex-selvae:build:production"
             },
             "development": {
-              "buildTarget": "fiche:build:development"
+              "buildTarget": "auspex-selvae:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,13 +75,16 @@
         "e2e": {
           "builder": "playwright-ng-schematics:playwright",
           "options": {
-            "devServerTarget": "fiche:serve"
+            "devServerTarget": "auspex-selvae:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fiche:serve:production"
+              "devServerTarget": "auspex-selvae:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
