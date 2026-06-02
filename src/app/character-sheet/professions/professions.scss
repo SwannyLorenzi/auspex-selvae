@@ -1,36 +1,43 @@
-@import '../variables';
+@use '../variables';
 
 .card {
-  background-color: $color-bg-card;
-  border: 0.0625rem solid $color-border;
+  background-color: variables.$color-bg-card;
+  border: 0.0625rem solid variables.$color-border;
   border-radius: 0.5rem;
   padding: 1.5rem;
 
-   h2 {
+  h2 {
     margin: 0 0 0.75rem 0;
     font-size: 1.2rem;
-    color: $color-gold-primary;
-    border-bottom: 0.0625rem solid $color-border;
+    color: variables.$color-gold-primary;
+    border-bottom: 0.0625rem solid variables.$color-border;
     padding-bottom: 0.25rem;
-        }
+  }
 
-        .list {
+  .list {
     list-style: none;
     padding: 0;
     margin: 0;
 
-     li {
+    li {
       padding: 0.5rem 0;
-      border-bottom: 0.0625rem solid $color-border;
+      border-bottom: 0.0625rem solid variables.$color-border;
       line-height: 1.5;
 
-           &:last-child {
-      border-bottom: none;
-           }
+      &:last-child {
+        border-bottom: none;
+      }
 
-       strong {
-      color: $color-gold-secondary;
-           }
-          }
-        }
+      strong {
+        color: variables.$color-gold-secondary;
+      }
+
+      .item-desc {
+        display: block;
+        margin-left: 1rem;
+        color: variables.$color-text-tertiary;
+        font-size: 0.95rem;
+      }
+    }
+  }
 }

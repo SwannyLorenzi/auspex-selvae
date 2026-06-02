@@ -1,41 +1,41 @@
-@import '../variables';
+@use '../variables';
 
 .card {
-  background-color: $color-bg-card;
-  border: 0.0625rem solid $color-border;
+  background-color: variables.$color-bg-card;
+  border: 0.0625rem solid variables.$color-border;
   border-radius: 0.5rem;
   padding: 1.5rem;
 
-   h2 {
+  h2 {
     margin: 0 0 0.75rem 0;
     font-size: 1.2rem;
-    color: $color-gold-primary;
-    border-bottom: 0.0625rem solid $color-border;
+    color: variables.$color-gold-primary;
+    border-bottom: 0.0625rem solid variables.$color-border;
     padding-bottom: 0.25rem;
-       }
+  }
 
-       .progression-list .prop {
+  .progression-list .prop {
     padding: 0.5rem 0;
-    border-bottom: 0.0625rem solid $color-border;
+    border-bottom: 0.0625rem solid variables.$color-border;
 
-          &:last-child {
+    &:last-child {
       border-bottom: none;
-          }
+    }
 
-          .label {
+    .label {
       display: block;
       font-size: 0.8rem;
-      color: $color-text-muted;
+      color: variables.$color-text-muted;
       text-transform: uppercase;
       letter-spacing: 0.03125rem;
-          }
+    }
 
-          .value {
+    .value {
       display: block;
       font-size: 1.1rem;
       font-weight: bold;
-      color: $color-text-primary;
+      color: variables.$color-text-primary;
       margin-top: 0.15rem;
-          }
-        }
+    }
+  }
 }

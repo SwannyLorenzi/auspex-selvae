@@ -1,42 +1,42 @@
-@import './variables';
+@use './variables';
 
 .character-sheet {
   max-width: 56.25rem;
   margin: 0 auto;
   padding: 2rem;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  color: $color-text-primary;
-  background-color: $color-bg-main;
+  color: variables.$color-text-primary;
+  background-color: variables.$color-bg-main;
 }
 
 // Sections
 .section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: $color-bg-card;
-  border: 0.0625rem solid $color-border;
+  background-color: variables.$color-bg-card;
+  border: 0.0625rem solid variables.$color-border;
   border-radius: 0.5rem;
 
    h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
-    color: $color-gold-primary;
-    border-bottom: 0.0625rem solid $color-border;
+    color: variables.$color-gold-primary;
+    border-bottom: 0.0625rem solid variables.$color-border;
     padding-bottom: 0.5rem;
-       }
+        }
 
      h3 {
     margin: 1rem 0 0.5rem 0;
     font-size: 1.2rem;
-    color: $color-gold-secondary;
-       }
+    color: variables.$color-gold-secondary;
+        }
 
-     .section-subtitle {
+      .section-subtitle {
     font-style: italic;
-    color: $color-text-muted;
+    color: variables.$color-text-muted;
     margin: 0.25rem 0 1rem 0;
     font-size: 0.9rem;
-       }
+        }
 }
 
 // Top row (3-column grid for identity, progression, professions)
@@ -50,12 +50,12 @@
 
 // Responsive
 @media (max-width: 48rem) {
-        .character-sheet {
+         .character-sheet {
     padding: 1rem;
-        }
+         }
 
-        .top-row {
+         .top-row {
     grid-template-columns: 1fr;
     gap: 1rem;
-        }
+         }
 }
