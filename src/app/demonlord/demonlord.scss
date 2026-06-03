@@ -55,6 +55,27 @@ main {
   gap: 1rem;
 }
 
+.row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.row > section {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 48rem) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row > section {
+    flex: none;
+  }
+}
+
 section {
   padding: 1.25rem 2rem;
   background: rgba(15, 15, 26, 0.6);
