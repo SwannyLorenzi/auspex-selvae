@@ -1,32 +1,45 @@
 h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #c9b47a;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 h3 {
-  font-size: 1.1rem;
-  margin-top: 1rem;
+  font-size: 1rem;
+  margin-top: 0.75rem;
   margin-bottom: 0.25rem;
+  color: #a89880;
+  font-weight: 500;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 th,
 td {
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.5rem;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 0.0625rem solid rgba(201, 180, 122, 0.1);
 }
 
 th {
   font-weight: 600;
+  color: #a89880;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  color: #e0d6c8;
 }
 
 small {
-  color: #6b7280;
+  color: #8a7f70;
   font-size: 0.85em;
 }

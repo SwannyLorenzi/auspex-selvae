@@ -1,33 +1,33 @@
 <header>
-   <h1>Fiche de Personnage</h1>
-   <a routerLink="/" aria-label="Retour à l'accueil">Retour à l'accueil</a>
+    <h1>Fiche de Personnage</h1>
+    <a routerLink="/" aria-label="Retour à l'accueil">Retour à l'accueil</a>
 </header>
 <main>
-   <section>
-     <app-personnage [character]="character" />
-   </section>
-   <section>
-     <app-progression [progression]="character.progression" />
-   </section>
-   <section>
-     <app-professions [professions]="character.professions" />
-   </section>
-   <section>
-     <app-caracteristiques
-       [mainAttributes]="character.mainAttributes"
-       [derivedAttributes]="character.derivedAttributes"
-     />
-   </section>
-   <section>
-     <app-talents [immunities]="character.immunities" [talents]="character.talents" />
-   </section>
-   <section>
-     <app-magie [traditions]="character.magic" />
-   </section>
-   <section>
-     <app-grand-brasseur [potions]="character.potions" />
-   </section>
-   <section>
-     <app-equipement [currency]="character.currency" [equipment]="character.equipment" />
-   </section>
+    <section>
+      <app-personnage [character]="character" />
+    </section>
+    <section>
+      <app-progression [progression]="character.progression" />
+    </section>
+    <section>
+      <app-professions [professions]="character.professions" />
+    </section>
+    <section>
+      <app-caracteristiques
+        [mainAttributes]="character.mainAttributes"
+        [derivedAttributes]="character.derivedAttributes"
+      />
+    </section>
+    <section>
+      <app-talents [immunities]="character.immunities" [talents]="character.talents" />
+    </section>
+    <section>
+      <app-magie [traditions]="character.magic" />
+    </section>
+    <section>
+      <app-grand-brasseur [potions]="character.potions" />
+    </section>
+    <section>
+      <app-equipement [currency]="character.currency" [equipment]="character.equipment" />
+    </section>
 </main>
