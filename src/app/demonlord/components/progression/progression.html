@@ -1,0 +1,10 @@
+<h2>Progression</h2>
+<ul>
+  <li><strong>Niveau :</strong> {{ progression.level }}</li>
+  <li><strong>Ascendance :</strong> {{ progression.ascendance }}</li>
+  <li><strong>Apprenti :</strong> {{ progression.apprentice }}</li>
+  <li><strong>Expert :</strong> {{ progression.expert }}</li>
+  @if (progression.master) {
+    <li><strong>Maître :</strong> {{ progression.master }}</li>
+  }
+</ul>

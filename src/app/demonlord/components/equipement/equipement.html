@@ -1,0 +1,16 @@
+<h2>Equipement</h2>
+
+@if (currency) {
+  <p><strong>Argent :</strong> {{ currency }}</p>
+}
+
+<ul>
+  @for (item of equipment; track item.name) {
+    <li>
+      <strong>{{ item.name }}</strong>
+      @if (item.effect) {
+        <span> - {{ item.effect }}</span>
+      }
+    </li>
+  }
+</ul>

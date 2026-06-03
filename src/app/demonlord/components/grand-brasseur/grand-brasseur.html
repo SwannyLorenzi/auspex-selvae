@@ -1,0 +1,14 @@
+<h2>Livre du Grand-Brasseur (recettes de potions)</h2>
+<ul>
+  @for (potions of potions; track potions.name) {
+    <li>
+      <strong>{{ potions.name }}</strong>
+      @if (potions.cost) {
+        <span> ({{ potions.cost }})</span>
+      }
+      @if (potions.effect) {
+        <span> - {{ potions.effect }}</span>
+      }
+    </li>
+  }
+</ul>

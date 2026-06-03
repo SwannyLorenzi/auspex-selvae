@@ -1,0 +1,11 @@
+<h2>Professions</h2>
+<ul>
+  @for (prof of professions; track prof.name) {
+    <li>
+      @if (prof.type) {
+        <strong>({{ prof.type }})</strong>
+      }
+      {{ prof.name }}
+    </li>
+  }
+</ul>

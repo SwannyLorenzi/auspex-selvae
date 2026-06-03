@@ -1,0 +1,39 @@
+<h2>Caractéristiques</h2>
+
+<h3>Principales</h3>
+<table>
+  <thead>
+     <tr>
+       <th scope="col">Attribut</th>
+       <th scope="col">Valeur</th>
+       <th scope="col">Bonus</th>
+     </tr>
+   </thead>
+   <tbody>
+     @for (attr of mainAttributes; track attr.name) {
+       <tr>
+         <td>{{ attr.name }}</td>
+         <td>{{ attr.value }}</td>
+         <td>{{ attr.bonus }} {{ attr.bonusText }}</td>
+       </tr>
+     }
+   </tbody>
+</table>
+
+<h3>Dérivées</h3>
+<table>
+   <thead>
+     <tr>
+       <th scope="col">Attribut</th>
+       <th scope="col">Valeur</th>
+     </tr>
+   </thead>
+   <tbody>
+     @for (attr of derivedAttributes; track attr.name) {
+       <tr>
+         <td>{{ attr.name }}</td>
+         <td>{{ attr.value }}<small>{{ attr.formula }}</small></td>
+       </tr>
+     }
+   </tbody>
+</table>

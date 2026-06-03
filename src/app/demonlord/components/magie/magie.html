@@ -1,0 +1,12 @@
+<h2>Magie</h2>
+
+@for (trad of traditions; track trad.tradition) {
+  <h3>{{ trad.tradition }}</h3>
+  <ul>
+    @for (spell of trad.spells; track spell.name) {
+      <li>
+        {{ spell.name }} ({{ spell.level }})
+      </li>
+    }
+  </ul>
+}
