@@ -22,17 +22,22 @@
   text-align: center;
 }
 
-.attribute-value {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #e0d6c8;
-  line-height: 1.2;
-}
+.values {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 
-.attribute-bonus {
-  font-size: 0.9rem;
-  color: #c9b47a;
-  font-weight: 600;
+  .attribute-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #e0d6c8;
+  }
+
+  .attribute-bonus {
+    font-size: 1.5rem;
+    color: #c9b47a;
+    font-weight: 600;
+  }
 }
 
 .attribute-bonus-text {

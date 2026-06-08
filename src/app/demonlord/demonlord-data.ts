@@ -25,8 +25,8 @@ export const characterData: Character = {
   derivedAttributes: [
     { name: 'Vitesse', value: 8, formula: '' },
     { name: 'Taille/Gabarit', value: 1, formula: '' },
-    { name: 'Défense', value: 14, formula: '(= 13 base + 1 boost)' },
-    { name: 'Défense bouclier', value: 16, formula: '(= 14 + 2 bouclier)' },
+    { name: 'Défense', value: 14, formula: '' },
+    { name: 'Défense avec bouclier', value: 16, formula: '' },
     { name: 'Puissance', value: 3, formula: '' },
     { name: 'Santé', value: 23, formula: '(= Force + bonus de niveaux)' },
     { name: 'Vitesse de guérison', value: 5, formula: '(= Santé/4)' },
