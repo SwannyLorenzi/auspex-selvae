@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100%;
+  width: 100%;
   box-sizing: border-box;
   padding: 1rem 0.75rem;
   background: rgba(15, 15, 26, 0.6);
@@ -18,6 +19,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
+  text-align: center;
 }
 
 .attribute-value {

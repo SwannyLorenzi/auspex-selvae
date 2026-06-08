@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { Attribute, DerivedAttribute } from '../../demonlord-data';
+import { Attribute } from '../../demonlord-data';
 import { AttributeCardComponent } from '../attribute-card/attribute-card';
+import { DerivedAttributesComponent, DerivedAttribute } from '../derived-attributes/derived-attributes';
 
 @Component({
   selector: 'app-caracteristiques',
-  imports: [AttributeCardComponent],
+  imports: [AttributeCardComponent, DerivedAttributesComponent],
   templateUrl: './caracteristiques.html',
   styleUrl: './caracteristiques.scss',
 })

@@ -1,32 +1,17 @@
 <h2>Caractéristiques</h2>
 
 <div class="caracteristiques-content">
-     <div>
-         <h3>Principales</h3>
-         <div class="attributes-grid">
-         @for (attr of mainAttributes; track attr.name) {
-             <app-attribute-card [attribute]="attr" />
-         }
-         </div>
-     </div>
+      <div>
+          <h3>Principales</h3>
+          <div class="attributes-grid">
+          @for (attr of mainAttributes; track attr.name) {
+              <app-attribute-card [attribute]="attr" />
+          }
+          </div>
+      </div>
 
-     <div>
-         <h3>Dérivées</h3>
-         <table>
-             <thead>
-             <tr>
-                 <th scope="col">Attribut</th>
-                 <th scope="col">Valeur</th>
-             </tr>
-             </thead>
-             <tbody>
-             @for (attr of derivedAttributes; track attr.name) {
-                 <tr>
-                 <td>{{ attr.name }}</td>
-                 <td>{{ attr.value }}<small>{{ attr.formula }}</small></td>
-                 </tr>
-             }
-             </tbody>
-         </table>
-     </div>
+      <div>
+          <h3>Dérivées</h3>
+          <app-derived-attributes [attributes]="derivedAttributes" />
+      </div>
 </div>
