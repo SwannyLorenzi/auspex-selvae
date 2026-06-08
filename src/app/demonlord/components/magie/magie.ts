@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MagicTradition } from '../../demonlord-data';
+import { MagicTradition } from '../../demonlord-models';
 
 @Component({
   selector: 'app-magie',

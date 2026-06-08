@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Attribute } from '../../demonlord-data';
+import { Attribute } from '../../demonlord-models';
 
 @Component({
   selector: 'app-attribute-card',

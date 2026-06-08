@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Equipment } from '../../demonlord-data';
+import { Equipment } from '../../demonlord-models';
 
 @Component({
   selector: 'app-equipement',

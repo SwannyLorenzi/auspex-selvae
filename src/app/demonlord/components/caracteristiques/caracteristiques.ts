@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Attribute, DerivedAttribute } from '../../demonlord-data';
+import { Attribute, DerivedAttribute } from '../../demonlord-models';
 import { AttributeCardComponent } from '../attribute-card/attribute-card';
 import { DerivedAttributesComponent } from '../derived-attributes/derived-attributes';
 

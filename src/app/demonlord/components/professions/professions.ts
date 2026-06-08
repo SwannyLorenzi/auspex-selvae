@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Profession } from '../../demonlord-data';
+import { Profession } from '../../demonlord-models';
 
 @Component({
   selector: 'app-professions',

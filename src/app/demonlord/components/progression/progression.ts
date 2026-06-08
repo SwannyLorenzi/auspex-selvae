@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Progression } from '../../demonlord-data';
+import { Progression } from '../../demonlord-models';
 
 @Component({
   selector: 'app-progression',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Potion } from '../../demonlord-data';
+import { Potion } from '../../demonlord-models';
 
 @Component({
   selector: 'app-grand-brasseur',
