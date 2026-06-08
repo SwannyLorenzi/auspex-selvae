@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { DerivedAttribute } from '../../demonlord-data';
 import { AttributeCardComponent } from '../attribute-card/attribute-card';
-
-export interface DerivedAttribute {
-  name: string;
-  value: string;
-  bonus?: string;
-}
 
 @Component({
   selector: 'app-derived-attributes',

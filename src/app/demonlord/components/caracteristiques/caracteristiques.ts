@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Attribute } from '../../demonlord-data';
+import { Attribute, DerivedAttribute } from '../../demonlord-data';
 import { AttributeCardComponent } from '../attribute-card/attribute-card';
-import { DerivedAttributesComponent, DerivedAttribute } from '../derived-attributes/derived-attributes';
+import { DerivedAttributesComponent } from '../derived-attributes/derived-attributes';
 
 @Component({
   selector: 'app-caracteristiques',

@@ -23,7 +23,7 @@ describe('DemonlordComponent', () => {
   it('should display the character sheet title', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('Fiche de Personnage');
+    expect(container.textContent).toContain('Ombre du Seigneur Démon');
     });
 
   it('should display the character name', () => {
