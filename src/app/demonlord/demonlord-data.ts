@@ -23,7 +23,6 @@ export interface Progression {
 }
 
 export interface Profession {
-  type: string;
   name: string;
 }
 
@@ -72,11 +71,11 @@ export const characterData: Character = {
     ascendance: 'Automate',
     apprentice: 'Magicienne',
     expert: 'Grand Brasseur',
-    master: '',
+    master: '-',
   },
   professions: [
-    { type: 'Académique', name: 'Science' },
-    { type: '', name: 'Alchimiste' },
+    { name: 'Sciences (académique)' },
+    { name: 'Alchimiste' },
   ],
   mainAttributes: [
     { name: 'Force', value: 11, bonus: '+1', bonusText: '+1 avantage' },
