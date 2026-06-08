@@ -1,0 +1,39 @@
+.attribute-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 1rem 0.75rem;
+  background: rgba(15, 15, 26, 0.6);
+  border: 0.0625rem solid rgba(201, 180, 122, 0.15);
+  border-radius: 0.25rem;
+  gap: 0.25rem;
+}
+
+.attribute-name {
+  font-size: 0.85rem;
+  color: #a89880;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.attribute-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #e0d6c8;
+  line-height: 1.2;
+}
+
+.attribute-bonus {
+  font-size: 0.9rem;
+  color: #c9b47a;
+  font-weight: 600;
+}
+
+.attribute-bonus-text {
+  font-size: 0.8rem;
+  color: #8a7f70;
+}

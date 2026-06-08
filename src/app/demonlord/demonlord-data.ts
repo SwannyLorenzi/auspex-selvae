@@ -81,7 +81,7 @@ export const characterData: Character = {
   mainAttributes: [
     { name: 'Force', value: 11, bonus: '+1', bonusText: '+1 avantage' },
     { name: 'Intellect', value: 13, bonus: '+3', bonusText: '' },
-    { name: 'Perception', value: 15, bonus: '+5', bonusText: '(= Intellect + 2 bonus equipement)' },
+    { name: 'Perception', value: 15, bonus: '+5', bonusText: '' },
     { name: 'Volonté', value: 9, bonus: '-1', bonusText: '' },
     { name: 'Agilité', value: 8, bonus: '-2', bonusText: '+1 avantage' },
   ],
