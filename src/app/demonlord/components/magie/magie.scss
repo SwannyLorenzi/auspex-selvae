@@ -1,9 +1,38 @@
+.magie-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 h2 {
   font-size: 1.25rem;
   padding-bottom: 0.75rem;
   color: #c9b47a;
   font-weight: 600;
   letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.reset-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 0.0625rem solid rgba(201, 180, 122, 0.2);
+  border-radius: 0.25rem;
+  color: #a89880;
+  font-size: 0.8rem;
+  font-family: inherit;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+   &:hover {
+    color: #c9b47a;
+    border-color: rgba(201, 180, 122, 0.4);
+   }
 }
 
 .magie-content {

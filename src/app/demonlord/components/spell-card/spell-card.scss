@@ -36,6 +36,12 @@
   letter-spacing: 0.02em;
 }
 
+.spell-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .spell-meta {
   display: flex;
   gap: 0.75rem;
@@ -49,9 +55,39 @@
 }
 
 .spell-uses {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   font-size: 0.85rem;
   color: #c9b47a;
   font-weight: 500;
+}
+
+.tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+
+  &.used {
+    color: rgba(201, 180, 122, 0.3);
+  }
+
+  &:not(.used) {
+    color: #c9b47a;
+    background-color: rgba(201, 180, 122, 0.1);
+  }
+
+  &:hover:not(.used) {
+    background-color: rgba(201, 180, 122, 0.25);
+  }
 }
 
 .spell-details {

@@ -50,7 +50,8 @@ export interface Spell {
   level: number;
   tradition: string;
   mainAttribute: 'Intellect' | 'Volonté';
-  uses: number;
+  maxUses: number;
+  currentUses: number;
   description: string;
   targetRange: string;
   duration: string;

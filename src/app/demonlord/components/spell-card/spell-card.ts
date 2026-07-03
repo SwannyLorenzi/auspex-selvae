@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { Spell } from '../../demonlord-models';
 
 @Component({
@@ -7,6 +7,7 @@ import { Spell } from '../../demonlord-models';
   imports: [],
   templateUrl: './spell-card.html',
   styleUrl: './spell-card.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpellCardComponent {
   spell = input.required<Spell>();
@@ -15,5 +16,12 @@ export class SpellCardComponent {
 
   toggleExpanded(): void {
     this._expanded.update((v) => !v);
+  }
+
+  spendUse(): void {
+    const spell = this.spell();
+    if (spell.currentUses < spell.maxUses) {
+      spell.currentUses++;
+    }
   }
 }
