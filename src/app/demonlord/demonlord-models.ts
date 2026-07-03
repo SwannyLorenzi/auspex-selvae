@@ -48,6 +48,14 @@ export interface MagicTradition {
 export interface Spell {
   name: string;
   level: number;
+  tradition: string;
+  mainAttribute: 'Intellect' | 'Volonté';
+  uses: number;
+  description: string;
+  targetRange: string;
+  duration: string;
+  effects: string;
+  bonus20Plus: string;
 }
 
 export interface Potion {

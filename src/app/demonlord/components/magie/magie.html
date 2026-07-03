@@ -2,13 +2,13 @@
 
 <div class="magie-content">
 @for (trad of traditions; track trad.tradition) {
-   <h3>{{ trad.tradition }}</h3>
-   <ul>
-     @for (spell of trad.spells; track spell.name) {
-       <li>
-         {{ spell.name }} ({{ spell.level }})
-       </li>
-     }
-   </ul>
+  <div class="tradition-section">
+    <h3>{{ trad.tradition }}</h3>
+    <div class="spell-list">
+      @for (spell of trad.spells; track spell.name) {
+        <app-spell-card [spell]="spell" />
+      }
+    </div>
+  </div>
 }
 </div>
