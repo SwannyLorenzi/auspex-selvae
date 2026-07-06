@@ -15,12 +15,17 @@ export interface Character {
 }
 
 export enum SourceBook {
-  CORE = 'Livre de règles',
+  CORE = 'Livre de base',
   COMPANION = 'Compagnon',
   PHILOSOPHY = 'Philosophie Occulte'
 }
 
 export type SpellMainAttributes = 'Intellect' | 'Volonté';
+
+export enum SpellType {
+  UTILITY = 'Utilitaire',
+  ATTACK = 'Attaque'
+}
 
 export interface Progression {
   level: string;
@@ -62,6 +67,7 @@ export interface Spell {
   name: string;
   level: number;
   tradition: Tradition;
+  type: SpellType;
   currentUses: number;
   target?: string;
   duration?: string;

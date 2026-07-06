@@ -1,4 +1,4 @@
-import { Character, SourceBook } from './demonlord-models';
+import { Character, SourceBook, SpellType } from './demonlord-models';
 import {
   Alchimie,
   Aucune,
@@ -61,6 +61,7 @@ export const characterData: Character = {
         name: 'Perception de la magie',
         level: 0,
         tradition: Aucune,
+        type: SpellType.UTILITY,
         currentUses: 0,
         areaOfEffect:
           'Une sphère de 5 m de rayon centrée sur un point de votre espace.',
@@ -72,6 +73,7 @@ export const characterData: Character = {
         name: 'Identification de substance',
         level: 0,
         tradition: Alchimie,
+        type: SpellType.UTILITY,
         currentUses: 0,
         target: 'Une substance que vous pouvez voir à portée courte.',
         effect: `
@@ -84,6 +86,7 @@ export const characterData: Character = {
         name: 'Globe acide',
         level: 0,
         tradition: Alchimie,
+        type: SpellType.ATTACK,
         currentUses: 0,
         target: 'Une créature ou un objet à portée courte',
         effect: `
@@ -98,6 +101,7 @@ export const characterData: Character = {
         name: 'Concoction de potion',
         level: 1,
         tradition: Alchimie,
+        type: SpellType.UTILITY,
         currentUses: 0,
         conditions:
           'Vous devez avoir une trousse d’alchimiste, un petit récipient vide et des ingrédients spéciaux d’une valeur égale à la moitié du prix de la potion.',
@@ -111,6 +115,7 @@ export const characterData: Character = {
         name: "Nappe d'huile",
         level: 2,
         tradition: Alchimie,
+        type: SpellType.ATTACK,
         currentUses: 0,
         areaOfEffect:
           'Cercle d’un rayon de 5 m centré sur un point\n' +
@@ -135,6 +140,7 @@ export const characterData: Character = {
         name: 'Présence',
         level: 0,
         tradition: Enchantement,
+        type: SpellType.UTILITY,
         currentUses: 0,
         duration: '1 min',
         effect:
@@ -145,6 +151,7 @@ export const characterData: Character = {
         name: 'Propos convainquants',
         level: 0,
         tradition: Enchantement,
+        type: SpellType.ATTACK,
         currentUses: 0,
         target: 'Une créature à portée courte qui vous voit et vous entend',
         effect:
@@ -158,6 +165,7 @@ export const characterData: Character = {
         name: 'Charme',
         level: 1,
         tradition: Enchantement,
+        type: SpellType.ATTACK,
         currentUses: 0,
         target: 'Une créature à portée courte qui peut vous voir',
         effect: `
@@ -173,6 +181,7 @@ export const characterData: Character = {
         name: 'Éveiller la passion',
         level: 2,
         tradition: Enchantement,
+        type: SpellType.UTILITY,
         currentUses: 0,
         target: 'Jusqu’à trois créatures à portée courte',
         duration: 'Concentration, jusqu’à 1 min ; voir l’effet',
@@ -188,6 +197,7 @@ export const characterData: Character = {
         name: 'Epiphanie',
         level: 0,
         tradition: Divination,
+        type: SpellType.UTILITY,
         currentUses: 0,
         effect: '',
         triggered: `
@@ -200,6 +210,7 @@ export const characterData: Character = {
         name: 'Indiscrétion',
         level: 0,
         tradition: Divination,
+        type: SpellType.UTILITY,
         currentUses: 0,
         duration: 'Concentration, jusqu’à 1 min',
         effect: `
@@ -213,6 +224,7 @@ export const characterData: Character = {
         name: 'Clameur',
         level: 0,
         tradition: Illusion,
+        type: SpellType.UTILITY,
         currentUses: 0,
         target: 'Un point dans un espace situé jusqu’à portée moyenne',
         duration: '1 min',
@@ -227,6 +239,7 @@ export const characterData: Character = {
         name: 'Dissimuler un objet',
         level: 0,
         tradition: Illusion,
+        type: SpellType.UTILITY,
         currentUses: 0,
         target: 'Un objet de Gabarit 1/2 ou inférieur à portée courte',
         duration: '1 min',
@@ -247,6 +260,7 @@ export const characterData: Character = {
         name: 'Fantasme',
         level: 3,
         tradition: Illusion,
+        type: SpellType.UTILITY,
         currentUses: 0,
         areaOfEffect:
           'Un cube de 4 m de côté ayant pour origine un point que vous pouvez voir jusqu’à portée longue.',
