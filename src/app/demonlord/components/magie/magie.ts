@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { MagicTradition } from '../../demonlord-models';
+import { Spell } from '../../demonlord-models';
 import { SpellCardComponent } from '../spell-card/spell-card';
 
 @Component({
@@ -10,13 +10,11 @@ import { SpellCardComponent } from '../spell-card/spell-card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MagieComponent {
-  traditions = input.required<MagicTradition[]>();
+  spells = input.required<Spell[]>();
 
   resetAllUses(): void {
-    for (const tradition of this.traditions()) {
-      for (const spell of tradition.spells) {
-        spell.currentUses = 0;
-      }
+    for (const spell of this.spells()) {
+      spell.currentUses = 0;
     }
   }
 }

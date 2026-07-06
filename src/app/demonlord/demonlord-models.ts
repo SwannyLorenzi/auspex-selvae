@@ -8,7 +8,7 @@ export interface Character {
   derivedAttributes: DerivedAttribute[];
   immunities: string[];
   talents: string[];
-  magic: MagicTradition[];
+  magic: Magic;
   potions: Potion[];
   equipment: Equipment[];
   currency: string;
@@ -48,12 +48,6 @@ export interface Tradition {
   name: string;
   mainAttributes: 'Intellect' | 'Volonté';
   corrupted: boolean;
-}
-
-export interface MagicTradition {
-  tradition: string;
-  spells: Spell[];
-  isHorsTradition?: boolean;
 }
 
 export interface Spell {

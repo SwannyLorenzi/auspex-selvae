@@ -43,21 +43,6 @@ h2 {
   gap: 1rem;
 }
 
-.tradition-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.tradition-section > h3 {
-  font-size: 1rem;
-  color: #a89880;
-  font-weight: 500;
-  margin: 0;
-  padding-bottom: 0.25rem;
-  border-bottom: 0.0625rem solid rgba(201, 180, 122, 0.1);
-}
-
 .spell-list {
   display: flex;
   flex-direction: column;
