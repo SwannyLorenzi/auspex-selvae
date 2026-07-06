@@ -60,7 +60,6 @@ export interface Spell {
   name: string;
   level: number;
   tradition: Tradition;
-  mainAttribute: 'Intellect' | 'Volonté';
   maxUses: number;
   currentUses: number;
   description: string;
