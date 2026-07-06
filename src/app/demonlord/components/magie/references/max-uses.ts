@@ -16,10 +16,6 @@ const maxUses: number[][] = [
    [11, 3, 3, 3, 3, 2, 1, 1, 1, 1, 1],  // puissance 10
 ];
 
-/**
- * Look up the max uses for a given power level and spell level.
- * Returns 0 if the spell level exceeds the character's power.
- */
 export function getMaxUses(puissance: number, spellLevel: number): number {
    if (puissance < 0 || puissance > 10) throw new RangeError();
    if (spellLevel < 0 || spellLevel > 10) throw new RangeError();
