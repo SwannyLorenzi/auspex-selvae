@@ -1,4 +1,4 @@
-import { Tradition } from './demonlord-models';
+import { Tradition } from '../../demonlord-models';
 
 export const Traditions: Tradition[] = [
   {
