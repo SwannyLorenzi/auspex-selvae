@@ -59,7 +59,7 @@ export interface MagicTradition {
 export interface Spell {
   name: string;
   level: number;
-  tradition: string;
+  tradition: Tradition;
   mainAttribute: 'Intellect' | 'Volonté';
   maxUses: number;
   currentUses: number;

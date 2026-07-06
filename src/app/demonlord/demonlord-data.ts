@@ -1,4 +1,11 @@
 import { Character } from './demonlord-models';
+import {
+  Alchimie,
+  Aucune,
+  Divination,
+  Enchantement,
+  Illusion,
+} from './components/magie/references/traditions';
 
 export const characterData: Character = {
   name: '7 7',
@@ -55,7 +62,7 @@ export const characterData: Character = {
         {
           name: 'Perception de la magie',
           level: 0,
-          tradition: 'Hors tradition',
+          tradition: Aucune,
           mainAttribute: 'Intellect',
           maxUses: 5,
           currentUses: 0,
@@ -73,7 +80,7 @@ export const characterData: Character = {
         {
           name: 'Identification de substance',
           level: 0,
-          tradition: 'Alchimie',
+          tradition: Alchimie,
           mainAttribute: 'Intellect',
           maxUses: 5,
           currentUses: 0,
@@ -86,7 +93,7 @@ export const characterData: Character = {
         {
           name: 'Globe acide',
           level: 0,
-          tradition: 'Alchimie',
+          tradition: Alchimie,
           mainAttribute: 'Intellect',
           maxUses: 5,
           currentUses: 0,
@@ -99,7 +106,7 @@ export const characterData: Character = {
         {
           name: 'Concoction de potion',
           level: 1,
-          tradition: 'Alchimie',
+          tradition: Alchimie,
           mainAttribute: 'Intellect',
           maxUses: 4,
           currentUses: 0,
@@ -112,7 +119,7 @@ export const characterData: Character = {
         {
           name: "Nappe d'huile",
           level: 2,
-          tradition: 'Alchimie',
+          tradition: Alchimie,
           mainAttribute: 'Intellect',
           maxUses: 3,
           currentUses: 0,
@@ -130,7 +137,7 @@ export const characterData: Character = {
         {
           name: 'Présence',
           level: 0,
-          tradition: 'Enchantement',
+          tradition: Enchantement,
           mainAttribute: 'Volonté',
           maxUses: 5,
           currentUses: 0,
@@ -143,7 +150,7 @@ export const characterData: Character = {
         {
           name: 'Propos convaincants',
           level: 0,
-          tradition: 'Enchantement',
+          tradition: Enchantement,
           mainAttribute: 'Volonté',
           maxUses: 5,
           currentUses: 0,
@@ -156,7 +163,7 @@ export const characterData: Character = {
         {
           name: 'Charme',
           level: 1,
-          tradition: 'Enchantement',
+          tradition: Enchantement,
           mainAttribute: 'Volonté',
           maxUses: 4,
           currentUses: 0,
@@ -169,7 +176,7 @@ export const characterData: Character = {
         {
           name: 'Éveiller la passion',
           level: 2,
-          tradition: 'Enchantement',
+          tradition: Enchantement,
           mainAttribute: 'Volonté',
           maxUses: 3,
           currentUses: 0,
@@ -187,7 +194,7 @@ export const characterData: Character = {
         {
           name: 'Epiphanie',
           level: 0,
-          tradition: 'Divination',
+          tradition: Divination,
           mainAttribute: 'Volonté',
           maxUses: 5,
           currentUses: 0,
@@ -200,7 +207,7 @@ export const characterData: Character = {
         {
           name: 'Indiscrétion',
           level: 0,
-          tradition: 'Divination',
+          tradition: Divination,
           mainAttribute: 'Volonté',
           maxUses: 5,
           currentUses: 0,
@@ -218,7 +225,7 @@ export const characterData: Character = {
         {
           name: 'Clameur',
           level: 0,
-          tradition: 'Illusion',
+          tradition: Illusion,
           mainAttribute: 'Intellect',
           maxUses: 5,
           currentUses: 0,
@@ -231,7 +238,7 @@ export const characterData: Character = {
         {
           name: 'DIssimuler un objet',
           level: 0,
-          tradition: 'Illusion',
+          tradition: Illusion,
           mainAttribute: 'Intellect',
           maxUses: 5,
           currentUses: 0,
@@ -244,7 +251,7 @@ export const characterData: Character = {
         {
           name: 'Fantasme',
           level: 3,
-          tradition: 'Illusion',
+          tradition: Illusion,
           mainAttribute: 'Intellect',
           maxUses: 2,
           currentUses: 0,
