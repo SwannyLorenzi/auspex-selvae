@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Spell } from '../../demonlord-models';
 import { SpellCardComponent } from '../spell-card/spell-card';
 
@@ -7,7 +7,6 @@ import { SpellCardComponent } from '../spell-card/spell-card';
   imports: [SpellCardComponent],
   templateUrl: './magie.html',
   styleUrl: './magie.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MagieComponent {
   spells = input.required<Spell[]>();

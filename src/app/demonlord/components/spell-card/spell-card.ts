@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  signal,
-} from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Spell } from '../../demonlord-models';
 
 @Component({
@@ -12,7 +7,6 @@ import { Spell } from '../../demonlord-models';
   imports: [],
   templateUrl: './spell-card.html',
   styleUrl: './spell-card.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpellCardComponent {
   spell = input.required<Spell>();
