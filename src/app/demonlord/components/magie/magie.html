@@ -11,8 +11,8 @@
 
 <div class="magie-content">
   <div class="spell-list">
-    @for (spell of spells(); track spell.name) {
-      <app-spell-card [spell]="spell" />
+    @for (spell of magic().spells; track spell.name) {
+      <app-spell-card [spell]="spell" [power]="magic().power" />
     }
   </div>
 </div>

@@ -11,7 +11,7 @@
     <div class="spell-name-row">
       <span class="spell-name">{{ spell().name }}</span>
       <span class="spell-uses">
-        @for (_ of [].constructor(spell().maxUses); track $index) {
+        @for (_ of [].constructor(maxUses()); track $index) {
           <span
             class="tick"
             [class.used]="spell().currentUses > $index"
@@ -37,9 +37,9 @@
 
   @if (isExpanded()) {
     <div class="spell-details">
-      @if (spell().targetRange) {
+      @if (spell().target) {
         <div class="detail-block">
-          <strong>Cible / Portée :</strong> {{ spell().targetRange }}
+          <strong>Cible / Portée :</strong> {{ spell().target }}
         </div>
       }
       @if (spell().duration) {
@@ -47,9 +47,9 @@
           <strong>Durée :</strong> {{ spell().duration }}
         </div>
       }
-      @if (spell().effects) {
+      @if (spell().effect) {
         <div class="detail-block">
-          <strong>Effets :</strong> {{ spell().effects }}
+          <strong>Effets :</strong> {{ spell().effect }}
         </div>
       }
       @if (spell().bonus20Plus) {

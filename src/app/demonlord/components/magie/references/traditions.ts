@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { Tradition } from '../../../demonlord-models';
 
 export const Aucune: Tradition = {

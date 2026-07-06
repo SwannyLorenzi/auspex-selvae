@@ -14,6 +14,14 @@ export interface Character {
   currency: string;
 }
 
+export enum SourceBooks {
+  CORE = 'Livre de règles',
+  COMPANION = 'Compagnon',
+  PHILOSOPHY = 'Philosophie Occulte'
+}
+
+export type SpellMainAttributes = 'Intellect' | 'Volonté';
+
 export interface Progression {
   level: string;
   ascendance: string;
@@ -46,7 +54,7 @@ export interface Magic {
 
 export interface Tradition {
   name: string;
-  mainAttributes: 'Intellect' | 'Volonté';
+  mainAttributes: SpellMainAttributes;
   corrupted: boolean;
 }
 
@@ -54,13 +62,15 @@ export interface Spell {
   name: string;
   level: number;
   tradition: Tradition;
-  maxUses: number;
   currentUses: number;
-  description: string;
-  targetRange: string;
-  duration: string;
-  effects: string;
-  bonus20Plus: string;
+  target?: string;
+  duration?: string;
+  areaOfEffect?: string;
+  conditions?: string;
+  effect: string; /* main spell effect */
+  triggered?: string; /* special effect when triggered */
+  bonus20Plus?: string; /* additional effect on 20+ on dice roll */
+  foundIn: SourceBooks;
 }
 
 export interface Potion {

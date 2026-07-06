@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Spell } from '../../demonlord-models';
+import { Magic } from '../../demonlord-models';
 import { SpellCardComponent } from '../spell-card/spell-card';
 
 @Component({
@@ -9,10 +9,10 @@ import { SpellCardComponent } from '../spell-card/spell-card';
   styleUrl: './magie.scss',
 })
 export class MagieComponent {
-  spells = input.required<Spell[]>();
+  magic = input.required<Magic>();
 
   resetAllUses(): void {
-    for (const spell of this.spells()) {
+    for (const spell of this.magic().spells) {
       spell.currentUses = 0;
     }
   }
