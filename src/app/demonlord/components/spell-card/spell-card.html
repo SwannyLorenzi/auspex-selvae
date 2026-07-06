@@ -15,7 +15,7 @@
           <span
             class="tick"
             [class.used]="spell().currentUses > $index"
-            (click)="spendUse()"
+            (click)="spendUse(); $event.stopPropagation()"
             [attr.aria-label]="
               $any(spell().currentUses > $index)
                 ? 'Utilisation déjà dépensée'
