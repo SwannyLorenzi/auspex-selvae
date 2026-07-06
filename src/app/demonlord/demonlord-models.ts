@@ -14,7 +14,7 @@ export interface Character {
   currency: string;
 }
 
-export enum SourceBooks {
+export enum SourceBook {
   CORE = 'Livre de règles',
   COMPANION = 'Compagnon',
   PHILOSOPHY = 'Philosophie Occulte'
@@ -69,8 +69,9 @@ export interface Spell {
   conditions?: string;
   effect: string; /* main spell effect */
   triggered?: string; /* special effect when triggered */
+  sacrifice?: string; /* special effect when a spell use is spent */
   bonus20Plus?: string; /* additional effect on 20+ on dice roll */
-  foundIn: SourceBooks;
+  foundIn: SourceBook;
 }
 
 export interface Potion {
