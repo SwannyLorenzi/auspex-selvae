@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { MagicTradition, Spell } from '../../demonlord-models';
+import { MagicTradition } from '../../demonlord-models';
 import { SpellCardComponent } from '../spell-card/spell-card';
 
 @Component({
