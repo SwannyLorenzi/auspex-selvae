@@ -16,6 +16,6 @@ interface CharacterSheet {
 export class HomeComponent {
   protected readonly title = signal('auspex-selvae');
   protected readonly characters: CharacterSheet[] = [
-     { name: '7 7', path: '/demonlord', description: 'La Tavernière' },
-   ];
+    { name: '7 7', path: '/demonlord', description: 'La Tavernière' },
+  ];
 }

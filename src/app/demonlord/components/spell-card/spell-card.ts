@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  signal,
+} from '@angular/core';
 import { Spell } from '../../demonlord-models';
 
 @Component({
@@ -15,7 +20,7 @@ export class SpellCardComponent {
   isExpanded = this._expanded;
 
   toggleExpanded(): void {
-    this._expanded.update((v) => !v);
+    this._expanded.update(v => !v);
   }
 
   spendUse(): void {

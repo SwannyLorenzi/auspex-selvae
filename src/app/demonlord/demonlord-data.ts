@@ -3,7 +3,8 @@ import { Character } from './demonlord-models';
 export const characterData: Character = {
   name: '7 7',
   nickname: 'La Tavernière',
-  description: '7 7 est une femme humaine de taille moyenne et de corpulence un peu forte. Cheveux roux mi longs, yeux verts',
+  description:
+    '7 7 est une femme humaine de taille moyenne et de corpulence un peu forte. Cheveux roux mi longs, yeux verts',
   progression: {
     level: '5',
     ascendance: 'Automate',
@@ -11,10 +12,7 @@ export const characterData: Character = {
     expert: 'Grand Brasseur',
     master: '-',
   },
-  professions: [
-    { name: 'Sciences (académique)' },
-    { name: 'Alchimiste' },
-  ],
+  professions: [{ name: 'Sciences (académique)' }, { name: 'Alchimiste' }],
   mainAttributes: [
     { name: 'Force', value: 11, bonus: '+1', bonusText: '+1 avantage' },
     { name: 'Intellect', value: 13, bonus: '+3', bonusText: '' },
@@ -31,7 +29,14 @@ export const characterData: Character = {
     { name: 'Santé', value: 23, formula: '(= Force + bonus de niveaux)' },
     { name: 'Vitesse de guérison', value: 5, formula: '(= Santé/4)' },
   ],
-  immunities: ['maladies', 'poison', 'endormi', 'fatigué', 'malade', 'empoisonné'],
+  immunities: [
+    'maladies',
+    'poison',
+    'endormi',
+    'fatigué',
+    'malade',
+    'empoisonné',
+  ],
   talents: [
     'Corps mécanique',
     'Tour de magie',
@@ -105,7 +110,7 @@ export const characterData: Character = {
           bonus20Plus: '',
         },
         {
-          name: 'Nappe d\'huile',
+          name: "Nappe d'huile",
           level: 2,
           tradition: 'Alchimie',
           mainAttribute: 'Intellect',
@@ -253,23 +258,52 @@ export const characterData: Character = {
     },
   ],
   potions: [
-    { name: 'Cocktail de Caecras', cost: 'rayon de 5m', effect: '2d6 dégâts + feu agi + 1 désavantage pour ½ dégâts' },
-    { name: 'Potion de Puissance', cost: '5ca', effect: 'Force +1 pendant 3d6 minutes' },
-    { name: 'Potion de Sagacité', cost: '5ca', effect: 'Intellect +1 pendant 3d6 minutes' },
-    { name: 'Potion de soin', cost: '2ca', effect: 'soin = vitesse de guerison' },
-    { name: 'Potion de Croissance', cost: '5ca', effect: 'Gabarit -> 2 ou +1, +2d6 santé +1d6 dégâts pendant 1d6 minutes' },
+    {
+      name: 'Cocktail de Caecras',
+      cost: 'rayon de 5m',
+      effect: '2d6 dégâts + feu agi + 1 désavantage pour ½ dégâts',
+    },
+    {
+      name: 'Potion de Puissance',
+      cost: '5ca',
+      effect: 'Force +1 pendant 3d6 minutes',
+    },
+    {
+      name: 'Potion de Sagacité',
+      cost: '5ca',
+      effect: 'Intellect +1 pendant 3d6 minutes',
+    },
+    {
+      name: 'Potion de soin',
+      cost: '2ca',
+      effect: 'soin = vitesse de guerison',
+    },
+    {
+      name: 'Potion de Croissance',
+      cost: '5ca',
+      effect: 'Gabarit -> 2 ou +1, +2d6 santé +1d6 dégâts pendant 1d6 minutes',
+    },
     { name: 'Potion de Vision', cost: '5ca', effect: '' },
     { name: 'Potion Anti toxine', cost: '5ca', effect: '' },
   ],
   equipment: [
     { name: 'Argent', effect: '28 or, 3 argent, 4 cuivre, 0 éclat' },
-    { name: 'Amplificateur de force', effect: '+1 avantage aux tests de Force, +1 dégâts au corps à corps' },
-    { name: 'Stabilisateur gyroscopique', effect: '+1 avantage aux tests d\'Agilité, +1 Défense' },
+    {
+      name: 'Amplificateur de force',
+      effect: '+1 avantage aux tests de Force, +1 dégâts au corps à corps',
+    },
+    {
+      name: 'Stabilisateur gyroscopique',
+      effect: "+1 avantage aux tests d'Agilité, +1 Défense",
+    },
     { name: 'Module de sens supérieur', effect: '+2 Perception' },
-    { name: 'Trousse d\'Alchimiste', effect: '' },
+    { name: "Trousse d'Alchimiste", effect: '' },
     { name: 'Hache de bataille', effect: '1d6+2 dégâts' },
     { name: 'Grand Bouclier', effect: 'Defense + 2' },
-    { name: 'Insigne du Duc de la butée du bouclier', effect: 'Agit avec l\'autorité du Duc' },
+    {
+      name: 'Insigne du Duc de la butée du bouclier',
+      effect: "Agit avec l'autorité du Duc",
+    },
   ],
   currency: '28 or, 3 argent, 4 cuivre, 0 éclat',
 };

@@ -10,25 +10,25 @@ describe('DemonlordComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DemonlordComponent],
       providers: [provideRouter([])],
-      }).compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DemonlordComponent);
     component = fixture.componentInstance;
-    });
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    });
+  });
 
   it('should display the character sheet title', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Ombre du Seigneur Démon');
-    });
+  });
 
   it('should display the character name', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('7 7');
-    });
+  });
 });

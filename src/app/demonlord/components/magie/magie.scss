@@ -27,12 +27,14 @@ h2 {
   font-family: inherit;
   padding: 0.25rem 0.6rem;
   cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 
-   &:hover {
+  &:hover {
     color: #c9b47a;
     border-color: rgba(201, 180, 122, 0.4);
-   }
+  }
 }
 
 .magie-content {

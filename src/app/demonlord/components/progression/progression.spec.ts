@@ -9,15 +9,15 @@ describe('ProgressionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProgressionComponent],
-     }).compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProgressionComponent);
     component = fixture.componentInstance;
-   });
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-   });
+  });
 
   it('should display progression details', () => {
     component.progression = characterData.progression;
@@ -27,5 +27,5 @@ describe('ProgressionComponent', () => {
     expect(container.textContent).toContain('5');
     expect(container.textContent).toContain('Automate');
     expect(container.textContent).toContain('Grand Brasseur');
-   });
+  });
 });

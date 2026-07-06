@@ -9,15 +9,15 @@ describe('TalentsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TalentsComponent],
-     }).compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TalentsComponent);
     component = fixture.componentInstance;
-   });
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-   });
+  });
 
   it('should display immunities', () => {
     component.immunities = characterData.immunities;
@@ -25,7 +25,7 @@ describe('TalentsComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('maladies');
     expect(container.textContent).toContain('poison');
-   });
+  });
 
   it('should display talents list', () => {
     component.talents = characterData.talents;
@@ -33,5 +33,5 @@ describe('TalentsComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Corps mécanique');
     expect(container.textContent).toContain('Contresort');
-   });
+  });
 });

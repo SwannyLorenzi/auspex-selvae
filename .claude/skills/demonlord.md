@@ -16,13 +16,13 @@ A character sheet follows this section order:
 
 Track character advancement with these fields (in order):
 
-| Field          | Data type     |  Description                                                  |
-| -------------- | ------------- | ------------------------------------------------------------- |
-| **Niveau**     | Integer       | Current level (integer). Determines general character power   |
-| **Ascendance** | One line text | Character race/ancestry (e.g., Automate, Humain).             |
-| **Apprenti**   | One line text | Class or class archetype (e.g., Magicienne).                  |
-| **Expert**     | One line text | Specialization or feat choice (e.g., Grand Brasseur).         |
-| **Maître**     | One line text | Master-level advancement (e.g., Technomancien).               |
+| Field          | Data type     | Description                                                 |
+| -------------- | ------------- | ----------------------------------------------------------- |
+| **Niveau**     | Integer       | Current level (integer). Determines general character power |
+| **Ascendance** | One line text | Character race/ancestry (e.g., Automate, Humain).           |
+| **Apprenti**   | One line text | Class or class archetype (e.g., Magicienne).                |
+| **Expert**     | One line text | Specialization or feat choice (e.g., Grand Brasseur).       |
+| **Maître**     | One line text | Master-level advancement (e.g., Technomancien).             |
 
 ### 3. Professions
 
@@ -38,6 +38,7 @@ ProfessionName (optional precision)
 ```
 
 Examples:
+
 - `Science (connaissance académique)`
 - `Alchimiste`
 - `Tavernier`
@@ -53,19 +54,21 @@ Five core attributes, each expressed as a **value** with a **modifier** and opti
 **AttributeName Value** +/-Modifier (+advantages) (-disadvantages)
 ```
 
-| Attribute      | Notes                              |
-| -------------- | ---------------------------------- |
-| **Force**      | Physical power, combat             |
-| **Intellect**  | Mental stat, spellcasting          |
-| **Perception** | Awareness                          |
-| **Volonté**    | Willpower, also spellcasting       |
-| **Agilité**    | Dexterity, reflexes, also combat   |
+| Attribute      | Notes                            |
+| -------------- | -------------------------------- |
+| **Force**      | Physical power, combat           |
+| **Intellect**  | Mental stat, spellcasting        |
+| **Perception** | Awareness                        |
+| **Volonté**    | Willpower, also spellcasting     |
+| **Agilité**    | Dexterity, reflexes, also combat |
 
 Attributes consist of these values :
+
 - Base value: integer between 1 (lowest) and 20 (highest allowed). It represents the core value for the character and can be used as roll threshold for opponents' skill tests.
 - Modifier: integer between -10 and +10, exact formula is `Modifier = (base value) - 10`. Is used as direct bonus/malus for the corresponding skill test.
 
 Optional bonuses :
+
 - Advantages: integer value usually bewteen 0 (no advantage - show nothing) to 5 (very very rare).
   Explanation: Sometimes the character has permanent bonus to a specific skill test. Advantages give one additional dice for the test, tracking them alongside skill modifier allows the player to not forget about dices to throw.
 
@@ -73,14 +76,14 @@ Optional bonuses :
 
 Computed from primary attributes and equipment:
 
-| Stat                    | Formula                                  | Example |
-| ----------------------- | ---------------------------------------- | ------- |
-| **Vitesse**             | Based on Agilité                         | 8       |
-| **Taille/Gabarit**      | Sert at creation                         | 1       |
-| **Défense**             | Base + armor/boost + shield bonuses      | 14+2    |
-| **Puissance**           | Based on character progression           | 3       |
-| **Santé**               | Force + level bonuses                    | 23      |
-| **Vitesse de guérison** | Santé / 4                                | 5       |
+| Stat                    | Formula                             | Example |
+| ----------------------- | ----------------------------------- | ------- |
+| **Vitesse**             | Based on Agilité                    | 8       |
+| **Taille/Gabarit**      | Sert at creation                    | 1       |
+| **Défense**             | Base + armor/boost + shield bonuses | 14+2    |
+| **Puissance**           | Based on character progression      | 3       |
+| **Santé**               | Force + level bonuses               | 23      |
+| **Vitesse de guérison** | Santé / 4                           | 5       |
 
 ### 5. Talents
 
@@ -88,6 +91,7 @@ List talents/abilities granted by character proogression (ancestry, classes, etc
 Data type : title + description
 
 Examples:
+
 - **Immunités**: List of conditions the character is immune to (maladies, poison, endormi, etc.)
 - **Clef**: Key talents (signature abilities)
 - **Corps mécanique**: Passive/built-in abilities

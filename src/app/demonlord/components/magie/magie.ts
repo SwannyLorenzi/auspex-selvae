@@ -16,7 +16,7 @@ export class MagieComponent {
     for (const tradition of this.traditions()) {
       for (const spell of tradition.spells) {
         spell.currentUses = 0;
-       }
-     }
-   }
+      }
+    }
+  }
 }

@@ -91,7 +91,7 @@ Alchimiste
 **Potion de Puissance** 5ca, Force \+1 pendant 3d6 minutes  
 **Potion de Sagacité** 5ca, Intellect \+1 pendant 3d6 minutes  
 **Potion de soin** 2ca, soin \= vitesse de guerison  
-**Potion de Croissance** 5ca, Gabarit \-\> 2 ou \+1, \+2d6 santé \+1d6 dégâts pendant 1d6 minutes   
+**Potion de Croissance** 5ca, Gabarit \-\> 2 ou \+1, \+2d6 santé \+1d6 dégâts pendant 1d6 minutes  
 **Potion de Vision** 5ca  
 **Potion Anti toxine** 5ca
 
@@ -106,4 +106,4 @@ Alchimiste
 **Hache de bataille :** 1d6+2 dégâts  
 **Grand Bouclier :** Defense \+ 2
 
-**Insigne du Duc de la butée du bouclier :** Agit avec l'autorité du Duc  
+**Insigne du Duc de la butée du bouclier :** Agit avec l'autorité du Duc

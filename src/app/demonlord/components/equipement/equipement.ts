@@ -8,6 +8,6 @@ import { Equipment } from '../../demonlord-models';
   styleUrl: './equipement.scss',
 })
 export class EquipementComponent {
-  @Input() currency: string = '';
+  @Input() currency = '';
   @Input() equipment: Equipment[] = [];
 }

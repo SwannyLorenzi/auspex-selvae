@@ -1,24 +1,23 @@
 <div class="magie-header">
-      <h2>Magie</h2>
-      <button
-        type="button"
-        class="reset-button"
-        (click)="resetAllUses()"
-        aria-label="Réinitialiser toutes les utilisations de sorts"
-      >
-        <span aria-hidden="true">↺</span> Réinitialiser
-      </button>
-    </div>
+  <h2>Magie</h2>
+  <button
+    type="button"
+    class="reset-button"
+    (click)="resetAllUses()"
+    aria-label="Réinitialiser toutes les utilisations de sorts">
+    <span aria-hidden="true">↺</span> Réinitialiser
+  </button>
+</div>
 
-    <div class="magie-content">
-@for (trad of traditions(); track trad.tradition) {
-  <div class="tradition-section">
-    <h3>{{ trad.tradition }}</h3>
-    <div class="spell-list">
-      @for (spell of trad.spells; track spell.name) {
-        <app-spell-card [spell]="spell" />
-      }
+<div class="magie-content">
+  @for (trad of traditions(); track trad.tradition) {
+    <div class="tradition-section">
+      <h3>{{ trad.tradition }}</h3>
+      <div class="spell-list">
+        @for (spell of trad.spells; track spell.name) {
+          <app-spell-card [spell]="spell" />
+        }
+      </div>
     </div>
-  </div>
-}
+  }
 </div>

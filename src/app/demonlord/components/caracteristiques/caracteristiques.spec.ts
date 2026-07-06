@@ -9,15 +9,15 @@ describe('CaracteristiquesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CaracteristiquesComponent],
-      }).compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CaracteristiquesComponent);
     component = fixture.componentInstance;
-   });
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-   });
+  });
 
   it('should display main attributes', () => {
     component.mainAttributes = characterData.mainAttributes;
@@ -27,7 +27,7 @@ describe('CaracteristiquesComponent', () => {
     expect(container.textContent).toContain('11');
     expect(container.textContent).toContain('Intellect');
     expect(container.textContent).toContain('13');
-   });
+  });
 
   it('should display derived attributes', () => {
     component.derivedAttributes = characterData.derivedAttributes;
@@ -35,5 +35,5 @@ describe('CaracteristiquesComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Vitesse');
     expect(container.textContent).toContain('Santé');
-   });
+  });
 });

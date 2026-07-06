@@ -4,8 +4,9 @@
   [class.expanded]="isExpanded()"
   (click)="toggleExpanded()"
   [attr.aria-expanded]="isExpanded()"
-  [attr.aria-label]="spell().name + ' - ' + (isExpanded() ? 'Replier' : 'Déplier')"
->
+  [attr.aria-label]="
+    spell().name + ' - ' + (isExpanded() ? 'Replier' : 'Déplier')
+  ">
   <div class="spell-header">
     <div class="spell-name-row">
       <span class="spell-name">{{ spell().name }}</span>
@@ -29,20 +30,28 @@
       </span>
     </div>
     <span class="spell-meta">
-      <span class="spell-level">{{ spell().tradition }} Niv. {{ spell().level }}</span>
+      <span class="spell-level"
+        >{{ spell().tradition }} Niv. {{ spell().level }}</span
+      >
     </span>
   </div>
 
   @if (isExpanded()) {
     <div class="spell-details">
       @if (spell().targetRange) {
-        <div class="detail-block"><strong>Cible / Portée :</strong> {{ spell().targetRange }}</div>
+        <div class="detail-block">
+          <strong>Cible / Portée :</strong> {{ spell().targetRange }}
+        </div>
       }
       @if (spell().duration) {
-        <div class="detail-block"><strong>Durée :</strong> {{ spell().duration }}</div>
+        <div class="detail-block">
+          <strong>Durée :</strong> {{ spell().duration }}
+        </div>
       }
       @if (spell().effects) {
-        <div class="detail-block"><strong>Effets :</strong> {{ spell().effects }}</div>
+        <div class="detail-block">
+          <strong>Effets :</strong> {{ spell().effects }}
+        </div>
       }
       @if (spell().bonus20Plus) {
         <div class="detail-block bonus-block">
