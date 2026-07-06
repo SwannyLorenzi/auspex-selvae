@@ -39,6 +39,17 @@ export interface DerivedAttribute {
   formula: string;
 }
 
+export interface Magic {
+  spells: Spell[];
+  power: number;
+}
+
+export interface Tradition {
+  name: string;
+  mainAttributes: 'Intellect' | 'Volonté';
+  corrupted: boolean;
+}
+
 export interface MagicTradition {
   tradition: string;
   spells: Spell[];
