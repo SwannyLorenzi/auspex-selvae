@@ -6,7 +6,7 @@ import { ProgressionComponent } from './components/progression/progression';
 import { ProfessionsComponent } from './components/professions/professions';
 import { CaracteristiquesComponent } from './components/caracteristiques/caracteristiques';
 import { TalentsComponent } from './components/talents/talents';
-import { MagieComponent } from './components/magie/magie';
+import { MagicComponent } from './components/magic/magic';
 import { GrandBrasseurComponent } from './components/grand-brasseur/grand-brasseur';
 import { EquipementComponent } from './components/equipement/equipement';
 
@@ -19,7 +19,7 @@ import { EquipementComponent } from './components/equipement/equipement';
     ProfessionsComponent,
     CaracteristiquesComponent,
     TalentsComponent,
-    MagieComponent,
+    MagicComponent,
     GrandBrasseurComponent,
     EquipementComponent,
   ],

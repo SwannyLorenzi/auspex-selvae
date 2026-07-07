@@ -1,14 +1,14 @@
 import { Component, input } from '@angular/core';
 import { Magic } from '../../demonlord-models';
-import { SpellCardComponent } from '../spell-card/spell-card';
+import { SpellCardComponent } from './spell-card/spell-card';
 
 @Component({
-  selector: 'app-magie',
+  selector: 'app-magic',
   imports: [SpellCardComponent],
-  templateUrl: './magie.html',
-  styleUrl: './magie.scss',
+  templateUrl: './magic.html',
+  styleUrl: './magic.scss',
 })
-export class MagieComponent {
+export class MagicComponent {
   magic = input.required<Magic>();
 
   resetAllUses(): void {

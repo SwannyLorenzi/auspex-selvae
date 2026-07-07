@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MagieComponent } from './magie';
+import { MagicComponent } from './magic';
 import { characterData } from '../../demonlord-data';
 
 describe('MagieComponent', () => {
-  let component: MagieComponent;
-  let fixture: ComponentFixture<MagieComponent>;
+  let component: MagicComponent;
+  let fixture: ComponentFixture<MagicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MagieComponent],
+      imports: [MagicComponent],
       }).compileComponents();
 
-    fixture = TestBed.createComponent(MagieComponent);
+    fixture = TestBed.createComponent(MagicComponent);
     component = fixture.componentInstance;
     });
 

@@ -5,7 +5,7 @@ import {
   Divination,
   Enchantement,
   Illusion,
-} from './components/magie/references/traditions';
+} from './components/magic/references/traditions';
 
 export const characterData: Character = {
   name: '7 7',

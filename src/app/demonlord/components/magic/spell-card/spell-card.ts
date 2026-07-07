@@ -1,6 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { Spell } from '../../demonlord-models';
-import { getMaxUses } from '../magie/references/max-uses';
+import { Spell } from '../../../demonlord-models';
+import { getMaxUses } from '../references/max-uses';
 
 @Component({
   selector: 'app-spell-card',
