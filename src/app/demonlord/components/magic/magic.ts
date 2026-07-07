@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Magic } from '../../demonlord-models';
+import { Magic } from './magic-models';
 import { SpellCardComponent } from './spell-card/spell-card';
 
 @Component({

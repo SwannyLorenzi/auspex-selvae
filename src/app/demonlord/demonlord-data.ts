@@ -1,4 +1,5 @@
-import { Character, SourceBook, SpellType } from './demonlord-models';
+import { Character } from './demonlord-models';
+import { SourceBook, SpellType } from './components/magic/magic-models';
 import {
   Alchimie,
   Aucune,

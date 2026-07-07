@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Tradition } from '../../../demonlord-models';
+import { Tradition } from '../magic-models';
 
 export const Aucune: Tradition = {
   name: '',
