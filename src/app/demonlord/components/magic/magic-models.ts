@@ -1,14 +1,14 @@
 export enum SourceBook {
   CORE = 'Livre de base',
   COMPANION = 'Compagnon',
-  PHILOSOPHY = 'Philosophie Occulte'
+  PHILOSOPHY = 'Philosophie Occulte',
 }
 
 export type SpellMainAttributes = 'Intellect' | 'Volonté';
 
 export enum SpellType {
   UTILITY = 'Utilitaire',
-  ATTACK = 'Attaque'
+  ATTACK = 'Attaque',
 }
 
 export interface Magic {

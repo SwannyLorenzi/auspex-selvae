@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Profession } from '../../demonlord-models';
+import { Component, input } from '@angular/core';
+import { Profession } from './professions-models';
 
 @Component({
   selector: 'app-professions',
@@ -8,5 +8,5 @@ import { Profession } from '../../demonlord-models';
   styleUrl: './professions.scss',
 })
 export class ProfessionsComponent {
-  @Input() professions: Profession[] = [];
+  professions = input.required<Profession[]>();
 }

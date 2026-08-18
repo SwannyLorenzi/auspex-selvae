@@ -4,7 +4,6 @@ import { getMaxUses } from '../references/max-uses';
 
 @Component({
   selector: 'app-spell-card',
-  standalone: true,
   imports: [],
   templateUrl: './spell-card.html',
   styleUrl: './spell-card.scss',

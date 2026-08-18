@@ -20,7 +20,7 @@ describe('ProfessionsComponent', () => {
   });
 
   it('should display all professions', () => {
-    component.professions = characterData.professions;
+    fixture.componentRef.setInput('professions', characterData.professions);
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Science');

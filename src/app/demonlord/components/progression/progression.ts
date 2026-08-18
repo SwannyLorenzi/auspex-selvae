@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Progression } from '../../demonlord-models';
+import { Component, input } from '@angular/core';
+import { Progression } from './progression-models';
 
 @Component({
   selector: 'app-progression',
@@ -8,5 +8,5 @@ import { Progression } from '../../demonlord-models';
   styleUrl: './progression.scss',
 })
 export class ProgressionComponent {
-  @Input() progression: Progression = {} as Progression;
+  progression = input.required<Progression>();
 }

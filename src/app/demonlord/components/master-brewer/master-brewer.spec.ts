@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GrandBrasseurComponent } from './grand-brasseur';
+import { MasterBrewerComponent } from './master-brewer';
 import { characterData } from '../../demonlord-data';
 
-describe('GrandBrasseurComponent', () => {
-  let component: GrandBrasseurComponent;
-  let fixture: ComponentFixture<GrandBrasseurComponent>;
+describe('MasterBrewerComponent', () => {
+  let component: MasterBrewerComponent;
+  let fixture: ComponentFixture<MasterBrewerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GrandBrasseurComponent],
+      imports: [MasterBrewerComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GrandBrasseurComponent);
+    fixture = TestBed.createComponent(MasterBrewerComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('potions', characterData.potions);
   });
 
   it('should create', () => {
@@ -20,7 +21,6 @@ describe('GrandBrasseurComponent', () => {
   });
 
   it('should display all potions', () => {
-    component.potions = characterData.potions;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Cocktail de Caecras');
@@ -29,7 +29,6 @@ describe('GrandBrasseurComponent', () => {
   });
 
   it('should display potion effects', () => {
-    component.potions = characterData.potions;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Force +1');

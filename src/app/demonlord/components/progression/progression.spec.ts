@@ -20,7 +20,7 @@ describe('ProgressionComponent', () => {
   });
 
   it('should display progression details', () => {
-    component.progression = characterData.progression;
+    fixture.componentRef.setInput('progression', characterData.progression);
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Niveau');

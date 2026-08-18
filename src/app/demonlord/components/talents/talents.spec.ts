@@ -13,6 +13,8 @@ describe('TalentsComponent', () => {
 
     fixture = TestBed.createComponent(TalentsComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('immunities', characterData.immunities);
+    fixture.componentRef.setInput('talents', characterData.talents);
   });
 
   it('should create', () => {
@@ -20,7 +22,6 @@ describe('TalentsComponent', () => {
   });
 
   it('should display immunities', () => {
-    component.immunities = characterData.immunities;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('maladies');
@@ -28,7 +29,6 @@ describe('TalentsComponent', () => {
   });
 
   it('should display talents list', () => {
-    component.talents = characterData.talents;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Corps mécanique');

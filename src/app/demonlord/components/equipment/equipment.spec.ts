@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EquipementComponent } from './equipement';
+import { EquipmentComponent } from './equipment';
 import { characterData } from '../../demonlord-data';
 
-describe('EquipementComponent', () => {
-  let component: EquipementComponent;
-  let fixture: ComponentFixture<EquipementComponent>;
+describe('EquipmentComponent', () => {
+  let component: EquipmentComponent;
+  let fixture: ComponentFixture<EquipmentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EquipementComponent],
+      imports: [EquipmentComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EquipementComponent);
+    fixture = TestBed.createComponent(EquipmentComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('currency', characterData.currency);
+    fixture.componentRef.setInput('equipment', characterData.equipment);
   });
 
   it('should create', () => {
@@ -20,14 +22,12 @@ describe('EquipementComponent', () => {
   });
 
   it('should display currency', () => {
-    component.currency = characterData.currency;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('or');
   });
 
   it('should display all equipment items', () => {
-    component.equipment = characterData.equipment;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Hache de bataille');

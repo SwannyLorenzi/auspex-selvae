@@ -20,7 +20,7 @@
 <main>
   <div class="row">
     <section>
-      <app-personnage [character]="character" />
+      <app-character [character]="character" />
     </section>
     <section>
       <app-progression [progression]="character.progression" />
@@ -30,7 +30,7 @@
     </section>
   </div>
   <section>
-    <app-caracteristiques
+    <app-characteristics
       [mainAttributes]="character.mainAttributes"
       [derivedAttributes]="character.derivedAttributes" />
   </section>
@@ -43,10 +43,10 @@
     <app-magic [magic]="character.magic" />
   </section>
   <section>
-    <app-grand-brasseur [potions]="character.potions" />
+    <app-master-brewer [potions]="character.potions" />
   </section>
   <section>
-    <app-equipement
+    <app-equipment
       [currency]="character.currency"
       [equipment]="character.equipment" />
   </section>

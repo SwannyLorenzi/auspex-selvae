@@ -1,0 +1,17 @@
+<h2>Caractéristiques</h2>
+
+<div class="characteristics-content">
+  <div>
+    <h3>Principales</h3>
+    <div class="attributes-grid">
+      @for (attribute of mainAttributes(); track attribute.name) {
+        <app-attribute-card [attribute]="attribute" />
+      }
+    </div>
+  </div>
+
+  <div>
+    <h3>Dérivées</h3>
+    <app-derived-attributes [attributes]="derivedAttributes()" />
+  </div>
+</div>

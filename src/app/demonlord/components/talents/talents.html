@@ -1,9 +1,9 @@
 <h2>Talents</h2>
 
-@if (immunities.length) {
+@if (immunities().length) {
   <h3>Immunités</h3>
   <ul>
-    @for (immunity of immunities; track immunity) {
+    @for (immunity of immunities(); track immunity) {
       <li>{{ immunity }}</li>
     }
   </ul>
@@ -11,7 +11,7 @@
 
 <h3>Liste des talents</h3>
 <ul>
-  @for (talent of talents; track talent) {
+  @for (talent of talents(); track talent) {
     <li>{{ talent }}</li>
   }
 </ul>

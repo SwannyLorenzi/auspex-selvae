@@ -1,18 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CaracteristiquesComponent } from './caracteristiques';
+import { CharacteristicsComponent } from './characteristics';
 import { characterData } from '../../demonlord-data';
 
-describe('CaracteristiquesComponent', () => {
-  let component: CaracteristiquesComponent;
-  let fixture: ComponentFixture<CaracteristiquesComponent>;
+describe('CharacteristicsComponent', () => {
+  let component: CharacteristicsComponent;
+  let fixture: ComponentFixture<CharacteristicsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CaracteristiquesComponent],
+      imports: [CharacteristicsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CaracteristiquesComponent);
+    fixture = TestBed.createComponent(CharacteristicsComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput(
+      'mainAttributes',
+      characterData.mainAttributes
+    );
+    fixture.componentRef.setInput(
+      'derivedAttributes',
+      characterData.derivedAttributes
+    );
   });
 
   it('should create', () => {
@@ -20,7 +28,6 @@ describe('CaracteristiquesComponent', () => {
   });
 
   it('should display main attributes', () => {
-    component.mainAttributes = characterData.mainAttributes;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Force');
@@ -30,7 +37,6 @@ describe('CaracteristiquesComponent', () => {
   });
 
   it('should display derived attributes', () => {
-    component.derivedAttributes = characterData.derivedAttributes;
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Vitesse');

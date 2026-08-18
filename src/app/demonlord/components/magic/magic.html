@@ -1,4 +1,4 @@
-<div class="magie-header">
+<div class="magic-header">
   <h2>Magie</h2>
   <span>Puissance {{ magic().power }}</span>
   <button
@@ -10,7 +10,7 @@
   </button>
 </div>
 
-<div class="magie-content">
+<div class="magic-content">
   <div class="spell-list">
     @for (spell of magic().spells; track spell.name) {
       <app-spell-card [spell]="spell" [power]="magic().power" />

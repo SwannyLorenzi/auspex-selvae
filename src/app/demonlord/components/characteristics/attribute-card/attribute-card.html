@@ -1,0 +1,12 @@
+<div class="attribute-card">
+  <div class="attribute-name">{{ attribute().name }}</div>
+  <div class="values">
+    <div class="attribute-value">{{ attribute().value }}</div>
+    @if (attribute().bonus) {
+      <div class="attribute-bonus">{{ attribute().bonus }}</div>
+    }
+  </div>
+  @if (attribute().bonusText) {
+    <div class="attribute-bonus-text">{{ attribute().bonusText }}</div>
+  }
+</div>

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PersonnageComponent } from './personnage';
+import { CharacterComponent } from './character';
 import { characterData } from '../../demonlord-data';
 
-describe('PersonnageComponent', () => {
-  let component: PersonnageComponent;
-  let fixture: ComponentFixture<PersonnageComponent>;
+describe('CharacterComponent', () => {
+  let component: CharacterComponent;
+  let fixture: ComponentFixture<CharacterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PersonnageComponent],
+      imports: [CharacterComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PersonnageComponent);
+    fixture = TestBed.createComponent(CharacterComponent);
     component = fixture.componentInstance;
   });
 
@@ -20,7 +20,7 @@ describe('PersonnageComponent', () => {
   });
 
   it('should display the character name', () => {
-    component.character = characterData;
+    fixture.componentRef.setInput('character', characterData);
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('7 7');
@@ -28,7 +28,7 @@ describe('PersonnageComponent', () => {
   });
 
   it('should display the character description', () => {
-    component.character = characterData;
+    fixture.componentRef.setInput('character', characterData);
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('femme humaine');

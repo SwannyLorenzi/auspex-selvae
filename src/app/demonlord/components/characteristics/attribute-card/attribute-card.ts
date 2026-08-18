@@ -1,13 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { Attribute } from '../../demonlord-models';
+import { Component, input } from '@angular/core';
+import { Attribute } from '../characteristics-models';
 
 @Component({
   selector: 'app-attribute-card',
-  standalone: true,
   imports: [],
   templateUrl: './attribute-card.html',
   styleUrl: './attribute-card.scss',
 })
 export class AttributeCardComponent {
-  @Input() attribute!: Attribute;
+  attribute = input.required<Attribute>();
 }

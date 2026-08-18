@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { characterData } from './demonlord-data';
-import { PersonnageComponent } from './components/personnage/personnage';
+import { CharacterComponent } from './components/character/character';
 import { ProgressionComponent } from './components/progression/progression';
 import { ProfessionsComponent } from './components/professions/professions';
-import { CaracteristiquesComponent } from './components/caracteristiques/caracteristiques';
+import { CharacteristicsComponent } from './components/characteristics/characteristics';
 import { TalentsComponent } from './components/talents/talents';
 import { MagicComponent } from './components/magic/magic';
-import { GrandBrasseurComponent } from './components/grand-brasseur/grand-brasseur';
-import { EquipementComponent } from './components/equipement/equipement';
+import { MasterBrewerComponent } from './components/master-brewer/master-brewer';
+import { EquipmentComponent } from './components/equipment/equipment';
 
 @Component({
   selector: 'app-demonlord',
   imports: [
     RouterLink,
-    PersonnageComponent,
+    CharacterComponent,
     ProgressionComponent,
     ProfessionsComponent,
-    CaracteristiquesComponent,
+    CharacteristicsComponent,
     TalentsComponent,
     MagicComponent,
-    GrandBrasseurComponent,
-    EquipementComponent,
+    MasterBrewerComponent,
+    EquipmentComponent,
   ],
   templateUrl: './demonlord.html',
   styleUrl: './demonlord.scss',

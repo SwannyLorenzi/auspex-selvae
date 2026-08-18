@@ -1,8 +1,8 @@
 <h2>Professions</h2>
 <ul>
-  @for (prof of professions; track prof.name) {
+  @for (profession of professions(); track profession.name) {
     <li>
-      <strong>{{ prof.name }}</strong>
+      <strong>{{ profession.name }}</strong>
     </li>
   }
 </ul>

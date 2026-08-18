@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-talents',
@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './talents.scss',
 })
 export class TalentsComponent {
-  @Input() immunities: string[] = [];
-  @Input() talents: string[] = [];
+  immunities = input.required<string[]>();
+  talents = input.required<string[]>();
 }
