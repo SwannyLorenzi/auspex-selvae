@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterLink } from '@angular/router';
+import { CharacterService } from './services/character.service';
 import { DemonlordComponent } from './demonlord';
 
 describe('DemonlordComponent', () => {
@@ -8,8 +9,11 @@ describe('DemonlordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DemonlordComponent],
-      providers: [provideRouter([])],
+      imports: [DemonlordComponent, RouterLink],
+      providers: [
+        provideRouter([{ path: 'demonlord/:characterId', component: DemonlordComponent }]),
+        CharacterService,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DemonlordComponent);

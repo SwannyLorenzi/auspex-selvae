@@ -5,6 +5,7 @@ import { DemonlordComponent } from './demonlord/demonlord';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'demonlord', component: DemonlordComponent },
+  { path: 'demonlord', redirectTo: 'demonlord/77', pathMatch: 'full' },
+  { path: 'demonlord/:characterId', component: DemonlordComponent },
   { path: '**', redirectTo: 'home' },
 ];

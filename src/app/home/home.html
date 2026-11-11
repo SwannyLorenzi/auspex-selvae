@@ -2,11 +2,11 @@
   <h1>{{ title() }}</h1>
   <h2>Fiches de personnages</h2>
   <ul class="character-list">
-    @for (char of characters; track char.path) {
+    @for (char of characters(); track char.id) {
       <li>
-        <a class="character-card" [routerLink]="char.path">
+        <a class="character-card" [routerLink]="['/demonlord', char.id]">
           {{ char.name }}
-          <span>{{ char.description }}</span>
+          <span>{{ char.nickname }}</span>
         </a>
       </li>
     }

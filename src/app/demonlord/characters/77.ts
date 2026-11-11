@@ -1,12 +1,12 @@
-import { Character } from './demonlord-models';
-import { SourceBook, SpellType } from './components/magic/magic-models';
+import type { Character } from '../demonlord-models';
+import { SourceBook, SpellType } from '../components/magic/magic-models';
 import {
   Alchimie,
   Aucune,
   Divination,
   Enchantement,
   Illusion,
-} from './components/magic/references/traditions';
+} from '../components/magic/references/traditions';
 
 export const characterData: Character = {
   name: '7 7',

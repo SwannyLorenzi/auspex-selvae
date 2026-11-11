@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { characterData } from './demonlord-data';
+import { Component, computed, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CharacterService } from './services/character.service';
 import { CharacterComponent } from './components/character/character';
 import { ProgressionComponent } from './components/progression/progression';
 import { ProfessionsComponent } from './components/professions/professions';
@@ -27,5 +27,14 @@ import { EquipmentComponent } from './components/equipment/equipment';
   styleUrl: './demonlord.scss',
 })
 export class DemonlordComponent {
-  protected readonly character = characterData;
+  private route = inject(ActivatedRoute);
+  private characterService = inject(CharacterService);
+
+  protected readonly characterId = computed(() =>
+    this.route.snapshot.paramMap.get('characterId') ?? ''
+  );
+
+  protected readonly character = computed(() =>
+    this.characterService.getCharacter(this.characterId())
+  );
 }

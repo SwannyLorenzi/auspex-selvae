@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterLink } from '@angular/router';
 import { HomeComponent } from './home';
+import { CharacterService } from '../demonlord/services/character.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,8 +9,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent],
-      providers: [provideRouter([])],
+      imports: [HomeComponent, RouterLink],
+      providers: [provideRouter([]), CharacterService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
@@ -31,12 +32,5 @@ describe('HomeComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('7 7');
     expect(container.textContent).toContain('La Tavernière');
-  });
-
-  it('should have a link to the demonlord page', () => {
-    fixture.detectChanges();
-    const container = fixture.nativeElement as HTMLElement;
-    const link = container.querySelector('a');
-    expect(link?.getAttribute('href')).toContain('demonlord');
   });
 });

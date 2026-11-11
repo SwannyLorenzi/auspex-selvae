@@ -1,11 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-interface CharacterSheet {
-  name: string;
-  path: string;
-  description: string;
-}
+import { CharacterService } from '../demonlord/services/character.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +9,9 @@ interface CharacterSheet {
   styleUrl: './home.scss',
 })
 export class HomeComponent {
+  private characterService = inject(CharacterService);
+
   protected readonly title = signal('auspex-selvae');
-  protected readonly characters: CharacterSheet[] = [
-    { name: '7 7', path: '/demonlord', description: 'La Tavernière' },
-  ];
+  protected readonly characters =
+    this.characterService.getAllMetadata();
 }
