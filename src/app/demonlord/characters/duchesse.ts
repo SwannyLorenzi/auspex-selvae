@@ -27,6 +27,7 @@ export const characterData: Character = {
     { name: 'Agilité', value: 13, bonus: '+3', bonusText: '' },
   ],
   derivedAttributes: [
+    { name: 'Vitesse', value: 12, formula: '' },
     { name: 'Taille/Gabarit', value: 1, formula: '' },
     { name: 'Puissance', value: 0, formula: '' },
     { name: 'Santé', value: 15, formula: '' },
