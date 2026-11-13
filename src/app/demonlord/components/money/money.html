@@ -1,0 +1,11 @@
+<div class="money-grid">
+  @for (currency of currencies; track currency.key) {
+    <div class="money-card">
+      <div class="money-name">{{ currency.label }}</div>
+      <div class="money-values">
+        <div class="money-value">{{ money()[currency.key] }}</div>
+        <div class="money-unit">{{ currency.unit }}</div>
+      </div>
+    </div>
+  }
+</div>

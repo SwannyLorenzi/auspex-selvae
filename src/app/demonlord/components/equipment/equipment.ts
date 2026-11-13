@@ -1,13 +1,14 @@
 import { Component, input } from '@angular/core';
-import { Equipment } from './equipment-models';
+import { Equipment, type Character } from './equipment-models';
+import { MoneyComponent } from '../money/money';
 
 @Component({
   selector: 'app-equipment',
-  imports: [],
+  imports: [MoneyComponent],
   templateUrl: './equipment.html',
   styleUrl: './equipment.scss',
 })
 export class EquipmentComponent {
-  currency = input.required<string>();
+  character = input.required<Character>();
   equipment = input.required<Equipment[]>();
 }

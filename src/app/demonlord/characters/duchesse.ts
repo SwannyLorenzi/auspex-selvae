@@ -92,5 +92,5 @@ export const characterData: Character = {
     },
     { name: 'Faucon', effect: '' },
   ],
-  currency: '2 or, 0 argent, 8 cuivre, 0 éclat',
+  money: { couronnes: 2, chelins: 0, sous: 8, eclats: 0 },
 };

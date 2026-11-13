@@ -319,8 +319,8 @@ par l’illusion et subit 4d6 dégâts.</p>
     { name: 'Potion de Vision', cost: '5ca', effect: '' },
     { name: 'Potion Anti toxine', cost: '5ca', effect: '' },
   ],
+  money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 },
   equipment: [
-    { name: 'Argent', effect: '28 or, 3 argent, 4 cuivre, 0 éclat' },
     {
       name: 'Amplificateur de force',
       effect: '+1 avantage aux tests de Force, +1 dégâts au corps à corps',
@@ -338,5 +338,4 @@ par l’illusion et subit 4d6 dégâts.</p>
       effect: "Agit avec l'autorité du Duc",
     },
   ],
-  currency: '28 or, 3 argent, 4 cuivre, 0 éclat',
 };

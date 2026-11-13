@@ -3,6 +3,7 @@ import {
   DerivedAttribute,
 } from './components/characteristics/characteristics-models';
 import { Equipment } from './components/equipment/equipment-models';
+import { MoneyData } from './components/money/money-models';
 import { Magic } from './components/magic/magic-models';
 import { Potion } from './components/master-brewer/master-brewer-models';
 import { Profession } from './components/professions/professions-models';
@@ -22,5 +23,5 @@ export interface Character {
   magic: Magic;
   potions: Potion[];
   equipment: Equipment[];
-  currency: string;
+  money: MoneyData;
 }

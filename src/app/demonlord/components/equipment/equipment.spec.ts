@@ -1,6 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EquipmentComponent } from './equipment';
-import { characterData } from '../../demonlord-data';
+import { type Character } from './equipment-models';
+import { MoneyData } from '../money/money-models';
+
+const mockCharacter: Character = {
+  money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 } as MoneyData,
+};
+
+const mockEquipment: Character['equipment'] = [
+  { name: 'Hache de bataille', effect: '1d6+2 dégâts' },
+  { name: 'Grand Bouclier', effect: 'Defense + 2' },
+];
 
 describe('EquipmentComponent', () => {
   let component: EquipmentComponent;
@@ -13,18 +23,19 @@ describe('EquipmentComponent', () => {
 
     fixture = TestBed.createComponent(EquipmentComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('currency', characterData.currency);
-    fixture.componentRef.setInput('equipment', characterData.equipment);
+    fixture.componentRef.setInput('character', mockCharacter);
+    fixture.componentRef.setInput('equipment', mockEquipment);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display currency', () => {
+  it('should display money values', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('or');
+    expect(container.textContent).toContain('28');
+    expect(container.textContent).toContain('co');
   });
 
   it('should display all equipment items', () => {
@@ -32,6 +43,5 @@ describe('EquipmentComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Hache de bataille');
     expect(container.textContent).toContain('Grand Bouclier');
-    expect(container.textContent).toContain('Insigne du Duc');
   });
 });

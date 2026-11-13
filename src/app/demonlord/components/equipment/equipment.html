@@ -1,8 +1,6 @@
 <h2>Equipement</h2>
 
-@if (currency()) {
-  <p><strong>Argent :</strong> {{ currency() }}</p>
-}
+<app-money [money]="character().money" />
 
 <ul>
   @for (item of equipment(); track item.name) {
