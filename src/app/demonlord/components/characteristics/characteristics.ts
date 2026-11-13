@@ -3,6 +3,8 @@ import { Attribute, DerivedAttribute } from './characteristics-models';
 import { AttributeCardComponent } from './attribute-card/attribute-card';
 import { DerivedAttributesComponent } from './derived-attributes/derived-attributes';
 import { HealthComponent } from './health/health';
+import { DefenseComponent } from './defense/defense';
+import { DefenseData } from './defense/defense-models';
 
 const HEALTH_ATTRIBUTE_NAMES = new Set([
   'Santé',
@@ -12,7 +14,7 @@ const HEALTH_ATTRIBUTE_NAMES = new Set([
 
 @Component({
   selector: 'app-characteristics',
-  imports: [AttributeCardComponent, DerivedAttributesComponent, HealthComponent],
+  imports: [AttributeCardComponent, DerivedAttributesComponent, HealthComponent, DefenseComponent],
   templateUrl: './characteristics.html',
   styleUrl: './characteristics.scss',
 })
@@ -20,6 +22,7 @@ export class CharacteristicsComponent {
   mainAttributes = input.required<Attribute[]>();
   derivedAttributes = input.required<DerivedAttribute[]>();
   characterId = input.required<string>();
+  defense = input<DefenseData | null>(null);
 
   protected readonly healthData = computed(() => {
     const attrs = this.derivedAttributes();

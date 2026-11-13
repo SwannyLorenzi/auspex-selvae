@@ -32,8 +32,6 @@ export const characterData: Character = {
   derivedAttributes: [
     { name: 'Vitesse', value: 8, formula: '' },
     { name: 'Taille/Gabarit', value: 1, formula: '' },
-    { name: 'Défense', value: 14, formula: '' },
-    { name: 'Défense avec bouclier', value: 16, formula: '' },
     { name: 'Puissance', value: 3, formula: '' },
     { name: 'Santé', value: 23, formula: '(= Force + bonus de niveaux)' },
     { name: 'Vitesse de guérison', value: 5, formula: '(= Santé/4)' },
@@ -321,6 +319,7 @@ par l’illusion et subit 4d6 dégâts.</p>
     { name: 'Potion Anti toxine', cost: '5ca', effect: '' },
   ],
   money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 },
+  defense: { base: 14, withArmor: 14, withArmorAndShield: 16 },
   equipment: [
     {
       name: 'Amplificateur de force',

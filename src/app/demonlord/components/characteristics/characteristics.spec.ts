@@ -25,6 +25,7 @@ describe('CharacteristicsComponent', () => {
     fixture.componentRef.setInput('mainAttributes', characterData.mainAttributes);
     fixture.componentRef.setInput('derivedAttributes', characterData.derivedAttributes);
     fixture.componentRef.setInput('characterId', characterData.id);
+    fixture.componentRef.setInput('defense', characterData.defense ?? null);
   });
 
   it('should create', () => {
@@ -53,5 +54,13 @@ describe('CharacteristicsComponent', () => {
     expect(container.textContent).toContain('Santé');
     expect(container.textContent).toContain('Dégâts');
     expect(container.textContent).toContain('Vitesse de guérison');
+  });
+
+  it('should display defense section', () => {
+    fixture.detectChanges();
+    const container = fixture.nativeElement as HTMLElement;
+    expect(container.textContent).toContain('Défense');
+    expect(container.textContent).toContain('Base');
+    expect(container.textContent).toContain('Avec armure');
   });
 });

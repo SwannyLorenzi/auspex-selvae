@@ -33,7 +33,8 @@
     <app-characteristics
       [mainAttributes]="character()!.mainAttributes"
       [derivedAttributes]="character()!.derivedAttributes"
-      [characterId]="character()!.id" />
+      [characterId]="character()!.id"
+      [defense]="character()!.defense ?? null" />
   </section>
   <section>
     <app-talents

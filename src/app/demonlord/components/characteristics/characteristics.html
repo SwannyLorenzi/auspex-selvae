@@ -22,4 +22,10 @@
         [characterId]="characterId()" />
     </div>
   }
+
+  @if (defense()) {
+    <div class="defense-section-wrapper">
+      <app-defense [defense]="defense()!" />
+    </div>
+  }
 </div>

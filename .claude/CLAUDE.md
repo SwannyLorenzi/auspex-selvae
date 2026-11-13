@@ -63,3 +63,8 @@ You are an expert in TypeScript, Angular, and scalable web application developme
   1. Run `npx tsc --noEmit` — fast TypeScript type check
   2. Run `npx ng build --configuration development` — full Angular compilation
 - Both must pass with zero errors before presenting the work as done.
+- `tsc --noEmit` alone is **not sufficient** for Angular projects. It does not catch:
+  - Wrong module paths (e.g., importing a component from a models barrel instead of the component file)
+  - Angular compiler-specific errors (template bindings, directive/component references)
+  - Runtime-only issues (e.g., importing `DefenseComponent` from `defense-models.ts` instead of `defense.ts`)
+- If `ng build` hangs or is unreliable, at minimum verify that component imports point to the actual component `.ts` file, not a models/types file.

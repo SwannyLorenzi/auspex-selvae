@@ -28,7 +28,6 @@ export const characterData: Character = {
   ],
   derivedAttributes: [
     { name: 'Taille/Gabarit', value: 1, formula: '' },
-    { name: 'Défense', value: 13, formula: '' },
     { name: 'Puissance', value: 0, formula: '' },
     { name: 'Santé', value: 15, formula: '' },
     { name: 'Vitesse de guérison', value: 0, formula: '' },
@@ -92,5 +91,6 @@ export const characterData: Character = {
     },
     { name: 'Faucon', effect: '' },
   ],
+  defense: { base: 13, withArmor: 15, withArmorAndShield: 15 },
   money: { couronnes: 2, chelins: 0, sous: 8, eclats: 0 },
 };
