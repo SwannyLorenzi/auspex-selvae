@@ -9,6 +9,7 @@ import { Profession } from './components/professions/professions-models';
 import { Progression } from './components/progression/progression-models';
 
 export interface Character {
+  id: string;
   name: string;
   nickname: string;
   description: string;

@@ -9,6 +9,7 @@ import {
 } from '../components/magic/references/traditions';
 
 export const characterData: Character = {
+  id: '77',
   name: '7 7',
   nickname: 'La Tavernière',
   description:

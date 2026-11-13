@@ -1,6 +1,6 @@
 <header>
   <h1>Ombre du Seigneur Démon</h1>
-  <h2>{{ character().name }}</h2>
+  <h2>{{ character()!.name }}</h2>
   <a routerLink="/" aria-label="Retour à l'accueil">
     <svg
       width="20"
@@ -20,34 +20,34 @@
 <main>
   <div class="row">
     <section>
-      <app-character [character]="character" />
+      <app-character [character]="character()" />
     </section>
     <section>
-      <app-progression [progression]="character.progression" />
+      <app-progression [progression]="character()!.progression" />
     </section>
     <section>
-      <app-professions [professions]="character.professions" />
+      <app-professions [professions]="character()!.professions" />
     </section>
   </div>
   <section>
     <app-characteristics
-      [mainAttributes]="character.mainAttributes"
-      [derivedAttributes]="character.derivedAttributes" />
+      [mainAttributes]="character()!.mainAttributes"
+      [derivedAttributes]="character()!.derivedAttributes" />
   </section>
   <section>
     <app-talents
-      [immunities]="character.immunities"
-      [talents]="character.talents" />
+      [immunities]="character()!.immunities"
+      [talents]="character()!.talents" />
   </section>
   <section>
-    <app-magic [magic]="character.magic" />
+    <app-magic [magic]="character()!.magic" />
   </section>
   <section>
-    <app-master-brewer [potions]="character.potions" />
+    <app-master-brewer [potions]="character()!.potions" />
   </section>
   <section>
     <app-equipment
-      [currency]="character.currency"
-      [equipment]="character.equipment" />
+      [currency]="character()!.currency"
+      [equipment]="character()!.equipment" />
   </section>
 </main>

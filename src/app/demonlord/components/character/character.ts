@@ -8,5 +8,5 @@ import { Character } from '../../demonlord-models';
   styleUrl: './character.scss',
 })
 export class CharacterComponent {
-  character = input.required<Character>();
+  character = input.required<Character | null>();
 }

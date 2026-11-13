@@ -34,7 +34,7 @@ export class DemonlordComponent {
     this.route.snapshot.paramMap.get('characterId') ?? ''
   );
 
-  protected readonly character = computed(() =>
-    this.characterService.getCharacter(this.characterId())
+  protected readonly character = this.characterService.getCharacter(
+    this.characterId()
   );
 }
