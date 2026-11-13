@@ -37,6 +37,7 @@ export const characterData: Character = {
     { name: 'Puissance', value: 3, formula: '' },
     { name: 'Santé', value: 23, formula: '(= Force + bonus de niveaux)' },
     { name: 'Vitesse de guérison', value: 5, formula: '(= Santé/4)' },
+    { name: 'Dégâts', value: 0, formula: '' },
   ],
   immunities: [
     'maladies',
