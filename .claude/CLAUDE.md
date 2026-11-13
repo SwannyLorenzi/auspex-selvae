@@ -56,3 +56,10 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Verification
+
+- After completing a feature or code change (not after each individual file write), verify compilation:
+  1. Run `npx tsc --noEmit` — fast TypeScript type check
+  2. Run `npx ng build --configuration development` — full Angular compilation
+- Both must pass with zero errors before presenting the work as done.
