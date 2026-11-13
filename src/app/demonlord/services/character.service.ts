@@ -2,6 +2,8 @@ import { Injectable, computed, signal, type Signal } from '@angular/core';
 
 import type { Character } from '../demonlord-models';
 import { characterData as char77 } from '../characters/77';
+import { characterData as duchesse } from '../characters/duchesse';
+import { CHARACTERS } from '../characters/character.registry';
 
 export interface CharacterMetadata {
   id: string;
@@ -24,10 +26,12 @@ export interface CharacterMetadata {
 export class CharacterService {
   private readonly characters = new Map<string, Character>([
     ['77', char77],
+    ['duchesse', duchesse],
   ]);
 
   private readonly metadata: CharacterMetadata[] = [
     { id: '77', name: '7 7', nickname: 'La Tavernière' },
+    { id: 'duchesse', name: 'Duchesse', nickname: '' },
   ];
 
   /**
