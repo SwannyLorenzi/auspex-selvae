@@ -1,6 +1,7 @@
-import { Injectable, computed, signal, type Signal } from '@angular/core';
+import { Injectable, signal, type Signal, type WritableSignal } from '@angular/core';
 
 import type { Character } from '../demonlord-models';
+import type { DerivedAttribute } from '../components/characteristics/characteristics-models';
 import { characterData as char77 } from '../characters/77';
 import { characterData as duchesse } from '../characters/duchesse';
 import { CHARACTERS } from '../characters/character.registry';
@@ -24,9 +25,21 @@ export interface CharacterMetadata {
   providedIn: 'root',
 })
 export class CharacterService {
-  private readonly characters = new Map<string, Character>([
-    ['77', char77],
-    ['duchesse', duchesse],
+  private readonly characters = new Map<
+    string,
+    WritableSignal<Character | null>
+  >([
+    [
+      '77',
+      signal({ ...char77, derivedAttributes: [...char77.derivedAttributes] }),
+    ],
+    [
+      'duchesse',
+      signal({
+        ...duchesse,
+        derivedAttributes: [...duchesse.derivedAttributes],
+      }),
+    ],
   ]);
 
   private readonly metadata: CharacterMetadata[] = [
@@ -38,14 +51,42 @@ export class CharacterService {
    * Get a character by their ID.
    */
   getCharacter(id: string): Signal<Character | null> {
-    return computed(() => this.characters.get(id) ?? null);
+    return this.characters.get(id) ?? signal(null);
+  }
+
+  /**
+   * Update a derived attribute on a character.
+   * @returns true if the attribute was found and updated
+   */
+  updateDerivedAttribute(
+    characterId: string,
+    attributeName: string,
+    newValue: number
+  ): boolean {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return false;
+
+    charSignal.update((char) => {
+      if (!char) return char;
+
+      const attr = char.derivedAttributes.find(
+        (a: DerivedAttribute) => a.name === attributeName
+      );
+      if (attr) {
+        attr.value = newValue;
+      }
+
+      return { ...char, derivedAttributes: [...char.derivedAttributes] };
+    });
+
+    return true;
   }
 
   /**
    * Get all character metadata for listing on the home page.
    */
   getAllMetadata(): Signal<CharacterMetadata[]> {
-    return computed(() => this.metadata);
+    return signal(this.metadata);
   }
 
   /**

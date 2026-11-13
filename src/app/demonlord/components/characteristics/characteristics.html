@@ -12,6 +12,14 @@
 
   <div>
     <h3>Dérivées</h3>
-    <app-derived-attributes [attributes]="derivedAttributes()" />
+    <app-derived-attributes [attributes]="nonHealthDerivedAttributes()" />
   </div>
+
+  @if (healthData()) {
+    <div class="health-section-wrapper">
+      <app-health
+        [health]="healthData()!"
+        [characterId]="characterId()" />
+    </div>
+  }
 </div>

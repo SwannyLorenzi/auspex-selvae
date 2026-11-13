@@ -1,0 +1,45 @@
+<div class="health-section" [class.danger]="isDanger()">
+  <h3>Santé</h3>
+  <div class="health-grid">
+    <div class="health-card max-health">
+      <div class="health-label">Santé</div>
+      <div class="health-value">{{ health().maxHealth }}</div>
+      <div class="health-formula">points</div>
+    </div>
+
+    <div class="health-card current-health">
+      <div class="health-label">Dégâts</div>
+      <div class="health-value" [class.critical]="isDanger()">
+        {{ health().currentDamage }}
+      </div>
+      @if (isDanger()) {
+        <div class="health-status">Hors combat</div>
+      }
+    </div>
+
+    <div class="health-card heal-rate">
+      <div class="health-label">Vitesse de guérison</div>
+      <div class="health-value">{{ health().healRate }}</div>
+      <div class="health-formula">par soin</div>
+    </div>
+  </div>
+
+  <div class="damage-controls">
+    <button
+      class="damage-btn add-damage"
+      (click)="openDialog('plus')"
+      aria-label="Ajouter des dégâts"
+    >
+      <span class="btn-icon">+</span>
+      <span>Ajouter dégâts</span>
+    </button>
+    <button
+      class="damage-btn remove-damage"
+      (click)="openDialog('minus')"
+      aria-label="Retirer des dégâts"
+    >
+      <span class="btn-icon">−</span>
+      <span>Retirer dégâts</span>
+    </button>
+  </div>
+</div>

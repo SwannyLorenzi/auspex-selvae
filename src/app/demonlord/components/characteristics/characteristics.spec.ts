@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CharacteristicsComponent } from './characteristics';
 import { characterData } from '../../demonlord-data';
+import { CharacterService } from '../../../services/character.service';
 
 describe('CharacteristicsComponent', () => {
   let component: CharacteristicsComponent;
@@ -9,18 +10,21 @@ describe('CharacteristicsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CharacteristicsComponent],
+      providers: [
+        {
+          provide: CharacterService,
+          useValue: {
+            updateDerivedAttribute: () => {},
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CharacteristicsComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput(
-      'mainAttributes',
-      characterData.mainAttributes
-    );
-    fixture.componentRef.setInput(
-      'derivedAttributes',
-      characterData.derivedAttributes
-    );
+    fixture.componentRef.setInput('mainAttributes', characterData.mainAttributes);
+    fixture.componentRef.setInput('derivedAttributes', characterData.derivedAttributes);
+    fixture.componentRef.setInput('characterId', characterData.id);
   });
 
   it('should create', () => {
@@ -41,5 +45,13 @@ describe('CharacteristicsComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Vitesse');
     expect(container.textContent).toContain('Santé');
+  });
+
+  it('should display health section', () => {
+    fixture.detectChanges();
+    const container = fixture.nativeElement as HTMLElement;
+    expect(container.textContent).toContain('Santé');
+    expect(container.textContent).toContain('Dégâts');
+    expect(container.textContent).toContain('Vitesse de guérison');
   });
 });
