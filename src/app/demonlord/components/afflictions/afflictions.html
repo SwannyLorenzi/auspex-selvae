@@ -1,0 +1,21 @@
+<h2>État</h2>
+
+<ul class="affliction-list" role="list" aria-label="Afflictions">
+  @for (aff of afflictions; track aff.key) {
+    <li class="affliction-tag">
+      <button
+        type="button"
+        class="affliction-tag__button"
+        [class.active]="activeKeys().includes(aff.key)"
+        [class.disabled]="isImmune(aff.key)"
+        [disabled]="isImmune(aff.key)"
+        [attr.aria-pressed]="activeKeys().includes(aff.key)"
+        [attr.aria-label]="aff.label + (isImmune(aff.key) ? ' (Immunité)' : '')"
+        (click)="toggle(aff.key)"
+      >
+        <span class="affliction-tag__emoji">{{ aff.emoji }}</span>
+        <span class="affliction-tag__label">{{ aff.label }}</span>
+      </button>
+    </li>
+  }
+</ul>

@@ -45,6 +45,7 @@ export const characterData: Character = {
     'malade',
     'empoisonné',
   ],
+  activeAfflictions: [],
   talents: [
     'Corps mécanique',
     'Tour de magie',

@@ -83,6 +83,19 @@ export class CharacterService {
   }
 
   /**
+   * Update active afflictions on a character.
+   */
+  updateActiveAfflictions(characterId: string, afflictions: string[]): void {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
+
+    charSignal.update((char) => {
+      if (!char) return char;
+      return { ...char, activeAfflictions: afflictions };
+    });
+  }
+
+  /**
    * Get all character metadata for listing on the home page.
    */
   getAllMetadata(): Signal<CharacterMetadata[]> {

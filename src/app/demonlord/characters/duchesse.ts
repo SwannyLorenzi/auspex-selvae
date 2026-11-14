@@ -47,6 +47,7 @@ export const characterData: Character = {
     'empoisonné',
     'ralenti',
   ],
+  activeAfflictions: [],
   talents: ['Peur superstitieuse : Argent'],
   magic: {
     power: 0,

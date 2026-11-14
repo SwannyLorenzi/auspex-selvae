@@ -37,6 +37,12 @@
       [defense]="character()!.defense ?? null" />
   </section>
   <section>
+    <app-afflictions
+      [immunities]="character()!.immunities"
+      [activeKeys]="character()!.activeAfflictions"
+      (onToggle)="characterService.updateActiveAfflictions(characterId(), $event)" />
+  </section>
+  <section>
     <app-talents
       [immunities]="character()!.immunities"
       [talents]="character()!.talents" />

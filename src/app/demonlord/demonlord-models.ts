@@ -21,6 +21,7 @@ export interface Character {
   derivedAttributes: DerivedAttribute[];
   immunities: string[];
   talents: string[];
+  activeAfflictions: string[];
   magic: Magic;
   potions: Potion[];
   equipment: Equipment[];
