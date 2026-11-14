@@ -63,22 +63,12 @@ export class CharacterService {
   }
 
   /**
-   * Clone a base character with deep copies of all mutable arrays.
+   * Create a deep clone of a base character.
+   * All mutable arrays and nested objects are deep-cloned to prevent
+   * shared references between the base data and the cloned instance.
    */
   private cloneCharacter(base: Character): Character {
-    return {
-      ...base,
-      derivedAttributes: deepClone(base.derivedAttributes),
-      mainAttributes: deepClone(base.mainAttributes),
-      activeAfflictions: [...base.activeAfflictions],
-      magic: {
-        ...deepClone(base.magic),
-        spells: deepClone(base.magic.spells),
-      },
-      potions: deepClone(base.potions),
-      equipment: deepClone(base.equipment),
-      defense: base.defense ? { ...base.defense } : undefined,
-    };
+    return deepClone(base);
   }
 
   /**
@@ -127,9 +117,15 @@ export class CharacterService {
   /**
    * Get a character by their ID.
    * Returns a WritableSignal so components can update character data directly.
+   * The signal reference is stable — use .set()/.update() to change the value.
    */
   getCharacter(id: string): WritableSignal<Character | null> {
-    return this.characters.get(id) ?? signal(null);
+    const charSignal = this.characters.get(id);
+    if (charSignal) return charSignal;
+    // Fallback for unknown IDs — create a stable placeholder signal
+    const placeholder = signal(null);
+    this.characters.set(id, placeholder);
+    return placeholder;
   }
 
   /**
@@ -144,6 +140,7 @@ export class CharacterService {
     const charSignal = this.characters.get(characterId);
     if (!charSignal) return false;
 
+    let updated = false;
     charSignal.update((char) => {
       if (!char) return char;
 
@@ -152,13 +149,23 @@ export class CharacterService {
       );
       if (attr) {
         attr.value = newValue;
+        updated = true;
       }
 
-      return { ...char, derivedAttributes: [...char.derivedAttributes] };
+      // Always return a new object reference when updated
+      // to ensure Angular OnPush re-renders the component
+      if (updated) {
+        return { ...char, derivedAttributes: [...char.derivedAttributes] };
+      }
+
+      return char;
     });
 
-    this.saveState(characterId);
-    return true;
+    if (updated) {
+      this.saveState(characterId);
+    }
+
+    return updated;
   }
 
   /**
@@ -168,22 +175,33 @@ export class CharacterService {
     const charSignal = this.characters.get(characterId);
     if (!charSignal) return;
 
+    let changed = false;
     charSignal.update((char) => {
       if (!char) return char;
-      return { ...char, activeAfflictions: afflictions };
+      const current = char.activeAfflictions;
+      if (current.length === afflictions.length && current.every((a, i) => a === afflictions[i])) {
+        return char;
+      }
+      changed = true;
+      return { ...char, activeAfflictions: [...afflictions] };
     });
 
-    this.saveState(characterId);
+    if (changed) {
+      this.saveState(characterId);
+    }
   }
 
   /**
    * Reset a character's dynamic state (clear localStorage).
+   * Updates the signal value in place — the signal reference stays stable
+   * so that all components holding a reference to it re-render.
    */
   resetCharacter(characterId: string): void {
     this.storage.clear(characterId);
-    // Reload the character from base data
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
     const base = characterId === '77' ? char77 : duchesse;
-    this.characters.set(characterId, signal(this.createCharacter(base)));
+    charSignal.set(this.createCharacter(base));
   }
 
   /**
