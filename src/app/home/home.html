@@ -6,7 +6,9 @@
       <li>
         <a class="character-card" [routerLink]="['/demonlord', char.id]">
           {{ char.name }}
-          <span>{{ char.nickname }}</span>
+          @if (char.nickname) {
+            <span>{{ char.nickname }}</span>
+          }
         </a>
       </li>
     }

@@ -4,7 +4,12 @@
   </a>
   <div class="title-group">
     <h1>Ombre du Seigneur Démon</h1>
-    <h2>{{ character()!.name }}</h2>
+    <h2 class="char-title">
+      {{ character()!.name }}
+      @if (character()!.nickname) {
+        <span class="char-nick">- {{ character()!.nickname }}</span>
+      }
+    </h2>
   </div>
   <button class="header-btn" (click)="confirmReset()" aria-label="Reset character state">
     <svg lucideRotateCcw></svg>

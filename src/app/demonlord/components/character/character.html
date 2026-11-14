@@ -1,7 +1,12 @@
 <h2>Personnage</h2>
 @if (character()) {
   <h3>Nom</h3>
-  <p>{{ character()!.name }}, dit "{{ character()!.nickname }}"</p>
+  <p class="char-name">
+    {{ character()!.name }}
+    @if (character()!.nickname) {
+      <span class="char-nick">- {{ character()!.nickname }}</span>
+    }
+  </p>
   <h3>Description</h3>
   <p>{{ character()!.description }}</p>
 } @else {

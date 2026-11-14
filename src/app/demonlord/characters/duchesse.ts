@@ -3,7 +3,6 @@ import type { Character } from '../demonlord-models';
 export const characterData: Character = {
   id: 'duchesse',
   name: 'Duchesse',
-  nickname: '',
   description:
     'Jeune adulte svelte de taille moyenne, plusieurs traits physiques très attrayants. Se préoccupe avant tout de ses intérêts et de ceux de ses amis. Éduquée sous le culte du nouveau Dieu, sait lire la langue commune. Transformée en vampire par son amant pour avoir une compagne éternelle. Des spirales et autres motifs recouvrent sa peau, semblables à des tatouages.',
   progression: {

@@ -15,7 +15,7 @@ function deepClone<T>(obj: T): T {
 export interface CharacterMetadata {
   id: string;
   name: string;
-  nickname: string;
+  nickname?: string;
 }
 
 /**
@@ -41,7 +41,7 @@ export class CharacterService {
 
   private readonly metadata: CharacterMetadata[] = [
     { id: '77', name: '7 7', nickname: 'La Tavernière' },
-    { id: 'duchesse', name: 'Duchesse', nickname: '' },
+    { id: 'duchesse', name: 'Duchesse' },
   ];
 
   constructor() {

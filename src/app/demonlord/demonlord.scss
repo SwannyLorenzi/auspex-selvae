@@ -73,10 +73,17 @@ header h1 {
 }
 
 header h2 {
-  font-size: 1rem;
-  color: #a89880;
-  margin: 0;
-  font-weight: 500;
+  font-size: 1.75rem;
+  color: #e0d6c8;
+  margin: 0.25rem 0 0;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+header h2 .char-nick {
+  font-size: 1.25rem;
+  color: #8a7f70;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 

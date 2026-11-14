@@ -13,7 +13,7 @@ import { Progression } from './components/progression/progression-models';
 export interface Character {
   id: string;
   name: string;
-  nickname: string;
+  nickname?: string;
   description: string;
   progression: Progression;
   professions: Profession[];
