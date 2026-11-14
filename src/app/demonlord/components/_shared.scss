@@ -1,5 +1,8 @@
-// Shared typography for demonlord module section headers.
+// Shared styles for demonlord module.
 // Import in component SCSS with: @use '../_shared' as *;
+// (or @use '../../_shared' as *; for nested subdirectories)
+
+// ── Section Headers ──────────────────────────────────────────────
 
 h2 {
   margin: 0;
@@ -8,4 +11,45 @@ h2 {
   color: #c9b47a;
   font-weight: 600;
   letter-spacing: 0.03em;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #a89880;
+  font-weight: 500;
+}
+
+// ── Typography ───────────────────────────────────────────────────
+
+p,
+li {
+  line-height: 1.6;
+}
+
+// ── List Reset Mixin ─────────────────────────────────────────────
+// Usage: @include list-reset;
+
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+}
+
+// ── Card Mixin ───────────────────────────────────────────────────
+// Usage: @include card-style();  // defaults (large card)
+//        @include card-style(0.5rem 0.35rem, 0.4, 0.1);  // small card
+
+@mixin card-style($padding: 1rem 0.75rem, $bg-opacity: 0.6, $border-opacity: 0.15) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: $padding;
+  background: rgba(15, 15, 26, $bg-opacity);
+  border: 0.0625rem solid rgba(201, 180, 122, $border-opacity);
+  border-radius: 0.25rem;
+  gap: 0.25rem;
 }

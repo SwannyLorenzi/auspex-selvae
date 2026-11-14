@@ -6,12 +6,6 @@
   gap: 1rem;
 }
 
-h3 {
-  font-size: 1rem;
-  color: #a89880;
-  font-weight: 500;
-}
-
 .attributes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));

@@ -1,3 +1,5 @@
+@use '../../_shared' as *;
+
 .defense-section {
   background: rgba(15, 15, 26, 0.6);
   border: 0.0625rem solid rgba(201, 180, 122, 0.15);
@@ -8,13 +10,6 @@
   gap: 0.5rem;
 }
 
-h3 {
-  font-size: 1rem;
-  color: #a89880;
-  font-weight: 500;
-  margin: 0;
-}
-
 .defense-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
@@ -22,18 +17,7 @@ h3 {
 }
 
 .defense-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.5rem 0.35rem;
-  background: rgba(15, 15, 26, 0.4);
-  border: 0.0625rem solid rgba(201, 180, 122, 0.1);
-  border-radius: 0.25rem;
-  gap: 0.15rem;
+  @include card-style(0.5rem 0.35rem, 0.4, 0.1);
 }
 
 .defense-label {
