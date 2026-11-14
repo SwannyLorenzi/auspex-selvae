@@ -50,9 +50,11 @@
       [magic]="character()!.magic"
       [characterId]="character()!.id" />
   </section>
-  <section>
-    <app-master-brewer [potions]="character()!.potions" />
-  </section>
+  @if (character()!.progression.expert === 'Grand Brasseur' || character()!.potions.length > 0) {
+    <section>
+      <app-master-brewer [potions]="character()!.potions" />
+    </section>
+  }
   <section>
     <app-money
       [characterId]="character()!.id"
