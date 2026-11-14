@@ -93,5 +93,5 @@ export const characterData: Character = {
     { name: 'Faucon', effect: '' },
   ],
   defense: { base: 13, withArmor: 15, withArmorAndShield: 15 },
-  money: { couronnes: 2, chelins: 0, sous: 8, eclats: 0 },
+  money: { totalShards: 2980 },
 };
