@@ -45,11 +45,13 @@
       [immunities]="character()!.immunities"
       [talents]="character()!.talents" />
   </section>
-  <section>
-    <app-magic
-      [magic]="character()!.magic"
-      [characterId]="character()!.id" />
-  </section>
+  @if (character()!.magic.spells.length > 0) {
+    <section>
+      <app-magic
+        [magic]="character()!.magic"
+        [characterId]="character()!.id" />
+    </section>
+  }
   @if (character()!.progression.expert === 'Grand Brasseur' || character()!.potions.length > 0) {
     <section>
       <app-master-brewer [potions]="character()!.potions" />
