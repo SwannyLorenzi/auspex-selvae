@@ -27,7 +27,14 @@ li {
   line-height: 1.6;
 }
 
-// ── List Reset Mixin ─────────────────────────────────────────────
+// ── List Reset ───────────────────────────────────────────────────
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+// Legacy mixin for component-specific lists that need resetting.
 // Usage: @include list-reset;
 
 @mixin list-reset {
