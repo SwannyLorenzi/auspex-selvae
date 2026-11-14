@@ -10,6 +10,7 @@ import { TalentsComponent } from './components/talents/talents';
 import { MagicComponent } from './components/magic/magic';
 import { MasterBrewerComponent } from './components/master-brewer/master-brewer';
 import { EquipmentComponent } from './components/equipment/equipment';
+import { MoneyComponent } from './components/money/money';
 import { LucideArrowLeft, LucideRotateCcw } from '@lucide/angular';
 
 @Component({
@@ -25,6 +26,7 @@ import { LucideArrowLeft, LucideRotateCcw } from '@lucide/angular';
     MagicComponent,
     MasterBrewerComponent,
     EquipmentComponent,
+    MoneyComponent,
     LucideArrowLeft,
     LucideRotateCcw,
   ],

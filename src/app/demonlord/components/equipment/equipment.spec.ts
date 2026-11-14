@@ -3,8 +3,10 @@ import { EquipmentComponent } from './equipment';
 import { Character } from '../../demonlord-models';
 import { MoneyData } from '../money/money-models';
 
+const mockMoney: MoneyData = { totalShards: 28034 };
+
 const mockCharacter: Partial<Character> = {
-  money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 } as MoneyData,
+  money: mockMoney,
 };
 
 const mockEquipment: Character['equipment'] = [

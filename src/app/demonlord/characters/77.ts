@@ -319,7 +319,7 @@ par l’illusion et subit 4d6 dégâts.</p>
     { name: 'Potion de Vision', cost: '5ca', effect: '' },
     { name: 'Potion Anti toxine', cost: '5ca', effect: '' },
   ],
-  money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 },
+  money: { totalShards: 28034 },
   defense: { base: 14, withArmor: 14, withArmorAndShield: 16 },
   equipment: [
     {

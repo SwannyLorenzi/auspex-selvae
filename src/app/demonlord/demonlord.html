@@ -54,6 +54,11 @@
     <app-master-brewer [potions]="character()!.potions" />
   </section>
   <section>
+    <app-money
+      [characterId]="character()!.id"
+      [money]="character()!.money" />
+  </section>
+  <section>
     <app-equipment
       [character]="character()!"
       [equipment]="character()!.equipment" />

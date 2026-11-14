@@ -1,11 +1,24 @@
-<div class="money-grid">
-  @for (currency of currencies; track currency.key) {
-    <div class="money-card">
-      <div class="money-name">{{ currency.label }}</div>
-      <div class="money-values">
-        <div class="money-value">{{ money()[currency.key] }}</div>
-        <div class="money-unit">{{ currency.unit }}</div>
+<section class="money-section" aria-label="Gestion des devises">
+  <h2>Devises</h2>
+  <div class="money-grid">
+    @for (row of currencyRows(); track row.key) {
+      <div class="money-card">
+        <div class="money-name">{{ row.label }}</div>
+        <div class="money-values">
+          <div class="money-value">{{ row.value }}</div>
+          <div class="money-unit">{{ row.unit }}</div>
+        </div>
+        <div class="money-inline-controls">
+          <button
+            (click)="removeShards(getMultiplier(row.key))"
+            class="money-inline-btn money-inline-minus"
+            aria-label="Retirer {{ getMultiplier(row.key) }} {{ row.label }}">−</button>
+          <button
+            (click)="addShards(getMultiplier(row.key))"
+            class="money-inline-btn money-inline-plus"
+            aria-label="Ajouter {{ getMultiplier(row.key) }} {{ row.label }}">+</button>
+        </div>
       </div>
-    </div>
-  }
-</div>
+    }
+  </div>
+</section>

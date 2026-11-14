@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { Equipment, type Character } from './equipment-models';
-import { MoneyComponent } from '../money/money';
+
+import { type Character } from '../../demonlord-models';
+import { type Equipment } from './equipment-models';
 
 @Component({
   selector: 'app-equipment',
-  imports: [MoneyComponent],
+  imports: [],
   templateUrl: './equipment.html',
   styleUrl: './equipment.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

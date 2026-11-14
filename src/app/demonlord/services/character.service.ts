@@ -1,6 +1,7 @@
 import { Injectable, inject, signal, type Signal, type WritableSignal } from '@angular/core';
 
 import { Character } from '../demonlord-models';
+import type { MoneyData } from '../components/money/money-models';
 import type { CharacterState } from './character-state.model';
 import { CharacterStorageService } from './character-storage.service';
 import { characterData as char77 } from '../characters/77';
@@ -251,6 +252,23 @@ export class CharacterService {
     if (changed) {
       this.saveState(characterId);
     }
+  }
+
+  /**
+   * Update the money data for a character.
+   * Persists to localStorage automatically.
+   */
+  updateMoney(characterId: string, money: MoneyData): void {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
+
+    charSignal.update((char) => {
+      if (!char) return char;
+      if (char.money.totalShards === money.totalShards) return char;
+      return { ...char, money: { ...money } };
+    });
+
+    this.saveState(characterId);
   }
 
   /**
