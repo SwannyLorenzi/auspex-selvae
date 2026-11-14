@@ -21,11 +21,13 @@ describe('TalentsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display immunities', () => {
+  it('should display immunities as emoji tags', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('maladies');
-    expect(container.textContent).toContain('poison');
+    expect(container.textContent).toContain('🦠');
+    expect(container.textContent).toContain('☠️');
+    expect(container.textContent).toContain('😴');
+    expect(container.textContent).toContain('🤢');
   });
 
   it('should display talents list', () => {

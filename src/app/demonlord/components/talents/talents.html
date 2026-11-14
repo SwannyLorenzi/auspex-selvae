@@ -2,9 +2,12 @@
 
 @if (immunities().length) {
   <h3>Immunités</h3>
-  <ul>
-    @for (immunity of immunities(); track immunity) {
-      <li>{{ immunity }}</li>
+  <ul class="immunity-list">
+    @for (imm of immunities(); track imm) {
+      <li class="immunity-tag">
+        <span class="immunity-tag__emoji">{{ immunity(imm).emoji }}</span>
+        <span class="immunity-tag__label">{{ immunity(imm).label }}</span>
+      </li>
     }
   </ul>
 }
