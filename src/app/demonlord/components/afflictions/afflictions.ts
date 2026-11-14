@@ -41,7 +41,7 @@ export class AfflictionsComponent {
   activeKeys = input<string[]>([]);
 
   /** Emit when afflictions are toggled */
-  onToggle = output<string[]>();
+  toggled = output<string[]>();
 
   protected readonly afflictions = ALL_AFFLICTIONS;
 
@@ -61,6 +61,6 @@ export class AfflictionsComponent {
     const next = exists
       ? current.filter((k) => k !== key)
       : [...current, key];
-    this.onToggle.emit(next);
+    this.toggled.emit(next);
   }
 }

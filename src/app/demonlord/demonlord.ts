@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CharacterService } from './services/character.service';
 import { CharacterComponent } from './components/character/character';
@@ -27,6 +27,7 @@ import { EquipmentComponent } from './components/equipment/equipment';
   ],
   templateUrl: './demonlord.html',
   styleUrl: './demonlord.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DemonlordComponent {
   private route = inject(ActivatedRoute);

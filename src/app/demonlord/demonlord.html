@@ -40,7 +40,7 @@
     <app-afflictions
       [immunities]="character()!.immunities"
       [activeKeys]="character()!.activeAfflictions"
-      (onToggle)="characterService.updateActiveAfflictions(characterId(), $event)" />
+      (toggled)="characterService.updateActiveAfflictions(characterId(), $event)" />
   </section>
   <section>
     <app-talents
@@ -48,7 +48,9 @@
       [talents]="character()!.talents" />
   </section>
   <section>
-    <app-magic [magic]="character()!.magic" />
+    <app-magic
+      [magic]="character()!.magic"
+      [characterId]="character()!.id" />
   </section>
   <section>
     <app-master-brewer [potions]="character()!.potions" />

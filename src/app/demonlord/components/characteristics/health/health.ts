@@ -1,4 +1,4 @@
-import { Component, input, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed, inject } from '@angular/core';
 import { CharacterService } from '../../../services/character.service';
 
 export interface HealthData {
@@ -12,6 +12,7 @@ export interface HealthData {
   imports: [],
   templateUrl: './health.html',
   styleUrl: './health.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HealthComponent {
   health = input.required<HealthData>();

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { DefenseData } from './defense-models';
 
 export type { DefenseData };
@@ -8,6 +8,7 @@ export type { DefenseData };
   imports: [],
   templateUrl: './defense.html',
   styleUrl: './defense.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DefenseComponent {
   defense = input.required<DefenseData>();

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { Profession } from './professions-models';
 
 @Component({
@@ -6,6 +6,7 @@ import { Profession } from './professions-models';
   imports: [],
   templateUrl: './professions.html',
   styleUrl: './professions.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfessionsComponent {
   professions = input.required<Profession[]>();

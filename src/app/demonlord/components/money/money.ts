@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { type MoneyData } from './money-models';
 
 interface CurrencyDef {
@@ -19,6 +19,7 @@ const CURRENCIES: CurrencyDef[] = [
   imports: [],
   templateUrl: './money.html',
   styleUrl: './money.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoneyComponent {
   money = input.required<MoneyData>();

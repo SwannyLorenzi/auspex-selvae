@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { immunityEmoji } from './immunity-emoji';
 
 export const immunityData = (name: string) => ({
@@ -11,6 +11,7 @@ export const immunityData = (name: string) => ({
   imports: [],
   templateUrl: './talents.html',
   styleUrl: './talents.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalentsComponent {
   immunities = input.required<string[]>();

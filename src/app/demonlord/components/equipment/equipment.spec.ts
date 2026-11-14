@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EquipmentComponent } from './equipment';
-import { type Character } from './equipment-models';
+import { Character } from '../../demonlord-models';
 import { MoneyData } from '../money/money-models';
 
-const mockCharacter: Character = {
+const mockCharacter: Partial<Character> = {
   money: { couronnes: 28, chelins: 3, sous: 4, eclats: 0 } as MoneyData,
 };
 

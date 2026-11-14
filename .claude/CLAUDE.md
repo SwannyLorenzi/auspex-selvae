@@ -31,6 +31,10 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use `input()` and `output()` functions instead of decorators
 - Use `computed()` for derived state
 - Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
+- With OnPush, NEVER mutate data in-place; always create new object/array references
+  - Use `{ ...obj, prop: newValue }` for objects, `[...arr]` for arrays
+  - Use `signal.set(newValue)` for signals (never mutate signal values in-place)
+  - This ensures children re-render when parents update
 - Prefer inline templates for small components
 - Prefer Reactive forms instead of Template-driven ones
 - Do NOT use `ngClass`, use `class` bindings instead

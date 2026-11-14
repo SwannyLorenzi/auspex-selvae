@@ -13,7 +13,10 @@
 <div class="magic-content">
   <div class="spell-list">
     @for (spell of magic().spells; track spell.name) {
-      <app-spell-card [spell]="spell" [power]="magic().power" />
+      <app-spell-card
+        [spell]="spell"
+        [power]="magic().power"
+        (spend)="handleSpend(spell.name)" />
     }
   </div>
 </div>

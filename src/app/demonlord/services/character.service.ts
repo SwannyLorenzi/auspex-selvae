@@ -4,7 +4,6 @@ import type { Character } from '../demonlord-models';
 import type { DerivedAttribute } from '../components/characteristics/characteristics-models';
 import { characterData as char77 } from '../characters/77';
 import { characterData as duchesse } from '../characters/duchesse';
-import { CHARACTERS } from '../characters/character.registry';
 
 export interface CharacterMetadata {
   id: string;
@@ -49,8 +48,9 @@ export class CharacterService {
 
   /**
    * Get a character by their ID.
+   * Returns a WritableSignal so components can update character data directly.
    */
-  getCharacter(id: string): Signal<Character | null> {
+  getCharacter(id: string): WritableSignal<Character | null> {
     return this.characters.get(id) ?? signal(null);
   }
 

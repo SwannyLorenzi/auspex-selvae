@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CharacterService } from '../demonlord/services/character.service';
 
@@ -7,6 +7,7 @@ import { CharacterService } from '../demonlord/services/character.service';
   imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
   private characterService = inject(CharacterService);

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { Potion } from './master-brewer-models';
 
 @Component({
@@ -6,6 +6,7 @@ import { Potion } from './master-brewer-models';
   imports: [],
   templateUrl: './master-brewer.html',
   styleUrl: './master-brewer.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MasterBrewerComponent {
   potions = input.required<Potion[]>();

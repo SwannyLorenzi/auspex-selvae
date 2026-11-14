@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CharacteristicsComponent } from './characteristics';
 import { characterData } from '../../demonlord-data';
-import { CharacterService } from '../../../services/character.service';
+import { CharacterService } from '../../services/character.service';
 
 describe('CharacteristicsComponent', () => {
   let component: CharacteristicsComponent;
@@ -14,7 +14,7 @@ describe('CharacteristicsComponent', () => {
         {
           provide: CharacterService,
           useValue: {
-            updateDerivedAttribute: () => {},
+            updateDerivedAttribute: () => true,
           },
         },
       ],
