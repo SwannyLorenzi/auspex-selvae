@@ -212,6 +212,48 @@ export class CharacterService {
   }
 
   /**
+   * Record a spell use (increment currentUses).
+   */
+  spellUse(characterId: string, spellName: string): void {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
+
+    let changed = false;
+    charSignal.update((char) => {
+      if (!char) return char;
+      const spells = char.magic.spells.map((s) =>
+        s.name === spellName ? { ...s, currentUses: s.currentUses + 1 } : s,
+      );
+      changed = true;
+      return { ...char, magic: { ...char.magic, spells } };
+    });
+
+    if (changed) {
+      this.saveState(characterId);
+    }
+  }
+
+  /**
+   * Reset all spell uses to 0.
+   */
+  resetSpellUses(characterId: string): void {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
+
+    let changed = false;
+    charSignal.update((char) => {
+      if (!char) return char;
+      const spells = char.magic.spells.map((s) => ({ ...s, currentUses: 0 }));
+      changed = true;
+      return { ...char, magic: { ...char.magic, spells } };
+    });
+
+    if (changed) {
+      this.saveState(characterId);
+    }
+  }
+
+  /**
    * Get the first available character ID.
    * Useful for default redirects.
    */

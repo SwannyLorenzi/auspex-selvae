@@ -17,29 +17,10 @@ export class MagicComponent {
   private characterService = inject(CharacterService);
 
   resetAllUses(): void {
-    const charSignal = this.characterService.getCharacter(this.characterId());
-    charSignal.update((char) => {
-      if (!char) return char;
-      return {
-        ...char,
-        magic: { ...char.magic, spells: char.magic.spells.map(s => ({ ...s, currentUses: 0 })) },
-      };
-    });
+    this.characterService.resetSpellUses(this.characterId());
   }
 
   handleSpend(spellName: string): void {
-    const charSignal = this.characterService.getCharacter(this.characterId());
-    charSignal.update((char) => {
-      if (!char) return char;
-      return {
-        ...char,
-        magic: {
-          ...char.magic,
-          spells: char.magic.spells.map(s =>
-            s.name === spellName ? { ...s, currentUses: s.currentUses + 1 } : s
-          ),
-        },
-      };
-    });
+    this.characterService.spellUse(this.characterId(), spellName);
   }
 }
