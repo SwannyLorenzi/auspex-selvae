@@ -1,10 +1,4 @@
-h2 {
-  font-size: 1.25rem;
-  padding-bottom: 0.75rem;
-  color: #c9b47a;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
+@use '../_shared' as *;
 
 h3 {
   font-size: 1rem;

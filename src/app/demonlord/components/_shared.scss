@@ -1,0 +1,11 @@
+// Shared typography for demonlord module section headers.
+// Import in component SCSS with: @use '../_shared' as *;
+
+h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  color: #c9b47a;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
