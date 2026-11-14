@@ -1,21 +1,14 @@
 <header>
-  <h1>Ombre du Seigneur Démon</h1>
-  <h2>{{ character()!.name }}</h2>
-  <a routerLink="/" aria-label="Retour à l'accueil">
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M5 7.5L10 12.5L15 7.5"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round" />
-    </svg>
+  <a routerLink="/" class="header-btn" aria-label="Retour à l'accueil">
+    <svg lucideArrowLeft></svg>
   </a>
+  <div class="title-group">
+    <h1>Ombre du Seigneur Démon</h1>
+    <h2>{{ character()!.name }}</h2>
+  </div>
+  <button class="header-btn" (click)="confirmReset()" aria-label="Reset character state">
+    <svg lucideRotateCcw></svg>
+  </button>
 </header>
 <main>
   <div class="row">

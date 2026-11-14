@@ -26,6 +26,9 @@ importers:
       '@angular/router':
         specifier: ^21.2.0
         version: 21.2.16(@angular/common@21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(@angular/platform-browser@21.2.16(@angular/common@21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@lucide/angular':
+        specifier: ^1.73.0
+        version: 1.73.0(@angular/common@21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -49,8 +52,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.4.1)
       angular-cli-ghpages:
-        specifier: ^3.0.3
-        version: 3.0.3(@angular/cli@21.2.14(chokidar@5.0.0))(chokidar@5.0.0)
+        specifier: ^3.1.1
+        version: 3.1.2(@angular/cli@21.2.14(chokidar@5.0.0))(chokidar@5.0.0)
       angular-eslint:
         specifier: 21.4.0
         version: 21.4.0(@angular/cli@21.2.14(chokidar@5.0.0))(chokidar@5.0.0)(eslint@10.4.1)(typescript-eslint@8.59.2(eslint@10.4.1)(typescript@5.9.3))(typescript@5.9.3)
@@ -896,6 +899,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@lucide/angular@1.73.0':
+    resolution: {integrity: sha512-LrlAGXga9TPrEKN0hhCq3wOWqnCYB4BPP4iJGsYdBVjqERpsAoMNFlSKnGruWIBgAi7457AQYtmmCOOHBb4/Sg==}
+    peerDependencies:
+      '@angular/common': '>=17.0.0'
+      '@angular/core': '>=17.0.0'
+
   '@modelcontextprotocol/sdk@1.26.0':
     resolution: {integrity: sha512-Y5RmPncpiDtTXDbLKswIJzTqu2hyBKxTNsgKqKclDbhIgg1wgtf1fRuvxgTnRfcnxtvvgbIEcqUOzZrJ6iSReg==}
     engines: {node: '>=18'}
@@ -1624,12 +1633,12 @@ packages:
     resolution: {integrity: sha512-Rf7xmeuIo7nb6S4mp4abW2faW8DauZyE2faBIKFaUfP3wnpOvNSbiI5AwVhqBNj0jPgBWEvhyCu0sLjN2q77Rg==}
     engines: {node: '>= 14.0.0'}
 
-  angular-cli-ghpages@3.0.3:
-    resolution: {integrity: sha512-TZUutaTc+XbzZRCsq3Jyu7Mw+xwW8BGTs0scLGxegPk06Y63lcOVDFpWxnniBvhVuyS4ENhE7MlAMLD2u4mQcw==}
-    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+  angular-cli-ghpages@3.1.2:
+    resolution: {integrity: sha512-at3yZXjKBVy3XGPzauZtzQq3D8f/Qc01JdTtH9L/sRXBk5Ax5KS5St27Nl4cfpdRposuTpfS/6wF1joF1dOzsQ==}
+    engines: {node: '>=18.19.1', npm: '>=9.0.0'}
     hasBin: true
     peerDependencies:
-      '@angular/cli': '>=18.0.0 <22.0.0'
+      '@angular/cli': '>=18.0.0 <23.0.0'
 
   angular-eslint@21.4.0:
     resolution: {integrity: sha512-LH7bWmtJvsubzwPoztnl1pWgI5X0VrfGTUITGSYcwn2J+SXuN/avzrKrxJmhUiIrNvLtfV+18GG6xZS1IGZdKg==}
@@ -4084,6 +4093,12 @@ snapshots:
   '@lmdb/lmdb-win32-x64@3.5.1':
     optional: true
 
+  '@lucide/angular@1.73.0(@angular/common@21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))':
+    dependencies:
+      '@angular/common': 21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2)
+      tslib: 2.8.1
+
   '@modelcontextprotocol/sdk@1.26.0(zod@4.3.6)':
     dependencies:
       '@hono/node-server': 1.19.14(hono@4.12.24)
@@ -4778,7 +4793,7 @@ snapshots:
       '@algolia/requester-fetch': 5.48.1
       '@algolia/requester-node-http': 5.48.1
 
-  angular-cli-ghpages@3.0.3(@angular/cli@21.2.14(chokidar@5.0.0))(chokidar@5.0.0):
+  angular-cli-ghpages@3.1.2(@angular/cli@21.2.14(chokidar@5.0.0))(chokidar@5.0.0):
     dependencies:
       '@angular-devkit/architect': 0.2102.14(chokidar@5.0.0)
       '@angular-devkit/core': 21.2.14(chokidar@5.0.0)

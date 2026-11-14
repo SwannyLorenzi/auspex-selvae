@@ -10,6 +10,7 @@ import { TalentsComponent } from './components/talents/talents';
 import { MagicComponent } from './components/magic/magic';
 import { MasterBrewerComponent } from './components/master-brewer/master-brewer';
 import { EquipmentComponent } from './components/equipment/equipment';
+import { LucideArrowLeft, LucideRotateCcw } from '@lucide/angular';
 
 @Component({
   selector: 'app-demonlord',
@@ -24,6 +25,8 @@ import { EquipmentComponent } from './components/equipment/equipment';
     MagicComponent,
     MasterBrewerComponent,
     EquipmentComponent,
+    LucideArrowLeft,
+    LucideRotateCcw,
   ],
   templateUrl: './demonlord.html',
   styleUrl: './demonlord.scss',
@@ -40,4 +43,17 @@ export class DemonlordComponent {
   protected readonly character = this.characterService.getCharacter(
     this.characterId()
   );
+
+  /**
+   * Confirm and reset the character's dynamic state from localStorage.
+   */
+  protected confirmReset(): void {
+    if (
+      confirm(
+        `Réinitialiser l'état de ${this.character()!.name} ? Toutes les valeurs seront restaurées à leurs défauts.`
+      )
+    ) {
+      this.characterService.resetCharacter(this.characterId());
+    }
+  }
 }
