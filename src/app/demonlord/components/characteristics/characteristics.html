@@ -72,7 +72,6 @@
 
   <!-- Force (top-left, 324°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 157px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-name">Force</span>
     <span class="stat-value">{{ vertices()[0]?.value ?? 0 }}</span>
     @if (vertices()[0]?.bonus) {
       <span class="stat-bonus">{{ vertices()[0]?.bonus }}</span>
@@ -81,7 +80,6 @@
 
   <!-- Intellect (top-right, 36°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 463px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-name">Intellect</span>
     <span class="stat-value">{{ vertices()[1]?.value ?? 0 }}</span>
     @if (vertices()[1]?.bonus) {
       <span class="stat-bonus">{{ vertices()[1]?.bonus }}</span>
@@ -90,7 +88,6 @@
 
   <!-- Agilité (middle-left, 252°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 63px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-name">Agilité</span>
     <span class="stat-value">{{ vertices()[2]?.value ?? 0 }}</span>
     @if (vertices()[2]?.bonus) {
       <span class="stat-bonus">{{ vertices()[2]?.bonus }}</span>
@@ -99,7 +96,6 @@
 
   <!-- Volonté (middle-right, 108°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 557px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-name">Volonté</span>
     <span class="stat-value">{{ vertices()[3]?.value ?? 0 }}</span>
     @if (vertices()[3]?.bonus) {
       <span class="stat-bonus">{{ vertices()[3]?.bonus }}</span>
@@ -108,7 +104,6 @@
 
   <!-- Santé (bottom, 180°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 310px; top: 570px; width: 5rem; height: 5rem;">
-    <span class="stat-name">Santé</span>
     <span class="stat-value">{{ vertices()[4]?.value ?? 0 }}</span>
   </div>
 

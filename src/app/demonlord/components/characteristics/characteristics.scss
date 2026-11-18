@@ -40,15 +40,6 @@
   z-index: 2;
   overflow: hidden;
 
-  .stat-name {
-    font-size: 0.6rem;
-    color: #a89880;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-    line-height: 1;
-  }
-
   .stat-value {
     font-size: 1.3rem;
     font-weight: 700;
@@ -68,7 +59,6 @@
     border-color: #a02020 !important;
 
     .stat-value,
-    .stat-name,
     .stat-bonus {
       color: #a02020 !important;
     }
@@ -80,10 +70,6 @@
   border: 2px solid rgba(184, 168, 136, 0.7);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 
-  .stat-name {
-    font-size: 0.7rem;
-  }
-
   .stat-value {
     font-size: 1.6rem;
   }
@@ -93,7 +79,6 @@
     border-color: #a02020 !important;
     box-shadow: 0 0 20px rgba(160, 32, 32, 0.3);
 
-    .stat-name,
     .stat-value,
     .stat-bonus {
       color: #a02020 !important;
@@ -105,10 +90,6 @@
 .stat-circle.secondary {
   border: 2px solid rgba(184, 168, 136, 0.35);
 
-  .stat-name {
-    font-size: 0.5rem;
-  }
-
   .stat-value {
     font-size: 0.9rem;
   }
@@ -117,7 +98,6 @@
   &.ko {
     border-color: #a02020 !important;
 
-    .stat-name,
     .stat-value,
     .stat-bonus {
       color: #a02020 !important;
@@ -129,10 +109,6 @@
 .stat-circle.center {
   border: 3px solid rgba(184, 168, 136, 0.7);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-
-  .stat-name {
-    font-size: 0.65rem;
-  }
 
   .stat-value {
     font-size: 1.8rem;
@@ -148,7 +124,6 @@
     border-color: #a02020 !important;
     box-shadow: 0 0 30px rgba(160, 32, 32, 0.3);
 
-    .stat-name,
     .stat-value,
     .stat-bonus,
     .stat-damage-icon {
