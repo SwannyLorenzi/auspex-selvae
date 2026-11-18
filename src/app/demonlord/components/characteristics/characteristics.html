@@ -1,6 +1,5 @@
 <div class="pentagram-container" [class.ko]="isKO()">
-  <!-- SVG 1: Pentagram lines + decorative circles (z-index: 1) -->
-  <svg class="pentagram-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+  <svg class="pentagram-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pentagramme des caractéristiques du personnage">
     <defs>
       <!-- Main vertex circles (R=40, arcR=35) -->
       <path id="arc-force" d="M 162 140 A 35 35 0 0 1 232 140" />
@@ -19,6 +18,10 @@
       <path id="arc-corruption" d="M 510 555 A 20 20 0 0 1 550 555" />
       <path id="arc-degats" d="M 280 350 A 70 70 0 0 1 420 350" />
     </defs>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LAYER 1: Decorative elements (back)            -->
+    <!-- ═══════════════════════════════════════════════ -->
 
     <!-- Outer decorative circle: r=300 (touches main vertex circles) -->
     <circle cx="350" cy="350" r="300" fill="none" stroke="rgba(160,32,32,0.25)" stroke-width="2"/>
@@ -41,11 +44,133 @@
       stroke="rgba(160,32,32,0.6)"
       stroke-width="2"
     />
-  </svg>
 
-  <!-- SVG 2: Labels on curved paths (z-index: 3, separate SVG for z-index to work) -->
-  <svg class="labels-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
-    <g font-size="11" font-weight="700" fill="#e0d6c8" letter-spacing="0.05em">
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LAYER 2: Stat circles + values (middle)        -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <!-- Main vertex circles (R=40) -->
+    <!-- Force -->
+    <g class="stat-circle main" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="197" cy="140" r="40" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="197" y="135" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700">{{ vertices()[0].value }}</text>
+      @if (vertices()[0].bonus) {
+        <text [attr.fill]="isKO() ? '#a02020' : '#c9b47a'" x="197" y="158" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600">{{ vertices()[0].bonus }}</text>
+      }
+    </g>
+
+    <!-- Intellect -->
+    <g class="stat-circle main" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="503" cy="140" r="40" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="503" y="135" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700">{{ vertices()[1].value }}</text>
+      @if (vertices()[1].bonus) {
+        <text [attr.fill]="isKO() ? '#a02020' : '#c9b47a'" x="503" y="158" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600">{{ vertices()[1].bonus }}</text>
+      }
+    </g>
+
+    <!-- Agilité -->
+    <g class="stat-circle main" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="103" cy="430" r="40" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="103" y="425" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700">{{ vertices()[2].value }}</text>
+      @if (vertices()[2].bonus) {
+        <text [attr.fill]="isKO() ? '#a02020' : '#c9b47a'" x="103" y="448" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600">{{ vertices()[2].bonus }}</text>
+      }
+    </g>
+
+    <!-- Volonté -->
+    <g class="stat-circle main" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="597" cy="430" r="40" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="597" y="425" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700">{{ vertices()[3].value }}</text>
+      @if (vertices()[3].bonus) {
+        <text [attr.fill]="isKO() ? '#a02020' : '#c9b47a'" x="597" y="448" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600">{{ vertices()[3].bonus }}</text>
+      }
+    </g>
+
+    <!-- Santé -->
+    <g class="stat-circle main" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="350" cy="610" r="40" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="350" y="605" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700">{{ vertices()[4].value }}</text>
+    </g>
+
+    <!-- Secondary circles (R=25) -->
+    <!-- Gabarit -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="197" cy="75" r="25" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="197" y="75" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700">{{ vertices()[0].secondary?.value ?? 0 }}</text>
+    </g>
+
+    <!-- Perception -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="503" cy="75" r="25" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="503" y="75" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700">{{ vertices()[1].secondary?.value ?? 0 }}</text>
+      @if (vertices()[1].secondary?.bonus) {
+        <text [attr.fill]="isKO() ? '#a02020' : '#c9b47a'" x="503" y="92" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="600">{{ vertices()[1].secondary?.bonus }}</text>
+      }
+    </g>
+
+    <!-- Vitesse -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="103" cy="365" r="25" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="103" y="365" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700">{{ vertices()[2].secondary?.value ?? 0 }}</text>
+    </g>
+
+    <!-- Folie -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="597" cy="365" r="25" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="597" y="365" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700">{{ vertices()[3].secondary?.value ?? 0 }}</text>
+    </g>
+
+    <!-- Guérison -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="350" cy="545" r="25" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="350" y="545" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700">{{ vertices()[4].secondary?.value ?? 0 }}</text>
+    </g>
+
+    <!-- Special circles (R=20) -->
+    <!-- Défense -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="170" cy="555" r="20" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="170" y="555" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="700">{{ data().defense }}</text>
+    </g>
+
+    <!-- Corruption -->
+    <g class="stat-circle secondary" [class.ko]="isKO()">
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.8)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.35)' : 'rgba(184,168,136,0.35)'" cx="530" cy="555" r="20" stroke-width="2"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="530" y="555" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="700">{{ data().corruption }}</text>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LAYER 3: Dégâts center circle + buttons       -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <g class="stat-circle center" [class.ko]="isKO()">
+      <!-- Demon head background -->
+      <image href="/logo.webp" x="231" y="231" width="238" height="238" preserveAspectRatio="xMidYMid slice" style="opacity: 0.18;"/>
+      <!-- KO overlay: red tint applied via CSS filter -->
+      <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.2)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="350" cy="350" r="70" stroke-width="3"/>
+      <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="350" y="345" text-anchor="middle" dominant-baseline="central" font-size="28" font-weight="700">{{ data().damage }}</text>
+      <!-- Damage buttons -->
+      <g class="damage-controls">
+        <circle class="damage-btn add" cx="330" cy="395" r="14"
+                [style.pointer-events]="isDamageAtMax() ? 'none' : 'auto'"
+                [style.opacity]="isDamageAtMax() ? 0.35 : 1"
+                (click)="!isDamageAtMax() && characterService.updateAttribute(characterId(), 'damage', data().damage + 1)"
+                aria-label="Ajouter des dégâts" />
+        <text class="damage-btn-text add" x="330" y="395" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">+</text>
+        <circle class="damage-btn remove" cx="370" cy="395" r="14"
+                [style.pointer-events]="isDamageAtZero() ? 'none' : 'auto'"
+                [style.opacity]="isDamageAtZero() ? 0.35 : 1"
+                (click)="!isDamageAtZero() && characterService.updateAttribute(characterId(), 'damage', data().damage - 1)"
+                aria-label="Retirer des dégâts" />
+        <text class="damage-btn-text remove" x="370" y="395" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">−</text>
+      </g>
+    </g>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LAYER 4: Labels on curved paths (front)        -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <g [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" font-size="11" font-weight="700" letter-spacing="0.05em">
       <!-- Main vertex labels -->
       <text><textPath href="#arc-force" startOffset="50%" text-anchor="middle">FORCE</textPath></text>
       <text><textPath href="#arc-intellect" startOffset="50%" text-anchor="middle">INTELLECT</textPath></text>
@@ -64,101 +189,6 @@
       <!-- Dégâts label (larger circle) -->
       <text font-size="16"><textPath href="#arc-degats" startOffset="50%" text-anchor="middle">DÉGÂTS</textPath></text>
     </g>
+
   </svg>
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- MAIN VERTEX CIRCLES (z-index: 2) -->
-  <!-- ═══════════════════════════════════════════════ -->
-
-  <!-- Force (top-left, 324°) -->
-  <div class="stat-circle main" [class.ko]="isKO()" style="left: 157px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[0].value }}</span>
-    @if (vertices()[0].bonus) {
-      <span class="stat-bonus">{{ vertices()[0].bonus }}</span>
-    }
-  </div>
-
-  <!-- Intellect (top-right, 36°) -->
-  <div class="stat-circle main" [class.ko]="isKO()" style="left: 463px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[1].value }}</span>
-    @if (vertices()[1].bonus) {
-      <span class="stat-bonus">{{ vertices()[1].bonus }}</span>
-    }
-  </div>
-
-  <!-- Agilité (middle-left, 252°) -->
-  <div class="stat-circle main" [class.ko]="isKO()" style="left: 63px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[2].value }}</span>
-    @if (vertices()[2].bonus) {
-      <span class="stat-bonus">{{ vertices()[2].bonus }}</span>
-    }
-  </div>
-
-  <!-- Volonté (middle-right, 108°) -->
-  <div class="stat-circle main" [class.ko]="isKO()" style="left: 557px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[3].value }}</span>
-    @if (vertices()[3].bonus) {
-      <span class="stat-bonus">{{ vertices()[3].bonus }}</span>
-    }
-  </div>
-
-  <!-- Santé (bottom, 180°) -->
-  <div class="stat-circle main" [class.ko]="isKO()" style="left: 310px; top: 570px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[4].value }}</span>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- SECONDARY CIRCLES: tangent above each main circle -->
-  <!-- ═══════════════════════════════════════════════ -->
-
-  <!-- Gabarit (above Force) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 172px; top: 50px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[0].secondary?.value ?? 0 }}</span>
-  </div>
-
-  <!-- Perception (above Intellect) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 478px; top: 50px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[1].secondary?.value ?? 0 }}</span>
-    @if (vertices()[1].secondary?.bonus) {
-      <span class="stat-bonus">{{ vertices()[1].secondary?.bonus }}</span>
-    }
-  </div>
-
-  <!-- Vitesse (above Agilité) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 78px; top: 340px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[2].secondary?.value ?? 0 }}</span>
-  </div>
-
-  <!-- Folie (above Volonté) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 572px; top: 340px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[3].secondary?.value ?? 0 }}</span>
-  </div>
-
-  <!-- Guérison (above Santé) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 325px; top: 520px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[4].secondary?.value ?? 0 }}</span>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- SPECIAL POSITION CIRCLES -->
-  <!-- ═══════════════════════════════════════════════ -->
-
-  <!-- Défense (between Agilité & Santé) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 145px; top: 530px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ data().defense }}</span>
-  </div>
-
-  <!-- Corruption (between Santé & Volonté) -->
-  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 505px; top: 530px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ data().corruption }}</span>
-  </div>
-
-  <!-- Dégâts (CENTER, inscribed circle of pentagram) -->
-  <div class="stat-circle center" [class.ko]="isKO()" style="left: 275px; top: 275px; width: 9.375rem; height: 9.375rem;">
-    <span class="stat-value">{{ data().damage }}</span>
-    <div class="damage-controls">
-      <button class="damage-btn add" [disabled]="data().damage >= maxDamage()" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
-      <button class="damage-btn remove" [disabled]="data().damage <= 0" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage - 1)" aria-label="Retirer des dégâts">−</button>
-    </div>
-  </div>
 </div>
