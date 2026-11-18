@@ -72,39 +72,39 @@
 
   <!-- Force (top-left, 324°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 157px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[0]?.value ?? 0 }}</span>
-    @if (vertices()[0]?.bonus) {
-      <span class="stat-bonus">{{ vertices()[0]?.bonus }}</span>
+    <span class="stat-value">{{ vertices()[0].value }}</span>
+    @if (vertices()[0].bonus) {
+      <span class="stat-bonus">{{ vertices()[0].bonus }}</span>
     }
   </div>
 
   <!-- Intellect (top-right, 36°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 463px; top: 100px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[1]?.value ?? 0 }}</span>
-    @if (vertices()[1]?.bonus) {
-      <span class="stat-bonus">{{ vertices()[1]?.bonus }}</span>
+    <span class="stat-value">{{ vertices()[1].value }}</span>
+    @if (vertices()[1].bonus) {
+      <span class="stat-bonus">{{ vertices()[1].bonus }}</span>
     }
   </div>
 
   <!-- Agilité (middle-left, 252°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 63px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[2]?.value ?? 0 }}</span>
-    @if (vertices()[2]?.bonus) {
-      <span class="stat-bonus">{{ vertices()[2]?.bonus }}</span>
+    <span class="stat-value">{{ vertices()[2].value }}</span>
+    @if (vertices()[2].bonus) {
+      <span class="stat-bonus">{{ vertices()[2].bonus }}</span>
     }
   </div>
 
   <!-- Volonté (middle-right, 108°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 557px; top: 390px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[3]?.value ?? 0 }}</span>
-    @if (vertices()[3]?.bonus) {
-      <span class="stat-bonus">{{ vertices()[3]?.bonus }}</span>
+    <span class="stat-value">{{ vertices()[3].value }}</span>
+    @if (vertices()[3].bonus) {
+      <span class="stat-bonus">{{ vertices()[3].bonus }}</span>
     }
   </div>
 
   <!-- Santé (bottom, 180°) -->
   <div class="stat-circle main" [class.ko]="isKO()" style="left: 310px; top: 570px; width: 5rem; height: 5rem;">
-    <span class="stat-value">{{ vertices()[4]?.value ?? 0 }}</span>
+    <span class="stat-value">{{ vertices()[4].value }}</span>
   </div>
 
   <!-- ═══════════════════════════════════════════════ -->
@@ -113,30 +113,27 @@
 
   <!-- Gabarit (above Force) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 172px; top: 50px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[0]?.secondary?.value ?? 0 }}</span>
+    <span class="stat-value">{{ vertices()[0].secondary?.value ?? 0 }}</span>
   </div>
 
   <!-- Perception (above Intellect) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 478px; top: 50px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[1]?.secondary?.value ?? 0 }}</span>
-    @if (vertices()[1]?.secondary?.bonus) {
-      <span class="stat-bonus">{{ vertices()[1]?.secondary?.bonus }}</span>
-    }
+    <span class="stat-value">{{ vertices()[1].secondary?.value ?? 0 }}</span>
   </div>
 
   <!-- Vitesse (above Agilité) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 78px; top: 340px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[2]?.secondary?.value ?? 0 }}</span>
+    <span class="stat-value">{{ vertices()[2].secondary?.value ?? 0 }}</span>
   </div>
 
   <!-- Folie (above Volonté) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 572px; top: 340px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[3]?.secondary?.value ?? 0 }}</span>
+    <span class="stat-value">{{ vertices()[3].secondary?.value ?? 0 }}</span>
   </div>
 
   <!-- Guérison (above Santé) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 325px; top: 520px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">{{ vertices()[4]?.secondary?.value ?? 0 }}</span>
+    <span class="stat-value">{{ vertices()[4].secondary?.value ?? 0 }}</span>
   </div>
 
   <!-- ═══════════════════════════════════════════════ -->
@@ -145,21 +142,21 @@
 
   <!-- Défense (between Agilité & Santé) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 145px; top: 530px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">13</span>
+    <span class="stat-value">{{ data().defense }}</span>
   </div>
 
   <!-- Corruption (between Santé & Volonté) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 505px; top: 530px; width: 3.125rem; height: 3.125rem;">
-    <span class="stat-value">2</span>
+    <span class="stat-value">{{ data().corruption }}</span>
   </div>
 
   <!-- Dégâts (CENTER, inscribed circle of pentagram) -->
   <div class="stat-circle center" [class.ko]="isKO()" style="left: 275px; top: 275px; width: 9.375rem; height: 9.375rem;">
     <span class="stat-damage-icon">☠</span>
-    <span class="stat-value">{{ damageValue() }}</span>
+    <span class="stat-value">{{ data().damage }}</span>
     <div class="damage-controls">
-      <button class="damage-btn add" (click)="characterService.updateDerivedAttribute(characterId(), 'Dégâts', damageValue() + 1)" aria-label="Ajouter des dégâts">+</button>
-      <button class="damage-btn remove" (click)="characterService.updateDerivedAttribute(characterId(), 'Dégâts', damageValue() - 1)" aria-label="Retirer des dégâts">−</button>
+      <button class="damage-btn add" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
+      <button class="damage-btn remove" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage - 1)" aria-label="Retirer des dégâts">−</button>
     </div>
   </div>
 </div>

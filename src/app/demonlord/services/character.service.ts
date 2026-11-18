@@ -6,7 +6,6 @@ import type { CharacterState } from './character-state.model';
 import { CharacterStorageService } from './character-storage.service';
 import { characterData as char77 } from '../characters/77';
 import { characterData as duchesse } from '../characters/duchesse';
-import type { DerivedAttribute } from '../components/characteristics/characteristics-models';
 
 /** Deep clone any JSON-serializable object */
 function deepClone<T>(obj: T): T {
@@ -79,14 +78,14 @@ export class CharacterService {
   private mergeState(base: Character, state: CharacterState): Character {
     return {
       ...this.cloneCharacter(base),
-      derivedAttributes: deepClone(state.derivedAttributes),
+      attributes: { ...state.attributes },
       activeAfflictions: [...state.activeAfflictions],
       magic: {
         ...deepClone(state.magic),
         spells: deepClone(state.magic.spells),
       },
       potions: deepClone(state.potions),
-      defense: state.defense ? { ...state.defense } : undefined,
+      defense: state.defense,
       money: { ...state.money },
     };
   }
@@ -103,7 +102,7 @@ export class CharacterService {
     if (!char) return false;
 
     const state: CharacterState = {
-      derivedAttributes: char.derivedAttributes,
+      attributes: char.attributes,
       activeAfflictions: char.activeAfflictions,
       magic: char.magic,
       potions: char.potions,
@@ -130,10 +129,10 @@ export class CharacterService {
   }
 
   /**
-   * Update a derived attribute on a character.
+   * Update a named attribute on a character.
    * @returns true if the attribute was found and updated
    */
-  updateDerivedAttribute(
+  updateAttribute(
     characterId: string,
     attributeName: string,
     newValue: number
@@ -145,18 +144,13 @@ export class CharacterService {
     charSignal.update((char) => {
       if (!char) return char;
 
-      const attr = char.derivedAttributes.find(
-        (a: DerivedAttribute) => a.name === attributeName
-      );
-      if (attr) {
-        attr.value = newValue;
+      const attrs = char.attributes;
+      if (attrs[attributeName] !== undefined) {
         updated = true;
-      }
-
-      // Always return a new object reference when updated
-      // to ensure Angular OnPush re-renders the component
-      if (updated) {
-        return { ...char, derivedAttributes: [...char.derivedAttributes] };
+        return {
+          ...char,
+          attributes: { ...attrs, [attributeName]: newValue },
+        };
       }
 
       return char;

@@ -47,19 +47,11 @@ export class HealthComponent {
     if (mode === 'plus') {
       const clamped = Math.min(value, maxAdd);
       const newDamage = health.currentDamage + clamped;
-      this.characterService.updateDerivedAttribute(
-        this.characterId(),
-        'Dégâts',
-        newDamage
-      );
+      this.characterService.updateAttribute(this.characterId(), 'damage', newDamage);
     } else {
       const clamped = Math.min(value, maxRemove);
       const newDamage = health.currentDamage - clamped;
-      this.characterService.updateDerivedAttribute(
-        this.characterId(),
-        'Dégâts',
-        newDamage
-      );
+      this.characterService.updateAttribute(this.characterId(), 'damage', newDamage);
     }
   }
 }

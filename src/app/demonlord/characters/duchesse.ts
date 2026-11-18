@@ -18,23 +18,11 @@ export const characterData: Character = {
     { name: 'Médecine' },
     { name: 'Meurrière' },
   ],
-  mainAttributes: [
-    { name: 'Force', value: 12, bonus: '+2', bonusText: '' },
-    { name: 'Intellect', value: 11, bonus: '+1', bonusText: '' },
-    { name: 'Perception', value: 11, bonus: '+1', bonusText: '' },
-    { name: 'Volonté', value: 11, bonus: '+1', bonusText: '' },
-    { name: 'Agilité', value: 13, bonus: '+3', bonusText: '' },
-  ],
-  derivedAttributes: [
-    { name: 'Vitesse', value: 12, formula: '' },
-    { name: 'Taille/Gabarit', value: 1, formula: '' },
-    { name: 'Puissance', value: 0, formula: '' },
-    { name: 'Santé', value: 15, formula: '' },
-    { name: 'Vitesse de guérison', value: 0, formula: '' },
-    { name: 'Folie', value: 6, formula: '' },
-    { name: 'Corruption', value: 2, formula: '' },
-    { name: 'Dégâts', value: 0, formula: '' },
-  ],
+  attributes: {
+    force: 12, intellect: 11, agility: 13, willpower: 11, perception: 11,
+    health: 15, speed: 12, size: 1, spellpower: 0, healingRate: 0, defense: 13,
+    damage: 0, madness: 6, corruption: 2,
+  },
   immunities: [
     'dégâts du froid',
     'maladies',
@@ -92,6 +80,6 @@ export const characterData: Character = {
     },
     { name: 'Faucon', effect: '' },
   ],
-  defense: { base: 13, withArmor: 15, withArmorAndShield: 15 },
+  defense: 13,
   money: { totalShards: 2980 },
 };

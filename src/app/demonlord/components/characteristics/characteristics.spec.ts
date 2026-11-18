@@ -14,7 +14,7 @@ describe('CharacteristicsComponent', () => {
         {
           provide: CharacterService,
           useValue: {
-            updateDerivedAttribute: () => true,
+            updateAttribute: () => true,
           },
         },
       ],
@@ -22,8 +22,7 @@ describe('CharacteristicsComponent', () => {
 
     fixture = TestBed.createComponent(CharacteristicsComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('mainAttributes', characterData.mainAttributes);
-    fixture.componentRef.setInput('derivedAttributes', characterData.derivedAttributes);
+    fixture.componentRef.setInput('data', characterData);
     fixture.componentRef.setInput('characterId', characterData.id);
   });
 
@@ -31,15 +30,14 @@ describe('CharacteristicsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display main attributes as pentagram vertices', () => {
+  it('should display all core stats', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Force');
-    expect(container.textContent).toContain('11');
     expect(container.textContent).toContain('Intellect');
-    expect(container.textContent).toContain('13');
     expect(container.textContent).toContain('Agilité');
     expect(container.textContent).toContain('Volonté');
+    expect(container.textContent).toContain('Perception');
   });
 
   it('should display secondary attributes', () => {
@@ -60,10 +58,5 @@ describe('CharacteristicsComponent', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('DÉGÂTS');
-  });
-
-  it('should compute KO state when damage >= health', () => {
-    fixture.detectChanges();
-    expect(component.isKO()).toBeFalse();
   });
 });

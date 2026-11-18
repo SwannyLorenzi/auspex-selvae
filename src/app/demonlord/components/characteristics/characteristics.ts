@@ -1,22 +1,40 @@
 import { Component, ChangeDetectionStrategy, input, computed, inject } from '@angular/core';
-import { Attribute, DerivedAttribute, CharacteristicVertex } from './characteristics-models';
+import { CharacterData } from './characteristics-models';
 import { CharacterService } from '../../services/character.service';
 
-const MAIN_NAMES = new Set(['Force', 'Intellect', 'Agilité', 'Volonté', 'Santé']);
+const CORE_STATS = ['force', 'intellect', 'agility', 'willpower', 'perception'] as const;
 
-/** Maps main vertex name to its expected derived attribute name */
-const SECONDARY_LOOKUP: Record<string, string> = {
-  Force: 'Taille/Gabarit',
-  Intellect: 'Perception',
-  Agilité: 'Vitesse',
-  Volonté: 'Folie',
-  Santé: 'Vitesse de guérison',
+/** Maps main vertex name to its secondary attribute key */
+const SECONDARY_MAP: Record<string, string> = {
+  force: 'size',
+  intellect: 'perception',
+  agility: 'speed',
+  willpower: 'madness',
+  health: 'healingRate',
 };
 
-/** Short display name for secondary attributes */
+/** Display names for secondary attributes */
 const SECONDARY_DISPLAY: Record<string, string> = {
-  'Taille/Gabarit': 'Gabarit',
-  'Vitesse de guérison': 'Guérison',
+  size: 'Gabarit',
+  healingRate: 'Guérison',
+};
+
+/** Display names for attribute keys */
+const DISPLAY_NAMES: Record<string, string> = {
+  force: 'Force',
+  intellect: 'Intellect',
+  agility: 'Agilité',
+  willpower: 'Volonté',
+  perception: 'Perception',
+  health: 'Santé',
+  speed: 'Vitesse',
+  size: 'Gabarit',
+  spellpower: 'Puissance',
+  healingRate: 'Guérison',
+  defense: 'Défense',
+  damage: 'Dégâts',
+  madness: 'Folie',
+  corruption: 'Corruption',
 };
 
 @Component({
@@ -27,49 +45,31 @@ const SECONDARY_DISPLAY: Record<string, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacteristicsComponent {
-  mainAttributes = input.required<Attribute[]>();
-  derivedAttributes = input.required<DerivedAttribute[]>();
+  data = input.required<CharacterData>();
   characterId = input.required<string>();
 
   readonly characterService = inject(CharacterService);
 
-  protected readonly vertices = computed<CharacteristicVertex[]>(() => {
-    const mainAttrs = this.mainAttributes();
-    const derivedAttrs = this.derivedAttributes();
-    const derivedMap = new Map<string, DerivedAttribute>();
-    for (const attr of derivedAttrs) {
-      derivedMap.set(attr.name, attr);
-    }
+  protected readonly vertices = computed<CharacterVertex[]>(() => {
+    const d = this.data();
+    const vertexOrder = ['force', 'intellect', 'agility', 'willpower', 'health'] as const;
+    const result: CharacterVertex[] = [];
 
-    // Build a map of main attrs by name
-    const mainMap = new Map<string, Attribute>();
-    for (const attr of mainAttrs) {
-      mainMap.set(attr.name, attr);
-    }
-
-    // Vertex order matching the pentagram geometry
-    const vertexOrder: Array<keyof typeof SECONDARY_LOOKUP> = ['Force', 'Intellect', 'Agilité', 'Volonté', 'Santé'];
-    const result: CharacteristicVertex[] = [];
-
-    for (const name of vertexOrder) {
-      const mainAttr = mainMap.get(name);
-      if (!mainAttr) continue;
-
-      const vertex: CharacteristicVertex = {
-        name: mainAttr.name,
-        value: mainAttr.value,
-        bonus: mainAttr.bonus,
+    for (const key of vertexOrder) {
+      const vertex: CharacterVertex = {
+        name: DISPLAY_NAMES[key] ?? key,
+        value: d[key],
+        bonus: this.computeBonus(d[key]),
       };
 
       // Find the secondary attribute
-      const secondaryName = SECONDARY_LOOKUP[name];
-      if (secondaryName) {
-        const secondaryAttr = derivedMap.get(secondaryName) ?? mainAttrs.find(a => a.name === secondaryName);
-        if (secondaryAttr) {
+      const secondaryKey = SECONDARY_MAP[key];
+      if (secondaryKey) {
+        const secValue = d[secondaryKey as keyof CharacterData] as number;
+        if (secValue !== undefined) {
           vertex.secondary = {
-            name: SECONDARY_DISPLAY[secondaryName] ?? secondaryName,
-            value: secondaryAttr.value,
-            bonus: (secondaryAttr as Attribute).bonus,
+            name: SECONDARY_DISPLAY[secondaryKey] ?? DISPLAY_NAMES[secondaryKey] ?? secondaryKey,
+            value: secValue,
           };
         }
       }
@@ -80,16 +80,23 @@ export class CharacteristicsComponent {
     return result;
   });
 
-  protected readonly damageValue = computed<number>(() => {
-    const derived = this.derivedAttributes();
-    const damage = derived.find(a => a.name === 'Dégâts');
-    return damage?.value ?? 0;
+  protected readonly isKO = computed<boolean>(() => {
+    const d = this.data();
+    return d.damage >= d.health;
   });
 
-  protected readonly isKO = computed<boolean>(() => {
-    const vertices = this.vertices();
-    const healthVertex = vertices.find(v => v.name === 'Santé');
-    if (!healthVertex) return false;
-    return this.damageValue() >= healthVertex.value;
-  });
+  private computeBonus(value: number): string {
+    const bonus = value - 10;
+    return bonus >= 0 ? `+${bonus}` : `${bonus}`;
+  }
+}
+
+interface CharacterVertex {
+  name: string;
+  value: number;
+  bonus?: string;
+  secondary?: {
+    name: string;
+    value: number;
+  };
 }
