@@ -163,6 +163,17 @@
     border-color: #c9b47a;
   }
 
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &:hover {
+      background: rgba(15, 15, 26, 0.85);
+      border-color: rgba(184, 168, 136, 0.35);
+    }
+  }
+
   &.add {
     border-color: rgba(100, 180, 100, 0.5);
 

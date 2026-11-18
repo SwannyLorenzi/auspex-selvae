@@ -158,8 +158,8 @@
     <span class="stat-damage-icon">☠</span>
     <span class="stat-value">{{ data().damage }}</span>
     <div class="damage-controls">
-      <button class="damage-btn add" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
-      <button class="damage-btn remove" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage - 1)" aria-label="Retirer des dégâts">−</button>
+      <button class="damage-btn add" [disabled]="data().damage >= maxDamage()" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
+      <button class="damage-btn remove" [disabled]="data().damage <= 0" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage - 1)" aria-label="Retirer des dégâts">−</button>
     </div>
   </div>
 </div>

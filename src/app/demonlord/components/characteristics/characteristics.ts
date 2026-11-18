@@ -86,6 +86,8 @@ export class CharacteristicsComponent {
     return d.damage >= d.health;
   });
 
+  protected readonly maxDamage = computed<number>(() => this.data().health);
+
   private computeBonus(value: number): string {
     const bonus = value - 10;
     return bonus >= 0 ? `+${bonus}` : `${bonus}`;
