@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject, input } from '@angular/core';
 import { CharacterData } from './characteristics-models';
 import { CharacterService } from '../../services/character.service';
 
