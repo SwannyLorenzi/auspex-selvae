@@ -88,6 +88,12 @@ export class CharacteristicsComponent {
 
   protected readonly maxDamage = computed<number>(() => this.data().health);
 
+  /** Whether damage is at maximum (buttons should be disabled) */
+  protected readonly isDamageAtMax = computed<boolean>(() => this.data().damage >= this.maxDamage());
+
+  /** Whether damage is at zero (buttons should be disabled) */
+  protected readonly isDamageAtZero = computed<boolean>(() => this.data().damage <= 0);
+
   private computeBonus(value: number): string {
     const bonus = value - 10;
     return bonus >= 0 ? `+${bonus}` : `${bonus}`;

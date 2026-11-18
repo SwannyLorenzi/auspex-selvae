@@ -1,218 +1,80 @@
 // ─── Pentagram Container ───────────────────────────────────────────
 .pentagram-container {
   position: relative;
-  width: min(90vw, 700px);
-  height: min(90vw, 700px);
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 1 / 1;
   margin: 0 auto;
+  padding: 0 0.25rem;
 }
 
-// KO state: red color for SVG labels
-.pentagram-container.ko .labels-svg text {
-  fill: #c03030 !important;
+// KO state: red color for all SVG text, strokes, and button text
+.pentagram-container.ko {
+  .stat-circle text {
+    fill: #a02020 !important;
+  }
+
+  .damage-btn-text {
+    fill: #a02020 !important;
+    opacity: 0.8;
+  }
 }
 
-// ─── SVG Pentagram Lines (z-index: 1) ──────────────────────────────
+// ─── SVG Pentagram (single unified SVG) ────────────────────────────
 .pentagram-svg {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
 }
 
-// ─── SVG Labels (z-index: 3, separate SVG for z-index to work) ─────
-.labels-svg {
+// ─── KO Overlay (center circle logo with red tint) ──────────────────
+.ko-overlay {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-}
-
-// ─── Stat Circle Base ──────────────────────────────────────────────
-.stat-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(15, 15, 26, 0.85);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.05rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  overflow: hidden;
-
-  .stat-value {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #e0d6c8;
-    line-height: 1;
-  }
-
-  .stat-bonus {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #c9b47a;
-    line-height: 1;
-  }
-
-  // KO state: all circles and text turn red
-  &.ko {
-    border-color: #a02020 !important;
-
-    .stat-value,
-    .stat-bonus {
-      color: #a02020 !important;
-    }
-  }
-}
-
-// ─── Main Vertex Circles ───────────────────────────────────────────
-.stat-circle.main {
-  border: 2px solid rgba(184, 168, 136, 0.7);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
-  .stat-value {
-    font-size: 1.6rem;
-  }
-
-  // KO state override for main circles
-  &.ko {
-    border-color: #a02020 !important;
-    box-shadow: 0 0 20px rgba(160, 32, 32, 0.3);
-
-    .stat-value,
-    .stat-bonus {
-      color: #a02020 !important;
-    }
-  }
-}
-
-// ─── Secondary Circles ─────────────────────────────────────────────
-.stat-circle.secondary {
-  border: 2px solid rgba(184, 168, 136, 0.35);
-
-  .stat-value {
-    font-size: 0.9rem;
-  }
-
-  // KO state override for secondary circles
-  &.ko {
-    border-color: #a02020 !important;
-
-    .stat-value,
-    .stat-bonus {
-      color: #a02020 !important;
-    }
-  }
-}
-
-// ─── Center Circle (Dégâts) ────────────────────────────────────────
-.stat-circle.center {
-  position: relative;
-  border: 3px solid rgba(184, 168, 136, 0.7);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-
-  // Demon head background
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('./logo.webp') no-repeat center;
-    background-size: 170%;
-    opacity: 0.18;
-    z-index: 0;
-    border-radius: 50%;
-  }
-
-  .stat-value {
-    font-size: 2rem;
-  }
-
-  // KO state: red overlay on logo
-  &.ko {
-    border-color: #a02020 !important;
-    box-shadow: 0 0 30px rgba(160, 32, 32, 0.3);
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(160, 32, 32, 0.5);
-      z-index: 1;
-      border-radius: 50%;
-    }
-
-    .stat-value,
-    .stat-bonus {
-      color: #a02020 !important;
-    }
-  }
-}
-
-// ─── Damage Controls (inside Dégâts circle, at bottom) ─────────────
-.damage-controls {
-  position: absolute;
-  bottom: 0.75rem;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  z-index: 3;
+  transform: translate(-50%, -50%);
+  width: 20%;  // r=70 out of 700 viewBox = 10% radius = 20% diameter
+  height: 20%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 170%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 10;
 }
 
+// ─── Damage Buttons (SVG <circle> + <text>) ───────────────────────
 .damage-btn {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 1px solid rgba(184, 168, 136, 0.35);
-  background: rgba(15, 15, 26, 0.85);
-  color: #e0d6c8;
-  font-size: 1.2rem;
-  font-weight: 700;
+  fill: rgba(15, 15, 26, 0.85);
+  stroke: rgba(184, 168, 136, 0.35);
+  stroke-width: 1;
+  transition: fill 0.15s ease, stroke 0.15s ease;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: rgba(30, 30, 45, 0.9);
-    border-color: #c9b47a;
-  }
-
-  &:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    pointer-events: none;
-
-    &:hover {
-      background: rgba(15, 15, 26, 0.85);
-      border-color: rgba(184, 168, 136, 0.35);
-    }
+    fill: rgba(30, 30, 45, 0.9);
+    stroke: #c9b47a;
   }
 
   &.add {
-    border-color: rgba(100, 180, 100, 0.5);
+    stroke: rgba(100, 180, 100, 0.5);
 
     &:hover {
-      border-color: rgba(100, 180, 100, 0.7);
+      stroke: rgba(100, 180, 100, 0.7);
     }
   }
 
   &.remove {
-    border-color: rgba(200, 80, 80, 0.5);
+    stroke: rgba(200, 80, 80, 0.5);
 
     &:hover {
-      border-color: rgba(200, 80, 80, 0.7);
+      stroke: rgba(200, 80, 80, 0.7);
     }
   }
+}
 
-  // In KO state: fixed opacity for both buttons so red shows through
-  .stat-circle.ko & {
-    opacity: 0.8;
-  }
+.damage-btn-text {
+  fill: #e0d6c8;
+  font-weight: 700;
+  pointer-events: none;
 }
