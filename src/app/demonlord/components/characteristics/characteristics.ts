@@ -70,6 +70,7 @@ export class CharacteristicsComponent {
           vertex.secondary = {
             name: SECONDARY_DISPLAY[secondaryKey] ?? DISPLAY_NAMES[secondaryKey] ?? secondaryKey,
             value: secValue,
+            bonus: this.computeBonus(secValue),
           };
         }
       }
@@ -98,5 +99,6 @@ interface CharacterVertex {
   secondary?: {
     name: string;
     value: number;
+    bonus?: string;
   };
 }

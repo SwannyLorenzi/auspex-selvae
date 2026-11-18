@@ -119,6 +119,9 @@
   <!-- Perception (above Intellect) -->
   <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 478px; top: 50px; width: 3.125rem; height: 3.125rem;">
     <span class="stat-value">{{ vertices()[1].secondary?.value ?? 0 }}</span>
+    @if (vertices()[1].secondary?.bonus) {
+      <span class="stat-bonus">{{ vertices()[1].secondary?.bonus }}</span>
+    }
   </div>
 
   <!-- Vitesse (above Agilité) -->
