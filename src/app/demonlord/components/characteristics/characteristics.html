@@ -149,18 +149,18 @@
       <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="350" y="345" text-anchor="middle" dominant-baseline="central" font-size="28" font-weight="700">{{ data().damage }}</text>
       <!-- Damage buttons -->
       <g class="damage-controls">
-        <circle class="damage-btn add" cx="310" cy="380" r="14"
+        <circle class="damage-btn add" cx="330" cy="395" r="14"
                 [style.pointer-events]="isDamageAtMax() ? 'none' : 'auto'"
                 [style.opacity]="isDamageAtMax() ? 0.35 : 1"
                 (click)="!isDamageAtMax() && characterService.updateAttribute(characterId(), 'damage', data().damage + 1)"
                 aria-label="Ajouter des dégâts" />
-        <text class="damage-btn-text add" x="310" y="380" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">+</text>
-        <circle class="damage-btn remove" cx="390" cy="380" r="14"
+        <text class="damage-btn-text add" x="330" y="395" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">+</text>
+        <circle class="damage-btn remove" cx="370" cy="395" r="14"
                 [style.pointer-events]="isDamageAtZero() ? 'none' : 'auto'"
                 [style.opacity]="isDamageAtZero() ? 0.35 : 1"
                 (click)="!isDamageAtZero() && characterService.updateAttribute(characterId(), 'damage', data().damage - 1)"
                 aria-label="Retirer des dégâts" />
-        <text class="damage-btn-text remove" x="390" y="380" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">−</text>
+        <text class="damage-btn-text remove" x="370" y="395" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" pointer-events="none">−</text>
       </g>
     </g>
 
