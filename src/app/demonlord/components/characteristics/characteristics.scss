@@ -6,6 +6,11 @@
   margin: 0 auto;
 }
 
+// KO state: red color for SVG labels
+.pentagram-container.ko .labels-svg text {
+  fill: #c03030 !important;
+}
+
 // ─── SVG Pentagram Lines (z-index: 1) ──────────────────────────────
 .pentagram-svg {
   position: absolute;
@@ -107,26 +112,42 @@
 
 // ─── Center Circle (Dégâts) ────────────────────────────────────────
 .stat-circle.center {
+  position: relative;
   border: 3px solid rgba(184, 168, 136, 0.7);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 
+  // Demon head background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('./logo.webp') no-repeat center;
+    background-size: 170%;
+    opacity: 0.18;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
   .stat-value {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
-  .stat-damage-icon {
-    font-size: 1rem;
-    opacity: 0.7;
-  }
-
-  // KO state override for center circle
+  // KO state: red overlay on logo
   &.ko {
     border-color: #a02020 !important;
     box-shadow: 0 0 30px rgba(160, 32, 32, 0.3);
 
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(160, 32, 32, 0.5);
+      z-index: 1;
+      border-radius: 50%;
+    }
+
     .stat-value,
-    .stat-bonus,
-    .stat-damage-icon {
+    .stat-bonus {
       color: #a02020 !important;
     }
   }
@@ -188,5 +209,10 @@
     &:hover {
       border-color: rgba(200, 80, 80, 0.7);
     }
+  }
+
+  // In KO state: fixed opacity for both buttons so red shows through
+  .stat-circle.ko & {
+    opacity: 0.8;
   }
 }

@@ -1,4 +1,4 @@
-<div class="pentagram-container">
+<div class="pentagram-container" [class.ko]="isKO()">
   <!-- SVG 1: Pentagram lines + decorative circles (z-index: 1) -->
   <svg class="pentagram-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -155,7 +155,6 @@
 
   <!-- Dégâts (CENTER, inscribed circle of pentagram) -->
   <div class="stat-circle center" [class.ko]="isKO()" style="left: 275px; top: 275px; width: 9.375rem; height: 9.375rem;">
-    <span class="stat-damage-icon">☠</span>
     <span class="stat-value">{{ data().damage }}</span>
     <div class="damage-controls">
       <button class="damage-btn add" [disabled]="data().damage >= maxDamage()" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
