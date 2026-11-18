@@ -91,7 +91,17 @@
       inset: 0;
       width: 100%;
       height: 100%;
+      z-index: 1;
+    }
+
+    /* ─── SVG Labels (separate SVG for z-index to work) ─── */
+    .labels-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       z-index: 3;
+      pointer-events: none;
     }
 
     /* ─── Character Stat Circle (KO: all red) ─── */
@@ -370,9 +380,12 @@
         stroke="rgba(160,32,32,0.7)"
         stroke-width="2"
       />
+    </svg>
 
+    <!-- SVG Labels (z-index: 3, separate SVG so z-index works) -->
+    <svg class="labels-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
       <!-- ═══ All labels on curved paths ═══ -->
-      <g font-size="11" font-weight="700" fill="#e0d6c8" letter-spacing="0.05em">
+      <g font-size="11" font-weight="700" fill="#a02020" letter-spacing="0.05em">
         <!-- Main vertex labels -->
         <text><textPath href="#arc-force" startOffset="50%" text-anchor="middle">FORCE</textPath></text>
         <text><textPath href="#arc-intellect" startOffset="50%" text-anchor="middle">INTELLECT</textPath></text>
@@ -389,7 +402,7 @@
         <text font-size="9"><textPath href="#arc-defense" startOffset="50%" text-anchor="middle">DÉFENSE</textPath></text>
         <text font-size="9"><textPath href="#arc-corruption" startOffset="50%" text-anchor="middle">CORRUPTION</textPath></text>
         <!-- Dégâts label (larger circle) -->
-        <text font-size="13"><textPath href="#arc-degats" startOffset="50%" text-anchor="middle">DÉGÂTS</textPath></text>
+        <text font-size="16"><textPath href="#arc-degats" startOffset="50%" text-anchor="middle">DÉGÂTS</textPath></text>
       </g>
     </svg>
 
