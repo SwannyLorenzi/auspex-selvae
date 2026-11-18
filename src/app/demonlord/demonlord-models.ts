@@ -1,8 +1,4 @@
-import {
-  Attribute,
-  DerivedAttribute,
-} from './components/characteristics/characteristics-models';
-import { DefenseData } from './components/characteristics/defense/defense-models';
+import { CharacterData } from './components/characteristics/characteristics-models';
 import { Equipment } from './components/equipment/equipment-models';
 import { MoneyData } from './components/money/money-models';
 import { Magic } from './components/magic/magic-models';
@@ -17,8 +13,7 @@ export interface Character {
   description: string;
   progression: Progression;
   professions: Profession[];
-  mainAttributes: Attribute[];
-  derivedAttributes: DerivedAttribute[];
+  attributes: CharacterData;
   immunities: string[];
   talents: string[];
   activeAfflictions: string[];
@@ -26,5 +21,5 @@ export interface Character {
   potions: Potion[];
   equipment: Equipment[];
   money: MoneyData;
-  defense?: DefenseData;
+  defense?: number;
 }

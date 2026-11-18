@@ -1,48 +1,106 @@
-import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
-import { Attribute, DerivedAttribute } from './characteristics-models';
-import { AttributeCardComponent } from './attribute-card/attribute-card';
-import { DerivedAttributesComponent } from './derived-attributes/derived-attributes';
-import { HealthComponent } from './health/health';
-import { DefenseComponent } from './defense/defense';
-import { DefenseData } from './defense/defense-models';
+import { Component, ChangeDetectionStrategy, input, computed, inject } from '@angular/core';
+import { CharacterData } from './characteristics-models';
+import { CharacterService } from '../../services/character.service';
 
-const HEALTH_ATTRIBUTE_NAMES = new Set([
-  'Santé',
-  'Dégâts',
-  'Vitesse de guérison',
-]);
+const CORE_STATS = ['force', 'intellect', 'agility', 'willpower', 'perception'] as const;
+
+/** Maps main vertex name to its secondary attribute key */
+const SECONDARY_MAP: Record<string, string> = {
+  force: 'size',
+  intellect: 'perception',
+  agility: 'speed',
+  willpower: 'madness',
+  health: 'healingRate',
+};
+
+/** Display names for secondary attributes */
+const SECONDARY_DISPLAY: Record<string, string> = {
+  size: 'Gabarit',
+  healingRate: 'Guérison',
+};
+
+/** Display names for attribute keys */
+const DISPLAY_NAMES: Record<string, string> = {
+  force: 'Force',
+  intellect: 'Intellect',
+  agility: 'Agilité',
+  willpower: 'Volonté',
+  perception: 'Perception',
+  health: 'Santé',
+  speed: 'Vitesse',
+  size: 'Gabarit',
+  spellpower: 'Puissance',
+  healingRate: 'Guérison',
+  defense: 'Défense',
+  damage: 'Dégâts',
+  madness: 'Folie',
+  corruption: 'Corruption',
+};
 
 @Component({
   selector: 'app-characteristics',
-  imports: [AttributeCardComponent, DerivedAttributesComponent, HealthComponent, DefenseComponent],
+  imports: [],
   templateUrl: './characteristics.html',
   styleUrl: './characteristics.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacteristicsComponent {
-  mainAttributes = input.required<Attribute[]>();
-  derivedAttributes = input.required<DerivedAttribute[]>();
+  data = input.required<CharacterData>();
   characterId = input.required<string>();
-  defense = input<DefenseData | null>(null);
 
-  protected readonly healthData = computed(() => {
-    const attrs = this.derivedAttributes();
-    const healthAttr = attrs.find((a) => a.name === 'Santé');
-    const damageAttr = attrs.find((a) => a.name === 'Dégâts');
-    const healRateAttr = attrs.find((a) => a.name === 'Vitesse de guérison');
+  readonly characterService = inject(CharacterService);
 
-    if (!healthAttr || !damageAttr || !healRateAttr) return null;
+  protected readonly vertices = computed<CharacterVertex[]>(() => {
+    const d = this.data();
+    const vertexOrder = ['force', 'intellect', 'agility', 'willpower', 'health'] as const;
+    const result: CharacterVertex[] = [];
 
-    return {
-      maxHealth: healthAttr.value,
-      currentDamage: damageAttr.value,
-      healRate: healRateAttr.value,
-    };
+    for (const key of vertexOrder) {
+      const vertex: CharacterVertex = {
+        name: DISPLAY_NAMES[key] ?? key,
+        value: d[key],
+        bonus: this.computeBonus(d[key]),
+      };
+
+      // Find the secondary attribute
+      const secondaryKey = SECONDARY_MAP[key];
+      if (secondaryKey) {
+        const secValue = d[secondaryKey as keyof CharacterData] as number;
+        if (secValue !== undefined) {
+          vertex.secondary = {
+            name: SECONDARY_DISPLAY[secondaryKey] ?? DISPLAY_NAMES[secondaryKey] ?? secondaryKey,
+            value: secValue,
+            bonus: this.computeBonus(secValue),
+          };
+        }
+      }
+
+      result.push(vertex);
+    }
+
+    return result;
   });
 
-  protected readonly nonHealthDerivedAttributes = computed(() =>
-    this.derivedAttributes().filter(
-      (attr) => !HEALTH_ATTRIBUTE_NAMES.has(attr.name)
-    )
-  );
+  protected readonly isKO = computed<boolean>(() => {
+    const d = this.data();
+    return d.damage >= d.health;
+  });
+
+  protected readonly maxDamage = computed<number>(() => this.data().health);
+
+  private computeBonus(value: number): string {
+    const bonus = value - 10;
+    return bonus >= 0 ? `+${bonus}` : `${bonus}`;
+  }
+}
+
+interface CharacterVertex {
+  name: string;
+  value: number;
+  bonus?: string;
+  secondary?: {
+    name: string;
+    value: number;
+    bonus?: string;
+  };
 }

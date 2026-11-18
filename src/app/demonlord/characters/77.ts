@@ -22,21 +22,11 @@ export const characterData: Character = {
     master: '-',
   },
   professions: [{ name: 'Sciences (académique)' }, { name: 'Alchimiste' }],
-  mainAttributes: [
-    { name: 'Force', value: 11, bonus: '+1', bonusText: '+1 avantage' },
-    { name: 'Intellect', value: 13, bonus: '+3', bonusText: '' },
-    { name: 'Perception', value: 15, bonus: '+5', bonusText: '' },
-    { name: 'Volonté', value: 9, bonus: '-1', bonusText: '' },
-    { name: 'Agilité', value: 8, bonus: '-2', bonusText: '+1 avantage' },
-  ],
-  derivedAttributes: [
-    { name: 'Vitesse', value: 8, formula: '' },
-    { name: 'Taille/Gabarit', value: 1, formula: '' },
-    { name: 'Puissance', value: 3, formula: '' },
-    { name: 'Santé', value: 23, formula: '(= Force + bonus de niveaux)' },
-    { name: 'Vitesse de guérison', value: 5, formula: '(= Santé/4)' },
-    { name: 'Dégâts', value: 0, formula: '' },
-  ],
+  attributes: {
+    force: 11, intellect: 13, agility: 8, willpower: 9, perception: 15,
+    health: 23, speed: 8, size: 1, spellpower: 3, healingRate: 5, defense: 14,
+    damage: 0, madness: 0, corruption: 0,
+  },
   immunities: [
     'maladies',
     'poison',
@@ -320,7 +310,7 @@ par l’illusion et subit 4d6 dégâts.</p>
     { name: 'Potion Anti toxine', cost: '5ca', effect: '' },
   ],
   money: { totalShards: 28034 },
-  defense: { base: 14, withArmor: 14, withArmorAndShield: 16 },
+  defense: 14,
   equipment: [
     {
       name: 'Amplificateur de force',

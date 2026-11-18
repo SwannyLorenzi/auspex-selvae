@@ -1,31 +1,164 @@
-<h2>Caractéristiques</h2>
+<div class="pentagram-container" [class.ko]="isKO()">
+  <!-- SVG 1: Pentagram lines + decorative circles (z-index: 1) -->
+  <svg class="pentagram-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Main vertex circles (R=40, arcR=35) -->
+      <path id="arc-force" d="M 162 140 A 35 35 0 0 1 232 140" />
+      <path id="arc-intellect" d="M 468 140 A 35 35 0 0 1 538 140" />
+      <path id="arc-agilite" d="M 68 430 A 35 35 0 0 1 138 430" />
+      <path id="arc-volonte" d="M 562 430 A 35 35 0 0 1 632 430" />
+      <path id="arc-sante" d="M 315 610 A 35 35 0 0 1 385 610" />
+      <!-- Secondary circles (R=25, arcR=20) -->
+      <path id="arc-gabarit" d="M 177 75 A 20 20 0 0 1 217 75" />
+      <path id="arc-perception" d="M 483 75 A 20 20 0 0 1 523 75" />
+      <path id="arc-vitesse" d="M 83 365 A 20 20 0 0 1 123 365" />
+      <path id="arc-folie" d="M 577 365 A 20 20 0 0 1 617 365" />
+      <path id="arc-soin" d="M 330 545 A 20 20 0 0 1 370 545" />
+      <!-- Special circles -->
+      <path id="arc-defense" d="M 150 555 A 20 20 0 0 1 190 555" />
+      <path id="arc-corruption" d="M 510 555 A 20 20 0 0 1 550 555" />
+      <path id="arc-degats" d="M 280 350 A 70 70 0 0 1 420 350" />
+    </defs>
 
-<div class="characteristics-content">
-  <div>
-    <h3>Principales</h3>
-    <div class="attributes-grid">
-      @for (attribute of mainAttributes(); track attribute.name) {
-        <app-attribute-card [attribute]="attribute" />
-      }
-    </div>
+    <!-- Outer decorative circle: r=300 (touches main vertex circles) -->
+    <circle cx="350" cy="350" r="300" fill="none" stroke="rgba(160,32,32,0.25)" stroke-width="2"/>
+
+    <!-- Inner decorative circle: r=220 (inside pentagram) -->
+    <circle cx="350" cy="350" r="220" fill="none" stroke="rgba(160,32,32,0.4)" stroke-width="3"/>
+
+    <!-- Pentagon outline (connecting all 5 vertices) -->
+    <polygon
+      points="197,140 503,140 597,430 350,610 103,430"
+      fill="rgba(160,32,32,0.04)"
+      stroke="none"
+    />
+
+    <!-- Inverted pentagram star -->
+    <!-- Intellect(503,140) → Santé(350,610) → Force(197,140) → Volonté(597,430) → Agilité(103,430) → Intellect -->
+    <polyline
+      points="503,140 350,610 197,140 597,430 103,430 503,140"
+      fill="none"
+      stroke="rgba(160,32,32,0.6)"
+      stroke-width="2"
+    />
+  </svg>
+
+  <!-- SVG 2: Labels on curved paths (z-index: 3, separate SVG for z-index to work) -->
+  <svg class="labels-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+    <g font-size="11" font-weight="700" fill="#e0d6c8" letter-spacing="0.05em">
+      <!-- Main vertex labels -->
+      <text><textPath href="#arc-force" startOffset="50%" text-anchor="middle">FORCE</textPath></text>
+      <text><textPath href="#arc-intellect" startOffset="50%" text-anchor="middle">INTELLECT</textPath></text>
+      <text><textPath href="#arc-agilite" startOffset="50%" text-anchor="middle">AGILITÉ</textPath></text>
+      <text><textPath href="#arc-volonte" startOffset="50%" text-anchor="middle">VOLONTÉ</textPath></text>
+      <text><textPath href="#arc-sante" startOffset="50%" text-anchor="middle">SANTÉ</textPath></text>
+      <!-- Secondary labels -->
+      <text font-size="9"><textPath href="#arc-gabarit" startOffset="50%" text-anchor="middle">GABARIT</textPath></text>
+      <text font-size="9"><textPath href="#arc-perception" startOffset="50%" text-anchor="middle">PERCEPTION</textPath></text>
+      <text font-size="9"><textPath href="#arc-vitesse" startOffset="50%" text-anchor="middle">VITESSE</textPath></text>
+      <text font-size="9"><textPath href="#arc-folie" startOffset="50%" text-anchor="middle">FOLIE</textPath></text>
+      <text font-size="9"><textPath href="#arc-soin" startOffset="50%" text-anchor="middle">GUÉRISON</textPath></text>
+      <!-- Special labels -->
+      <text font-size="9"><textPath href="#arc-defense" startOffset="50%" text-anchor="middle">DÉFENSE</textPath></text>
+      <text font-size="9"><textPath href="#arc-corruption" startOffset="50%" text-anchor="middle">CORRUPTION</textPath></text>
+      <!-- Dégâts label (larger circle) -->
+      <text font-size="16"><textPath href="#arc-degats" startOffset="50%" text-anchor="middle">DÉGÂTS</textPath></text>
+    </g>
+  </svg>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MAIN VERTEX CIRCLES (z-index: 2) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Force (top-left, 324°) -->
+  <div class="stat-circle main" [class.ko]="isKO()" style="left: 157px; top: 100px; width: 5rem; height: 5rem;">
+    <span class="stat-value">{{ vertices()[0].value }}</span>
+    @if (vertices()[0].bonus) {
+      <span class="stat-bonus">{{ vertices()[0].bonus }}</span>
+    }
   </div>
 
-  <div>
-    <h3>Dérivées</h3>
-    <app-derived-attributes [attributes]="nonHealthDerivedAttributes()" />
+  <!-- Intellect (top-right, 36°) -->
+  <div class="stat-circle main" [class.ko]="isKO()" style="left: 463px; top: 100px; width: 5rem; height: 5rem;">
+    <span class="stat-value">{{ vertices()[1].value }}</span>
+    @if (vertices()[1].bonus) {
+      <span class="stat-bonus">{{ vertices()[1].bonus }}</span>
+    }
   </div>
 
-  @if (healthData()) {
-    <div class="health-section-wrapper">
-      <app-health
-        [health]="healthData()!"
-        [characterId]="characterId()" />
-    </div>
-  }
+  <!-- Agilité (middle-left, 252°) -->
+  <div class="stat-circle main" [class.ko]="isKO()" style="left: 63px; top: 390px; width: 5rem; height: 5rem;">
+    <span class="stat-value">{{ vertices()[2].value }}</span>
+    @if (vertices()[2].bonus) {
+      <span class="stat-bonus">{{ vertices()[2].bonus }}</span>
+    }
+  </div>
 
-  @if (defense()) {
-    <div class="defense-section-wrapper">
-      <app-defense [defense]="defense()!" />
+  <!-- Volonté (middle-right, 108°) -->
+  <div class="stat-circle main" [class.ko]="isKO()" style="left: 557px; top: 390px; width: 5rem; height: 5rem;">
+    <span class="stat-value">{{ vertices()[3].value }}</span>
+    @if (vertices()[3].bonus) {
+      <span class="stat-bonus">{{ vertices()[3].bonus }}</span>
+    }
+  </div>
+
+  <!-- Santé (bottom, 180°) -->
+  <div class="stat-circle main" [class.ko]="isKO()" style="left: 310px; top: 570px; width: 5rem; height: 5rem;">
+    <span class="stat-value">{{ vertices()[4].value }}</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECONDARY CIRCLES: tangent above each main circle -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Gabarit (above Force) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 172px; top: 50px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ vertices()[0].secondary?.value ?? 0 }}</span>
+  </div>
+
+  <!-- Perception (above Intellect) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 478px; top: 50px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ vertices()[1].secondary?.value ?? 0 }}</span>
+    @if (vertices()[1].secondary?.bonus) {
+      <span class="stat-bonus">{{ vertices()[1].secondary?.bonus }}</span>
+    }
+  </div>
+
+  <!-- Vitesse (above Agilité) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 78px; top: 340px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ vertices()[2].secondary?.value ?? 0 }}</span>
+  </div>
+
+  <!-- Folie (above Volonté) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 572px; top: 340px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ vertices()[3].secondary?.value ?? 0 }}</span>
+  </div>
+
+  <!-- Guérison (above Santé) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 325px; top: 520px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ vertices()[4].secondary?.value ?? 0 }}</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SPECIAL POSITION CIRCLES -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Défense (between Agilité & Santé) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 145px; top: 530px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ data().defense }}</span>
+  </div>
+
+  <!-- Corruption (between Santé & Volonté) -->
+  <div class="stat-circle secondary" [class.ko]="isKO()" style="left: 505px; top: 530px; width: 3.125rem; height: 3.125rem;">
+    <span class="stat-value">{{ data().corruption }}</span>
+  </div>
+
+  <!-- Dégâts (CENTER, inscribed circle of pentagram) -->
+  <div class="stat-circle center" [class.ko]="isKO()" style="left: 275px; top: 275px; width: 9.375rem; height: 9.375rem;">
+    <span class="stat-value">{{ data().damage }}</span>
+    <div class="damage-controls">
+      <button class="damage-btn add" [disabled]="data().damage >= maxDamage()" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage + 1)" aria-label="Ajouter des dégâts">+</button>
+      <button class="damage-btn remove" [disabled]="data().damage <= 0" (click)="characterService.updateAttribute(characterId(), 'damage', data().damage - 1)" aria-label="Retirer des dégâts">−</button>
     </div>
-  }
+  </div>
 </div>

@@ -29,10 +29,8 @@
   </div>
   <section>
     <app-characteristics
-      [mainAttributes]="character()!.mainAttributes"
-      [derivedAttributes]="character()!.derivedAttributes"
-      [characterId]="character()!.id"
-      [defense]="character()!.defense ?? null" />
+      [data]="character()!.attributes"
+      [characterId]="character()!.id" />
   </section>
   <section>
     <app-afflictions

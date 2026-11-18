@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pentagramme KO — Spécification Demonlord</title>
+  <style>
+    :root {
+      --bg-dark: #0e0e1a;
+      --bg-card: rgba(15, 15, 26, 0.85);
+      --red-dark: #6b1a1a;
+      --red-bright: #a02020;
+      --red-glow: rgba(160, 32, 32, 0.3);
+      --gray-gold: #b8a888;
+      --gray-gold-dim: rgba(184, 168, 136, 0.35);
+      --gray-gold-bright: rgba(184, 168, 136, 0.7);
+      --text-primary: #e0d6c8;
+      --text-secondary: #a89880;
+      --text-accent: #c9b47a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family:
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      color: var(--red-bright);
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: var(--red-dark);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .status-badge {
+      background: rgba(160, 32, 32, 0.2);
+      border: 2px solid var(--red-bright);
+      color: var(--red-bright);
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px var(--red-glow); }
+      50% { box-shadow: 0 0 30px var(--red-glow); }
+    }
+
+    /* ─── Pentagram Container ─── */
+    .pentagram-container {
+      position: relative;
+      width: min(90vw, 700px);
+      height: min(90vw, 700px);
+      margin: 0 auto;
+    }
+
+    /* ─── SVG Pentagram ─── */
+    .pentagram-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* ─── SVG Labels (separate SVG for z-index to work) ─── */
+    .labels-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* ─── Character Stat Circle (KO: all red) ─── */
+    .stat-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.05rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .stat-circle .stat-name {
+      font-size: 0.6rem;
+      color: var(--red-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .stat-circle .stat-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--red-bright);
+      line-height: 1;
+    }
+
+    .stat-circle .stat-bonus {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--red-bright);
+      line-height: 1;
+    }
+
+    /* Main vertex circles: gold border, red glow in KO */
+    .stat-circle.main {
+      border: 2px solid var(--red-bright);
+      box-shadow: 0 0 25px var(--red-glow);
+    }
+
+    .stat-circle.main .stat-name {
+      font-size: 0.7rem;
+      color: var(--red-dark);
+    }
+
+    .stat-circle.main .stat-value {
+      font-size: 1.6rem;
+      color: var(--red-bright);
+    }
+
+    /* Secondary circles: red border in KO */
+    .stat-circle.secondary {
+      border: 2px solid var(--red-bright);
+    }
+
+    .stat-circle.secondary .stat-name {
+      font-size: 0.5rem;
+      color: var(--red-dark);
+    }
+
+    .stat-circle.secondary .stat-value {
+      font-size: 0.9rem;
+      color: var(--red-bright);
+    }
+
+    /* Center circle (Dégâts): red border, red glow in KO */
+    .stat-circle.center {
+      border: 3px solid var(--red-bright);
+      box-shadow: 0 0 35px var(--red-glow);
+    }
+
+    .stat-circle.center .stat-name {
+      font-size: 0.65rem;
+      color: var(--red-dark);
+    }
+
+    .stat-circle.center .stat-value {
+      font-size: 1.8rem;
+      color: var(--red-bright);
+    }
+
+    .stat-circle.center .stat-damage-icon {
+      font-size: 1rem;
+      opacity: 0.7;
+      color: var(--red-bright);
+    }
+
+    /* ─── Damage Controls (inside Dégâts circle, at bottom) ─── */
+    .damage-controls {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 3;
+    }
+
+    .damage-btn {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      border: 1px solid var(--red-dark);
+      background: rgba(160, 32, 32, 0.15);
+      color: var(--red-bright);
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .damage-btn:hover {
+      background: rgba(160, 32, 32, 0.3);
+      border-color: var(--red-bright);
+    }
+
+    /* ─── Legend / Info ─── */
+    .legend {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid var(--red-dark);
+      border-radius: 0.5rem;
+      background: rgba(160, 32, 32, 0.08);
+      max-width: min(90vw, 700px);
+      width: 100%;
+    }
+
+    .legend h2 {
+      color: var(--red-bright);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .legend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .legend-item .legend-label {
+      font-size: 0.75rem;
+      color: var(--red-dark);
+      text-transform: uppercase;
+    }
+
+    .legend-item .legend-value {
+      font-size: 1rem;
+      color: var(--red-bright);
+    }
+
+    .legend-item .legend-bonus {
+      font-size: 0.85rem;
+      color: var(--red-bright);
+    }
+
+    /* ─── Notes section ─── */
+    .notes {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border: 1px dashed var(--red-dark);
+      border-radius: 0.5rem;
+      background: rgba(160, 32, 32, 0.05);
+      max-width: min(90vw, 700px);
+      width: 100%;
+    }
+
+    .notes h2 {
+      color: var(--red-bright);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .notes ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .notes li {
+      color: var(--red-dark);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .notes li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--red-bright);
+      font-size: 0.5rem;
+      top: 0.3rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .pentagram-container {
+        width: 95vw;
+        height: 95vw;
+      }
+
+      .stat-circle.main .stat-value {
+        font-size: 1.1rem;
+      }
+
+      .stat-circle.secondary .stat-value {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Caractéristiques</h1>
+  <p class="subtitle">Pentagramme du personnage — État KO</p>
+
+  <div class="status-badge">⚠ Hors Combat ⚠</div>
+
+  <div class="pentagram-container">
+    <!-- SVG Pentagram Lines & Decorative Circles -->
+    <svg class="pentagram-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- ═══ Main vertex circles (R=40, arcR=35) ═══ -->
+        <path id="arc-force" d="M 162 140 A 35 35 0 0 1 232 140" />
+        <path id="arc-intellect" d="M 468 140 A 35 35 0 0 1 538 140" />
+        <path id="arc-agilite" d="M 68 430 A 35 35 0 0 1 138 430" />
+        <path id="arc-volonte" d="M 562 430 A 35 35 0 0 1 632 430" />
+        <path id="arc-sante" d="M 315 610 A 35 35 0 0 1 385 610" />
+        <!-- ═══ Secondary circles (R=25, arcR=20) ═══ -->
+        <path id="arc-gabarit" d="M 177 75 A 20 20 0 0 1 217 75" />
+        <path id="arc-perception" d="M 483 75 A 20 20 0 0 1 523 75" />
+        <path id="arc-vitesse" d="M 83 365 A 20 20 0 0 1 123 365" />
+        <path id="arc-folie" d="M 577 365 A 20 20 0 0 1 617 365" />
+        <path id="arc-soin" d="M 330 545 A 20 20 0 0 1 370 545" />
+        <!-- ═══ Special circles ═══ -->
+        <path id="arc-defense" d="M 150 555 A 20 20 0 0 1 190 555" />
+        <path id="arc-corruption" d="M 510 555 A 20 20 0 0 1 550 555" />
+        <path id="arc-degats" d="M 280 350 A 70 70 0 0 1 420 350" />
+      </defs>
+
+      <!-- Outer decorative circle: r=300 (touches main vertex circles) -->
+      <circle cx="350" cy="350" r="300" fill="none" stroke="rgba(160,32,32,0.35)" stroke-width="2"/>
+
+      <!-- Inner decorative circle: r=220 (inside pentagram) -->
+      <circle cx="350" cy="350" r="220" fill="none" stroke="rgba(160,32,32,0.5)" stroke-width="3"/>
+
+      <!-- Pentagon outline (connecting all 5 vertices) -->
+      <polygon
+        points="197,140 503,140 597,430 350,610 103,430"
+        fill="rgba(160,32,32,0.08)"
+        stroke="none"
+      />
+
+      <!-- Inverted pentagram star (connecting every other vertex) -->
+      <!-- Intellect(503,140) → Santé(350,610) → Force(197,140) → Volonté(597,430) → Agilité(103,430) → Intellect -->
+      <polyline
+        points="503,140 350,610 197,140 597,430 103,430 503,140"
+        fill="none"
+        stroke="rgba(160,32,32,0.7)"
+        stroke-width="2"
+      />
+    </svg>
+
+    <!-- SVG Labels (z-index: 3, separate SVG so z-index works) -->
+    <svg class="labels-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+      <!-- ═══ All labels on curved paths ═══ -->
+      <g font-size="11" font-weight="700" fill="#a02020" letter-spacing="0.05em">
+        <!-- Main vertex labels -->
+        <text><textPath href="#arc-force" startOffset="50%" text-anchor="middle">FORCE</textPath></text>
+        <text><textPath href="#arc-intellect" startOffset="50%" text-anchor="middle">INTELLECT</textPath></text>
+        <text><textPath href="#arc-agilite" startOffset="50%" text-anchor="middle">AGILITÉ</textPath></text>
+        <text><textPath href="#arc-volonte" startOffset="50%" text-anchor="middle">VOLONTÉ</textPath></text>
+        <text><textPath href="#arc-sante" startOffset="50%" text-anchor="middle">SANTÉ</textPath></text>
+        <!-- Secondary labels -->
+        <text font-size="9"><textPath href="#arc-gabarit" startOffset="50%" text-anchor="middle">GABARIT</textPath></text>
+        <text font-size="9"><textPath href="#arc-perception" startOffset="50%" text-anchor="middle">PERCEPTION</textPath></text>
+        <text font-size="9"><textPath href="#arc-vitesse" startOffset="50%" text-anchor="middle">VITESSE</textPath></text>
+        <text font-size="9"><textPath href="#arc-folie" startOffset="50%" text-anchor="middle">FOLIE</textPath></text>
+        <text font-size="9"><textPath href="#arc-soin" startOffset="50%" text-anchor="middle">GUÉRISON</textPath></text>
+        <!-- Special labels -->
+        <text font-size="9"><textPath href="#arc-defense" startOffset="50%" text-anchor="middle">DÉFENSE</textPath></text>
+        <text font-size="9"><textPath href="#arc-corruption" startOffset="50%" text-anchor="middle">CORRUPTION</textPath></text>
+        <!-- Dégâts label (larger circle) -->
+        <text font-size="16"><textPath href="#arc-degats" startOffset="50%" text-anchor="middle">DÉGÂTS</textPath></text>
+      </g>
+    </svg>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- MAIN VERTEX CIRCLES (on inner circle, r=260) -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <!-- Force (top-left, 324°) -->
+    <div class="stat-circle main" style="left: 157px; top: 100px; width: 80px; height: 80px;">
+      <span class="stat-value">12</span>
+      <span class="stat-bonus">+2</span>
+    </div>
+
+    <!-- Intellect (top-right, 36°) -->
+    <div class="stat-circle main" style="left: 463px; top: 100px; width: 80px; height: 80px;">
+      <span class="stat-value">11</span>
+      <span class="stat-bonus">+1</span>
+    </div>
+
+    <!-- Agilité (middle-left, 252°) -->
+    <div class="stat-circle main" style="left: 63px; top: 390px; width: 80px; height: 80px;">
+      <span class="stat-value">13</span>
+      <span class="stat-bonus">+3</span>
+    </div>
+
+    <!-- Volonté (middle-right, 108°) -->
+    <div class="stat-circle main" style="left: 557px; top: 390px; width: 80px; height: 80px;">
+      <span class="stat-value">11</span>
+      <span class="stat-bonus">+1</span>
+    </div>
+
+    <!-- Santé (bottom, 180°) -->
+    <div class="stat-circle main" style="left: 310px; top: 570px; width: 80px; height: 80px;">
+      <span class="stat-value">15</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECONDARY CIRCLES: tangent above each main circle -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <!-- Gabarit (above Force: 197,140 → 197, 140-40-25 = 197,75) -->
+    <div class="stat-circle secondary" style="left: 172px; top: 50px; width: 50px; height: 50px;">
+      <span class="stat-value">1</span>
+    </div>
+
+    <!-- Perception (above Intellect: 503,140 → 503, 140-40-25 = 503,75) -->
+    <div class="stat-circle secondary" style="left: 478px; top: 50px; width: 50px; height: 50px;">
+      <span class="stat-value">11</span>
+      <span class="stat-bonus">+1</span>
+    </div>
+
+    <!-- Vitesse (above Agilité: 103,430 → 103, 430-40-25 = 103,365) -->
+    <div class="stat-circle secondary" style="left: 78px; top: 340px; width: 50px; height: 50px;">
+      <span class="stat-value">12</span>
+    </div>
+
+    <!-- Folie (above Volonté: 597,430 → 597, 430-40-25 = 597,365) -->
+    <div class="stat-circle secondary" style="left: 572px; top: 340px; width: 50px; height: 50px;">
+      <span class="stat-value">6</span>
+    </div>
+
+    <!-- SdG (above Santé: 350,610 → 350, 610-40-25 = 350,545) -->
+    <div class="stat-circle secondary" style="left: 325px; top: 520px; width: 50px; height: 50px;">
+      <span class="stat-value">0</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SPECIAL POSITION CIRCLES (between vertices) -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <!-- Défense (between Agilité & Santé, midpoint offset toward center) -->
+    <div class="stat-circle secondary" style="left: 145px; top: 530px; width: 50px; height: 50px;">
+      <span class="stat-value">13</span>
+    </div>
+
+    <!-- Corruption (between Santé & Volonté, midpoint offset toward center) -->
+    <div class="stat-circle secondary" style="left: 505px; top: 530px; width: 50px; height: 50px;">
+      <span class="stat-value">2</span>
+    </div>
+
+    <!-- Dégâts (CENTER, inscribed circle of pentagram) -->
+    <!-- Dégâts = Santé = 15 → KO -->
+    <div class="stat-circle center" style="left: 275px; top: 275px; width: 150px; height: 150px;">
+      <span class="stat-damage-icon">☠</span>
+      <span class="stat-value">15</span>
+      <div class="damage-controls">
+        <button class="damage-btn add" aria-label="Ajouter des dégâts">+</button>
+        <button class="damage-btn remove" aria-label="Retirer des dégâts">−</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <h2>État KO — Dégâts = Santé = 15</h2>
+    <div class="legend-grid">
+      <div class="legend-item">
+        <span class="legend-label">Force</span>
+        <span class="legend-value">12</span>
+        <span class="legend-bonus">Bonus: +2</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Intellect</span>
+        <span class="legend-value">11</span>
+        <span class="legend-bonus">Bonus: +1</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Agilité</span>
+        <span class="legend-value">13</span>
+        <span class="legend-bonus">Bonus: +3</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Volonté</span>
+        <span class="legend-value">11</span>
+        <span class="legend-bonus">Bonus: +1</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Santé</span>
+        <span class="legend-value">15</span>
+        <span class="legend-bonus">⚠ KO</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Dégâts</span>
+        <span class="legend-value">15</span>
+        <span class="legend-bonus">= Santé → Hors Combat</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Défense</span>
+        <span class="legend-value">13 (base)</span>
+        <span class="legend-bonus">—</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-label">Corruption</span>
+        <span class="legend-value">2</span>
+        <span class="legend-bonus">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes">
+    <h2>État KO — Spécification</h2>
+    <ul>
+      <li><strong>Tous les cercles passent en rouge</strong> lorsque Dégâts ≥ Santé</li>
+      <li><strong>Textes rouges</strong> : noms en rouge foncé, valeurs en rouge vif</li>
+      <li><strong>Bordures dorées conservées</strong> mais avec glow rouge</li>
+      <li><strong>Pentagramme rouge plus intense</strong> : opacity augmentée</li>
+      <li><strong>Badge "Hors Combat"</strong> avec animation pulsante</li>
+      <li><strong>ICône ☠</strong> devient rouge vif</li>
+    </ul>
+  </div>
+</body>
+</html>
