@@ -145,7 +145,7 @@
 
     <g class="stat-circle center" [class.ko]="isKO()">
       <!-- Demon head background -->
-      <image href="/images/demonlord/demon.webp" x="231" y="231" width="238" height="238" preserveAspectRatio="xMidYMid slice" style="opacity: 0.18;"/>
+      <image href="images/demonlord/demon.webp" x="231" y="231" width="238" height="238" preserveAspectRatio="xMidYMid slice" style="opacity: 0.18;"/>
       <!-- KO overlay: red tint applied via CSS filter -->
       <circle [attr.fill]="isKO() ? 'rgba(45,6,6,0.8)' : 'rgba(15,15,26,0.2)'" [attr.stroke]="isKO() ? 'rgba(160,32,32,0.7)' : 'rgba(184,168,136,0.7)'" cx="350" cy="350" r="70" stroke-width="3"/>
       <text [attr.fill]="isKO() ? '#a02020' : '#e0d6c8'" x="350" y="345" text-anchor="middle" dominant-baseline="central" font-size="28" font-weight="700">{{ data().damage }}</text>
