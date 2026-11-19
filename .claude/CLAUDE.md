@@ -71,4 +71,4 @@ You are an expert in TypeScript, Angular, and scalable web application developme
   - Wrong module paths (e.g., importing a component from a models barrel instead of the component file)
   - Angular compiler-specific errors (template bindings, directive/component references)
   - Runtime-only issues (e.g., importing `DefenseComponent` from `defense-models.ts` instead of `defense.ts`)
-- If `ng build` hangs or is unreliable, at minimum verify that component imports point to the actual component `.ts` file, not a models/types file.
+- **IMPORTANT**: `ng build` MUST be run with `dangerouslyDisableSandbox: true`. The Angular build uses `chokidar` with FSEvents which conflicts with macOS Seatbelt sandbox (exit code 134 / SIGABRT). See `.claude/skills/quality-gate/MEMO.md` for details.
