@@ -2,8 +2,6 @@ import { Component, ChangeDetectionStrategy, computed, inject, input } from '@an
 import { CharacterData } from './characteristics-models';
 import { CharacterService } from '../../services/character.service';
 
-const CORE_STATS = ['force', 'intellect', 'agility', 'willpower', 'perception'] as const;
-
 /** Maps main vertex name to its secondary attribute key */
 const SECONDARY_MAP: Record<string, string> = {
   force: 'size',

@@ -16,8 +16,9 @@ describe('MoneyComponent', () => {
 
     fixture = TestBed.createComponent(MoneyComponent);
     component = fixture.componentInstance;
-    component.characterId.set('test-char');
-    component.money.set(testMoney);
+    fixture.componentRef.setInput('characterId', 'test-char');
+    fixture.componentRef.setInput('money', testMoney);
+    fixture.detectChanges();
   });
 
   it('should create', () => {

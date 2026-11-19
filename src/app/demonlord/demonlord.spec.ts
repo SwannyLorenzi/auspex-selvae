@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter, RouterLink } from '@angular/router';
+import { signal } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 import { CharacterService } from './services/character.service';
 import { DemonlordComponent } from './demonlord';
+import { characterData } from './demonlord-data';
 
 describe('DemonlordComponent', () => {
   let component: DemonlordComponent;
@@ -9,10 +11,18 @@ describe('DemonlordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DemonlordComponent, RouterLink],
+      imports: [RouterTestingModule, DemonlordComponent],
       providers: [
-        provideRouter([{ path: 'demonlord/:characterId', component: DemonlordComponent }]),
-        CharacterService,
+        {
+          provide: CharacterService,
+          useValue: {
+            getCharacter: () => signal({ ...characterData }),
+            updateAttribute: () => true,
+            updateMoney: () => { /* noop */ },
+            resetCharacter: () => { /* noop */ },
+            updateActiveAfflictions: () => { /* noop */ },
+          },
+        },
       ],
     }).compileComponents();
 

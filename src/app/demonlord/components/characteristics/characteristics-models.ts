@@ -26,7 +26,7 @@ export interface CharacterData extends Record<string, number> {
 }
 
 /** @deprecated Use CharacterData instead */
-export type Attribute = { name: string; value: number; bonus?: string; bonusText?: string };
+export interface Attribute { name: string; value: number; bonus?: string; bonusText?: string }
 
 /** @deprecated Use CharacterData instead */
-export type DerivedAttribute = { name: string; value: number; formula: string };
+export interface DerivedAttribute { name: string; value: number; formula: string }

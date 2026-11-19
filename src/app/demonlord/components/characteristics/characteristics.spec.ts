@@ -22,7 +22,7 @@ describe('CharacteristicsComponent', () => {
 
     fixture = TestBed.createComponent(CharacteristicsComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('data', characterData);
+    fixture.componentRef.setInput('data', characterData.attributes);
     fixture.componentRef.setInput('characterId', characterData.id);
   });
 
@@ -33,25 +33,25 @@ describe('CharacteristicsComponent', () => {
   it('should display all core stats', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('Force');
-    expect(container.textContent).toContain('Intellect');
-    expect(container.textContent).toContain('Agilité');
-    expect(container.textContent).toContain('Volonté');
-    expect(container.textContent).toContain('Perception');
+    expect(container.textContent).toContain('FORCE');
+    expect(container.textContent).toContain('INTELLECT');
+    expect(container.textContent).toContain('AGILITÉ');
+    expect(container.textContent).toContain('VOLONTÉ');
+    expect(container.textContent).toContain('PERCEPTION');
   });
 
   it('should display secondary attributes', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('Gabarit');
-    expect(container.textContent).toContain('Vitesse');
-    expect(container.textContent).toContain('Folie');
+    expect(container.textContent).toContain('GABARIT');
+    expect(container.textContent).toContain('VITESSE');
+    expect(container.textContent).toContain('FOLIE');
   });
 
   it('should display health as a vertex', () => {
     fixture.detectChanges();
     const container = fixture.nativeElement as HTMLElement;
-    expect(container.textContent).toContain('Santé');
+    expect(container.textContent).toContain('SANTÉ');
   });
 
   it('should display damage as center circle', () => {
