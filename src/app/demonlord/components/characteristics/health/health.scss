@@ -48,11 +48,11 @@
   color: #e0d6c8;
 
   &.critical {
-    color: #d44040;
+    color: #d95050;
   }
 
   .danger & {
-    color: #d44040;
+    color: #d95050;
   }
 }
 
@@ -64,7 +64,7 @@
 .health-status {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #d44040;
+  color: #d95050;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-align: center;
