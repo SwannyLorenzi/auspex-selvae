@@ -3,6 +3,7 @@ import { EquipmentComponent } from './equipment';
 import { Character } from '../../demonlord-models';
 import { MoneyData } from '../money/money-models';
 import { MoneyComponent } from '../money/money';
+import type { WeaponEquipment, ArmorEquipment, InventoryEquipment } from './equipment-models';
 
 const mockMoney: MoneyData = { totalShards: 28034 };
 
@@ -28,9 +29,25 @@ const mockCharacter: Character = {
   equipment: [],
 };
 
-const mockEquipment: Character['equipment'] = [
-  { name: 'Hache de bataille', effect: '1d6+2 dégâts' },
-  { name: 'Grand Bouclier', effect: 'Defense + 2' },
+const mockEquipment: (WeaponEquipment | ArmorEquipment | InventoryEquipment)[] = [
+  {
+    name: 'Hache de bataille',
+    category: 'weapon',
+    damage: '1d6+2',
+    hands: 'one',
+    properties: [],
+  },
+  {
+    name: 'Grand Bouclier',
+    category: 'armor',
+    defenseBonus: '+2',
+  },
+  {
+    name: 'Potion de soin',
+    category: 'inventory',
+    quantity: 2,
+    description: 'soin = vitesse de guerison',
+  },
 ];
 
 describe('EquipmentComponent', () => {
@@ -64,5 +81,19 @@ describe('EquipmentComponent', () => {
     const container = fixture.nativeElement as HTMLElement;
     expect(container.textContent).toContain('Hache de bataille');
     expect(container.textContent).toContain('Grand Bouclier');
+    expect(container.textContent).toContain('Potion de soin');
+  });
+
+  it('should display weapon details', () => {
+    fixture.detectChanges();
+    const container = fixture.nativeElement as HTMLElement;
+    expect(container.textContent).toContain('1d6+2');
+    expect(container.textContent).toContain('one');
+  });
+
+  it('should display inventory quantity', () => {
+    fixture.detectChanges();
+    const container = fixture.nativeElement as HTMLElement;
+    expect(container.textContent).toContain('x2');
   });
 });

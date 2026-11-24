@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armes — Affichage Cartes</title>
+  <style>
+    :root {
+      --bg: #0e0e1a;
+      --text: #e0d6c8;
+      --accent: #c9b47a;
+      --border: rgba(184, 168, 136, 0.4);
+      --card-bg: rgba(201, 180, 122, 0.04);
+      --card-hover: rgba(201, 180, 122, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .weapon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      transition: background 0.2s ease;
+    }
+
+    .weapon-card:hover {
+      background: var(--card-hover);
+    }
+
+    .weapon-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .weapon-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .weapon-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .weapon-stats {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .stat {
+      font-size: 0.85rem;
+      color: #8a9a7a;
+    }
+
+    .stat-value {
+      font-weight: 600;
+    }
+
+    .stat-damage .stat-value {
+      color: #f0a050;
+      font-family: 'SF Mono', 'Cascadia Code', monospace;
+    }
+
+    .stat-hands .stat-value {
+      color: #a0b4c8;
+    }
+
+    .weapon-properties {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .prop {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(201, 180, 122, 0.12);
+      border: 1px solid rgba(201, 180, 122, 0.3);
+      border-radius: 4px;
+      color: #c9b47a;
+      letter-spacing: 0.02em;
+    }
+
+    .legend {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      padding: 1rem;
+      background: rgba(201, 180, 122, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #8a9a7a;
+    }
+
+    .legend strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <h1>Armes — Affichage Cartes</h1>
+
+  <div class="section">
+    <h2>Armes</h2>
+
+    <div class="weapon-card">
+      <div class="weapon-header">
+        <span class="weapon-name">Fouet</span>
+        <div class="weapon-stats">
+          <span class="stat stat-damage">Dégâts : <span class="stat-value">1d3</span></span>
+          <span class="stat stat-hands">Main : <span class="stat-value">main faible</span></span>
+        </div>
+      </div>
+      <div class="weapon-properties">
+        <span class="prop">finesse</span>
+        <span class="prop">allonge +1</span>
+      </div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-header">
+        <span class="weapon-name">Rapière</span>
+        <div class="weapon-stats">
+          <span class="stat stat-damage">Dégâts : <span class="stat-value">1d6+1</span></span>
+          <span class="stat stat-hands">Main : <span class="stat-value">1 main</span></span>
+        </div>
+      </div>
+      <div class="weapon-properties">
+        <span class="prop">finesse</span>
+      </div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-header">
+        <span class="weapon-name">Dague</span>
+        <div class="weapon-stats">
+          <span class="stat stat-damage">Dégâts : <span class="stat-value">1d3</span></span>
+          <span class="stat stat-hands">Main : <span class="stat-value">main faible</span></span>
+        </div>
+      </div>
+      <div class="weapon-properties">
+        <span class="prop">finesse</span>
+        <span class="prop">de jet</span>
+        <span class="prop">portée courte</span>
+      </div>
+    </div>
+
+    <div class="weapon-card">
+      <div class="weapon-header">
+        <span class="weapon-name">Fronde</span>
+        <div class="weapon-stats">
+          <span class="stat stat-damage">Dégâts : <span class="stat-value">2d6</span></span>
+          <span class="stat stat-hands">Main : <span class="stat-value">main faible</span></span>
+        </div>
+      </div>
+      <div class="weapon-properties">
+        <span class="prop">portée moyenne</span>
+        <span class="prop">imprécis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <strong>Cartes par arme</strong> — Blocs indépendants, facile à ajouter/supprimer, bon pour le responsive, icônes possibles.
+  </div>
+
+</body>
+</html>
