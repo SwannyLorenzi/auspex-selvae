@@ -47,6 +47,7 @@ export const characterData: Character = {
       effect: 'Def = Agi +2 = 15',
     },
     { name: 'Vêtements de courtisane', effect: '' },
+    { name: 'Manteau d\'hiver avec capuche', effect: '' },
     { name: 'Gants raffinés', effect: '' },
     {
       name: 'Tour de cou en broderie + pierre',
@@ -65,7 +66,7 @@ export const characterData: Character = {
       effect: 'Dégâts 1d3, main faible, finesse, de jet, portée courte',
     },
     {
-      name: 'Dose de poison (x2)',
+      name: 'Dose de poison (x1)',
       effect: 'pour enduire les armes',
     },
     {
@@ -79,7 +80,8 @@ export const characterData: Character = {
       effect: 'réparti sur l’armure',
     },
     { name: 'Faucon', effect: '' },
+    { name: 'Fronde', effect: 'dégats 2d6, main faible, portée moyenne, imprécis (1 désavantage)' };
   ],
   defense: 13,
-  money: { totalShards: 2980 },
+  money: { totalShards: 3930 },
 };
