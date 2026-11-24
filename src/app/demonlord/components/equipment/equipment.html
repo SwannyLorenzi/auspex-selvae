@@ -3,41 +3,61 @@
 @for (group of groups(); track group.key) {
   <section>
     <h3>{{ group.label }}</h3>
-    <ul>
-      @for (item of group.items; track item.name) {
-        <li>
-          <strong>{{ item.name }}</strong>
-          @if (item.category === 'weapon') {
-            <span class="weapon-details">
-              <span class="damage">{{ item.damage }}</span>
-              <span class="hands">({{ item.hands }})</span>
-              @if (item.properties.length > 0) {
-                <span class="properties">
-                  @for (prop of item.properties; track prop) {
-                    <span class="property">{{ prop }}</span>@if (!$last) {, }
+    @for (item of group.items; track trackByItemName($index, item)) {
+      <div class="equipment-card" [class.equipment-card--empty]="item.quantity === 0">
+        <span class="quantity">{{ item.quantity }}×</span>
+        <strong class="equipment-name">{{ item.name }}</strong>
+
+        @if (item.category === 'weapon') {
+          <div class="equipment-stats">
+            <span class="badge badge-damage">{{ item.damage }}</span>
+            <span class="badge badge-hands">{{ item.hands }}</span>
+            @if (item.properties.length > 0) {
+              <div class="equipment-properties">
+                @for (prop of item.properties; track prop) {
+                  <span class="badge badge-prop">{{ prop }}</span>
+                  @if (!$last) {
+                    <span class="prop-sep">·</span>
                   }
-                </span>
-              }
-            </span>
-          }
-          @if (item.category === 'armor') {
-            @if (item.defenseBonus) {
-              <span class="armor-bonus">{{ item.defenseBonus }}</span>
+                }
+              </div>
             }
+          </div>
+        }
+
+        @if (item.category === 'armor') {
+          <div class="equipment-stats">
+            @if (item.defenseBonus) {
+              <span class="badge badge-defense">{{ item.defenseBonus }}</span>
+            }
+          </div>
+        }
+
+        @if (item.category === 'inventory') {
+          @if (item.description) {
+            <div class="equipment-properties">
+              <span class="badge badge-prop">{{ item.description }}</span>
+            </div>
           }
-          @if (item.category === 'inventory') {
-            <span class="inventory-details">
-              @if (item.quantity !== undefined && item.quantity > 1) {
-                (x{{ item.quantity }})
-              }
-              @if (item.description) {
-                <span class="description"> - {{ item.description }}</span>
-              }
-            </span>
-          }
-        </li>
-      }
-    </ul>
+        }
+
+        <div class="quantity-controls">
+          <button
+            class="qty-btn qty-btn-up"
+            (click)="updateQuantity(item.name, 1)"
+            [disabled]="false"
+            aria-label="Augmenter la quantité"
+            title="Augmenter la quantité"
+          >+</button>
+          <button
+            class="qty-btn qty-btn-down"
+            (click)="updateQuantity(item.name, -1)"
+            aria-label="Diminuer la quantité"
+            title="Diminuer la quantité"
+          >−</button>
+        </div>
+      </div>
+    }
   </section>
 }
 
