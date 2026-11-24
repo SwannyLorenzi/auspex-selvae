@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armes — Carte sur une ligne</title>
+  <style>
+    :root {
+      --bg: #0e0e1a;
+      --text: #e0d6c8;
+      --accent: #c9b47a;
+      --border: rgba(184, 168, 136, 0.4);
+      --card-bg: rgba(201, 180, 122, 0.04);
+      --card-hover: rgba(201, 180, 122, 0.1);
+      --card-border: rgba(184, 168, 136, 0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .weapon-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      transition: background 0.2s ease;
+    }
+
+    .weapon-row:hover {
+      background: var(--card-hover);
+    }
+
+    .weapon-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .quantity {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-right: 0.35rem;
+      font-weight: 400;
+    }
+
+    .weapon-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      white-space: nowrap;
+      margin-right: 0.5rem;
+    }
+
+    .weapon-stats {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: nowrap;
+    }
+
+    .props {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: nowrap;
+    }
+
+    /* === BADGES === */
+
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 3px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge-damage {
+      background: rgba(240, 160, 80, 0.15);
+      border: 1px solid rgba(240, 160, 80, 0.35);
+      color: #f0a050;
+      font-family: 'SF Mono', 'Cascadia Code', monospace;
+    }
+
+    .badge-hands {
+      background: rgba(160, 180, 200, 0.12);
+      border: 1px solid rgba(160, 180, 200, 0.3);
+      color: #a0b4c8;
+    }
+
+    .badge-prop {
+      background: rgba(201, 180, 122, 0.1);
+      border: 1px solid rgba(201, 180, 122, 0.25);
+      color: #c9b47a;
+    }
+
+    .prop-sep {
+      color: #5a5a4a;
+      font-size: 0.75rem;
+    }
+
+    .legend {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding: 1rem;
+      background: rgba(201, 180, 122, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #8a9a7a;
+    }
+
+    .legend strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <h1>Armes — Carte sur une ligne</h1>
+
+  <div class="section">
+    <h2>Armes</h2>
+
+    <div class="weapon-row">
+      <span class="quantity">1×</span>
+      <span class="weapon-name">Fouet</span>
+      <div class="weapon-stats">
+        <span class="badge badge-damage">1d3</span>
+        <span class="badge badge-hands">main faible</span>
+      </div>
+      <div class="props">
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">finesse</span>
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">allonge +1</span>
+      </div>
+    </div>
+
+    <div class="weapon-row">
+      <span class="quantity">1×</span>
+      <span class="weapon-name">Rapière</span>
+      <div class="weapon-stats">
+        <span class="badge badge-damage">1d6+1</span>
+        <span class="badge badge-hands">1 main</span>
+      </div>
+      <div class="props">
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">finesse</span>
+      </div>
+    </div>
+
+    <div class="weapon-row">
+      <span class="quantity">3×</span>
+      <span class="weapon-name">Dague</span>
+      <div class="weapon-stats">
+        <span class="badge badge-damage">1d3</span>
+        <span class="badge badge-hands">main faible</span>
+      </div>
+      <div class="props">
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">finesse</span>
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">de jet</span>
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">portée courte</span>
+      </div>
+    </div>
+
+    <div class="weapon-row">
+      <span class="quantity">1×</span>
+      <span class="weapon-name">Fronde</span>
+      <div class="weapon-stats">
+        <span class="badge badge-damage">2d6</span>
+        <span class="badge badge-hands">main faible</span>
+      </div>
+      <div class="props">
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">portée moyenne</span>
+        <span class="prop-sep">·</span>
+        <span class="badge badge-prop">imprécis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <strong>Carte sur une ligne</strong> — Quantité (or, non-gras) → nom → dégâts → main → propriétés. Tout aligné à gauche.
+  </div>
+
+</body>
+</html>

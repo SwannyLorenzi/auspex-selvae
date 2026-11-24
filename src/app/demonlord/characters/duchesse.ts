@@ -1,4 +1,104 @@
 import type { Character } from '../demonlord-models';
+import type {
+  Equipment,
+  WeaponEquipment,
+  ArmorEquipment,
+  InventoryEquipment,
+} from '../components/equipment/equipment-models';
+
+const weapons: WeaponEquipment[] = [
+  {
+    name: 'Fouet',
+    category: 'weapon',
+    damage: '1d3',
+    hands: 'weak',
+    properties: ['finesse', 'allonge +1'],
+  },
+  {
+    name: 'Rapière',
+    category: 'weapon',
+    damage: '1d6+1',
+    hands: 'one',
+    properties: ['finesse'],
+  },
+  {
+    name: 'Dague',
+    category: 'weapon',
+    damage: '1d3',
+    hands: 'weak',
+    properties: ['finesse', 'de jet', 'portée courte'],
+    quantity: 3,
+  },
+  {
+    name: 'Fronde',
+    category: 'weapon',
+    damage: '2d6',
+    hands: 'weak',
+    properties: ['portée moyenne', 'imprécis (1 désavantage)'],
+  },
+];
+
+const armors: ArmorEquipment[] = [
+  {
+    name: 'Armure légère en cuir bouilli',
+    category: 'armor',
+    defenseBonus: 'Agi +2',
+  },
+];
+
+const inventory: InventoryEquipment[] = [
+  {
+    name: 'Dose de poison',
+    category: 'inventory',
+    quantity: 1,
+    description: 'pour enduire les armes',
+  },
+  {
+    name: 'Potion de Sang',
+    category: 'inventory',
+    quantity: 2,
+  },
+  {
+    name: 'Corde 20m',
+    category: 'inventory',
+    quantity: 1,
+  },
+  {
+    name: 'Grappin',
+    category: 'inventory',
+    quantity: 1,
+  },
+  {
+    name: 'Menottes',
+    category: 'inventory',
+    quantity: 1,
+  },
+  {
+    name: 'Vêtements de courtisane',
+    category: 'inventory',
+  },
+  {
+    name: "Manteau d'hiver avec capuche",
+    category: 'inventory',
+  },
+  {
+    name: 'Gants raffinés',
+    category: 'inventory',
+  },
+  {
+    name: "Tour de cou en broderie + pierre",
+    category: 'inventory',
+  },
+  {
+    name: "Sac d'aventurier",
+    category: 'inventory',
+    description: "réparti sur l'armure",
+  },
+  {
+    name: 'Faucon',
+    category: 'inventory',
+  },
+];
 
 export const characterData: Character = {
   id: 'duchesse',
@@ -41,47 +141,7 @@ export const characterData: Character = {
     spells: [],
   },
   potions: [],
-  equipment: [
-    {
-      name: 'Armure légère en cuir bouilli',
-      effect: 'Def = Agi +2 = 15',
-    },
-    { name: 'Vêtements de courtisane', effect: '' },
-    { name: 'Manteau d\'hiver avec capuche', effect: '' },
-    { name: 'Gants raffinés', effect: '' },
-    {
-      name: 'Tour de cou en broderie + pierre',
-      effect: '',
-    },
-    {
-      name: 'Fouet',
-      effect: 'Dégâts 1d3, main faible, finesse, allonge +1',
-    },
-    {
-      name: 'Rapière',
-      effect: 'Dégâts 1d6+1, 1 main, finesse',
-    },
-    {
-      name: 'Dague (x3)',
-      effect: 'Dégâts 1d3, main faible, finesse, de jet, portée courte',
-    },
-    {
-      name: 'Dose de poison (x1)',
-      effect: 'pour enduire les armes',
-    },
-    {
-      name: 'Corde 20m',
-      effect: '',
-    },
-    { name: 'Grappin', effect: '' },
-    { name: 'Menottes', effect: '' },
-    {
-      name: 'Sac d’aventurier',
-      effect: 'réparti sur l’armure',
-    },
-    { name: 'Faucon', effect: '' },
-    { name: 'Fronde', effect: 'dégats 2d6, main faible, portée moyenne, imprécis (1 désavantage)' };
-  ],
+  equipment: [...weapons, ...armors, ...inventory],
   defense: 13,
   money: { totalShards: 3930 },
 };

@@ -1,14 +1,44 @@
-<h2>Equipement</h2>
+<h2>Équipement</h2>
 
-<ul>
-  @for (item of equipment(); track item.name) {
-    <li>
-      <strong>{{ item.name }}</strong>
-      @if (item.effect) {
-        <span> - {{ item.effect }}</span>
+@for (group of groups(); track group.key) {
+  <section>
+    <h3>{{ group.label }}</h3>
+    <ul>
+      @for (item of group.items; track item.name) {
+        <li>
+          <strong>{{ item.name }}</strong>
+          @if (item.category === 'weapon') {
+            <span class="weapon-details">
+              <span class="damage">{{ item.damage }}</span>
+              <span class="hands">({{ item.hands }})</span>
+              @if (item.properties.length > 0) {
+                <span class="properties">
+                  @for (prop of item.properties; track prop) {
+                    <span class="property">{{ prop }}</span>@if (!$last) {, }
+                  }
+                </span>
+              }
+            </span>
+          }
+          @if (item.category === 'armor') {
+            @if (item.defenseBonus) {
+              <span class="armor-bonus">{{ item.defenseBonus }}</span>
+            }
+          }
+          @if (item.category === 'inventory') {
+            <span class="inventory-details">
+              @if (item.quantity !== undefined && item.quantity > 1) {
+                (x{{ item.quantity }})
+              }
+              @if (item.description) {
+                <span class="description"> - {{ item.description }}</span>
+              }
+            </span>
+          }
+        </li>
       }
-    </li>
-  }
-</ul>
+    </ul>
+  </section>
+}
 
 <app-money [characterId]="character().id" [money]="character().money" />
