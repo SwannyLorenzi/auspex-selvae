@@ -16,7 +16,12 @@ Refactorer le modèle et le composant d'équipement pour structurer l'inventaire
 
 Tous les items ont un champ `quantity` (par défaut 1). En théorie, tout équipement peut être perdu lors d'une partie.
 
-### 2. Modèle TypeScript
+### 2. Affichage quantité
+
+La quantité `Nx` n'est affichée **que si strictement supérieure à 1** (donc 2, 3, etc.).
+Si `quantity === 1` ou non définie, la quantité n'apparaît pas.
+
+### 3. Modèle TypeScript
 
 ```typescript
 export type EquipmentCategory = 'weapon' | 'armor' | 'inventory';
@@ -50,14 +55,14 @@ export type Equipment =
   | InventoryEquipment;
 ```
 
-### 3. Données de test
+### 4. Données de test
 
 **Duchesse** (15 items) :
 | Catégorie | Count | Items |
 |-----------|-------|-------|
 | Armes (4) | 4 | Fouet, Rapière, Dague (x3), Fronde |
 | Armures (1) | 1 | Armure légère en cuir bouilli |
-| Inventaire (10) | 10 | Dose de poison (x1), Potion de Sang (x2), Corde 20m, Grappin, Menottes, Vêtements de courtisane, Manteau d'hiver, Sac d'aventurier, Gants raffinés, Tour de cou, Faucon |
+| Inventaire (11) | 11 | Dose de poison (x1), Potion de Sang (x2), Corde 20m, Grappin, Menottes, Vêtements de courtisane, Manteau d'hiver, Sac d'aventurier, Gants raffinés, Tour de cou, Faucon |
 
 **7 7** (7 items) :
 | Catégorie | Count | Items |
@@ -65,14 +70,6 @@ export type Equipment =
 | Armes (1) | 1 | Hache de bataille |
 | Armures (1) | 1 | Grand Bouclier |
 | Inventaire (5) | 5 | Amplificateur de force, Stabilisateur gyroscopique, Module de sens supérieur, Trousse d'Alchimiste, Insigne du Duc |
-
-### 4. Composant `EquipmentComponent`
-
-Le composant doit :
-- Afficher 3 sections distinctes (une par catégorie)
-- Pour les **armes** : afficher Dégâts, Main, Propriétés en champs séparés
-- Pour les **armures** : afficher Bonus de Défense
-- Pour les **inventaires** : afficher Quantité (si > 1) et Description
 
 ### 5. Structure de fichiers
 
@@ -86,9 +83,3 @@ src/app/demonlord/
 │       ├── equipment.scss         # Styles
 │       └── equipment.spec.ts      # Tests
 ```
-
-### 6. Migration
-
-- L'interface `Equipment` actuelle (`{ name: string; effect: string; isSeparator?: boolean }`) est **remplacée** par le nouveau modèle.
-- Les données des personnages (`duchesse.ts`, `77.ts`) doivent être **migrées** vers les nouveaux types.
-- Le template `equipment.html` doit être **refactoré** pour afficher les 3 sections.

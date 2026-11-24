@@ -10,6 +10,7 @@ const weapons: WeaponEquipment[] = [
   {
     name: 'Fouet',
     category: 'weapon',
+    quantity: 1,
     damage: '1d3',
     hands: 'weak',
     properties: ['finesse', 'allonge +1'],
@@ -17,6 +18,7 @@ const weapons: WeaponEquipment[] = [
   {
     name: 'Rapière',
     category: 'weapon',
+    quantity: 1,
     damage: '1d6+1',
     hands: 'one',
     properties: ['finesse'],
@@ -24,17 +26,18 @@ const weapons: WeaponEquipment[] = [
   {
     name: 'Dague',
     category: 'weapon',
+    quantity: 3,
     damage: '1d3',
     hands: 'weak',
     properties: ['finesse', 'de jet', 'portée courte'],
-    quantity: 3,
   },
   {
     name: 'Fronde',
     category: 'weapon',
+    quantity: 1,
     damage: '2d6',
     hands: 'weak',
-    properties: ['portée moyenne', 'imprécis (1 désavantage)'],
+    properties: ['portée moyenne', 'imprécis'],
   },
 ];
 
@@ -42,6 +45,7 @@ const armors: ArmorEquipment[] = [
   {
     name: 'Armure légère en cuir bouilli',
     category: 'armor',
+    quantity: 1,
     defenseBonus: 'Agi +2',
   },
 ];
@@ -76,27 +80,33 @@ const inventory: InventoryEquipment[] = [
   {
     name: 'Vêtements de courtisane',
     category: 'inventory',
+    quantity: 1,
   },
   {
     name: "Manteau d'hiver avec capuche",
     category: 'inventory',
+    quantity: 1,
   },
   {
     name: 'Gants raffinés',
     category: 'inventory',
+    quantity: 1,
   },
   {
     name: "Tour de cou en broderie + pierre",
     category: 'inventory',
+    quantity: 1,
   },
   {
     name: "Sac d'aventurier",
     category: 'inventory',
+    quantity: 1,
     description: "réparti sur l'armure",
   },
   {
     name: 'Faucon',
     category: 'inventory',
+    quantity: 1,
   },
 ];
 

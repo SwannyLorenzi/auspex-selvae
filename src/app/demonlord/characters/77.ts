@@ -18,6 +18,7 @@ const weapons: WeaponEquipment[] = [
   {
     name: 'Hache de bataille',
     category: 'weapon',
+    quantity: 1,
     damage: '1d6+2',
     hands: 'one',
     properties: [],
@@ -28,6 +29,7 @@ const armors: ArmorEquipment[] = [
   {
     name: 'Grand Bouclier',
     category: 'armor',
+    quantity: 1,
     defenseBonus: '+2',
   },
 ];
@@ -36,25 +38,30 @@ const inventory: InventoryEquipment[] = [
   {
     name: 'Amplificateur de force',
     category: 'inventory',
+    quantity: 1,
     description: '+1 avantage aux tests de Force, +1 dégâts au corps à corps',
   },
   {
     name: 'Stabilisateur gyroscopique',
     category: 'inventory',
+    quantity: 1,
     description: "+1 avantage aux tests d'Agilité, +1 Défense",
   },
   {
     name: 'Module de sens supérieur',
     category: 'inventory',
+    quantity: 1,
     description: '+2 Perception',
   },
   {
     name: "Trousse d'Alchimiste",
     category: 'inventory',
+    quantity: 1,
   },
   {
     name: "Insigne du Duc de la butée du bouclier",
     category: 'inventory',
+    quantity: 1,
     description: "Agit avec l'autorité du Duc",
   },
 ];
