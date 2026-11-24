@@ -85,6 +85,7 @@ export class CharacterService {
         spells: deepClone(state.magic.spells),
       },
       potions: deepClone(state.potions),
+      equipment: deepClone(state.equipment),
       defense: state.defense,
       money: { ...state.money },
     };
@@ -106,6 +107,7 @@ export class CharacterService {
       activeAfflictions: char.activeAfflictions,
       magic: char.magic,
       potions: char.potions,
+      equipment: char.equipment,
       defense: char.defense,
       money: char.money,
     };
@@ -260,6 +262,25 @@ export class CharacterService {
       if (!char) return char;
       if (char.money.totalShards === money.totalShards) return char;
       return { ...char, money: { ...money } };
+    });
+
+    this.saveState(characterId);
+  }
+
+  /**
+   * Update the equipment quantity for a character.
+   * Persists to localStorage automatically.
+   */
+  updateEquipmentQuantity(characterId: string, itemName: string, quantity: number): void {
+    const charSignal = this.characters.get(characterId);
+    if (!charSignal) return;
+
+    charSignal.update((char) => {
+      if (!char) return char;
+      const equipment = char.equipment.map((item) =>
+        item.name === itemName ? { ...item, quantity: Math.max(0, quantity) } : item
+      );
+      return { ...char, equipment };
     });
 
     this.saveState(characterId);
