@@ -116,7 +116,7 @@ export const characterData: Character = {
   description:
     'Jeune adulte svelte de taille moyenne, plusieurs traits physiques très attrayants. Se préoccupe avant tout de ses intérêts et de ceux de ses amis. Éduquée sous le culte du nouveau Dieu, sait lire la langue commune. Transformée en vampire par son amant pour avoir une compagne éternelle. Des spirales et autres motifs recouvrent sa peau, semblables à des tatouages.',
   progression: {
-    level: '1',
+    level: '2',
     ascendance: 'Vampire',
     apprentice: 'Roublarde',
     expert: '',
@@ -130,7 +130,7 @@ export const characterData: Character = {
   ],
   attributes: {
     force: 12, intellect: 11, agility: 13, willpower: 11, perception: 11,
-    health: 15, speed: 12, size: 1, spellpower: 0, healingRate: 0, defense: 13,
+    health: 18, speed: 12, size: 1, spellpower: 0, healingRate: 0, defense: 13,
     damage: 0, madness: 6, corruption: 2,
   },
   immunities: [
@@ -145,7 +145,7 @@ export const characterData: Character = {
     'ralenti',
   ],
   activeAfflictions: [],
-  talents: ['Peur superstitieuse : Argent'],
+  talents: ['Peur superstitieuse : Argent', 'Saisir l\'opportunité', 'Talent : escarmouche'],
   magic: {
     power: 0,
     spells: [],
