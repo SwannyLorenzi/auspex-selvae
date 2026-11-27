@@ -1,4 +1,5 @@
 import type { Character } from '../demonlord-models';
+import { SourceBook } from '../components/magic/magic-models';
 import type {
   Equipment,
   WeaponEquipment,
@@ -145,7 +146,11 @@ export const characterData: Character = {
     'ralenti',
   ],
   activeAfflictions: [],
-  talents: ['Peur superstitieuse : Argent', 'Saisir l\'opportunité', 'Talent : escarmouche'],
+  talents: [
+    { name: 'Peur superstitieuse : Argent', description: '', source: SourceBook.ARCANES },
+    { name: "Saisir l'opportunité", description: '', source: SourceBook.CORE },
+    { name: 'Talent : escarmouche', description: '', source: SourceBook.CORE },
+  ],
   magic: {
     power: 0,
     spells: [],

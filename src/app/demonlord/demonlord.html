@@ -39,9 +39,7 @@
       (toggled)="characterService.updateActiveAfflictions(characterId(), $event)" />
   </section>
   <section>
-    <app-talents
-      [immunities]="character()!.immunities"
-      [talents]="character()!.talents" />
+    <app-talents [talents]="character()!.talents" />
   </section>
   @if (character()!.magic.spells.length > 0) {
     <section>

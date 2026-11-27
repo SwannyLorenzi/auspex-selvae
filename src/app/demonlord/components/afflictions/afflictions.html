@@ -1,5 +1,3 @@
-<h2>État</h2>
-
 <ul class="affliction-list" role="list" aria-label="Afflictions">
   @for (aff of afflictions; track aff.key) {
     <li class="affliction-tag">
@@ -19,3 +17,14 @@
     </li>
   }
 </ul>
+
+@if (damageImmunities().length > 0) {
+  <ul class="immunity-list" role="list" aria-label="Immunités">
+    @for (imm of damageImmunities(); track imm.label) {
+      <li class="immunity-tag">
+        <span class="immunity-tag__emoji">{{ imm.emoji }}</span>
+        <span class="immunity-tag__label">{{ imm.label }}</span>
+      </li>
+    }
+  </ul>
+}

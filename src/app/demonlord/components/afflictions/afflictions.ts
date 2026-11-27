@@ -1,6 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ALL_AFFLICTIONS } from '../../afflictions';
+import { IMMUNITY_EMOJI } from '../talents/immunity-emoji';
 
 /** Normalize a string: lowercase, strip accents, trim */
 function norm(str: string): string {
@@ -25,6 +26,25 @@ const IMMUNITY_MAP: Record<string, string> = {
   'ralenti': 'ralenti',
   // 'degats du froid' has no corresponding affliction in our list
 };
+
+/**
+ * Map immunity strings to their damage type display name.
+ * Only includes immunities that are damage-related.
+ */
+const DAMAGE_IMMUNITY_LABELS: Record<string, string> = {
+  'maladies': 'Dégâts des maladies',
+  'maladie': 'Dégâts des maladies',
+  'poison': 'Dégâts de poison',
+  'empoisonné': 'Dégâts de poison',
+  'empoisonne': 'Dégâts de poison',
+  'degats du froid': 'Dégâts du froid',
+  'dégats du froid': 'Dégâts du froid',
+};
+
+export interface DamageImmunity {
+  emoji: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-afflictions',
@@ -62,5 +82,23 @@ export class AfflictionsComponent {
       ? current.filter((k) => k !== key)
       : [...current, key];
     this.toggled.emit(next);
+  }
+
+  /** Get the display labels for damage-related immunities */
+  protected damageImmunities(): DamageImmunity[] {
+    const seen = new Set<string>();
+    const labels: DamageImmunity[] = [];
+
+    for (const imm of this.immunities()) {
+      const normalized = norm(imm);
+      const label = DAMAGE_IMMUNITY_LABELS[normalized];
+      if (label && !seen.has(label)) {
+        seen.add(label);
+        const emoji = IMMUNITY_EMOJI[normalized] ?? '🛡️';
+        labels.push({ emoji, label });
+      }
+    }
+
+    return labels;
   }
 }
