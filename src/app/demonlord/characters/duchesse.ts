@@ -148,8 +148,26 @@ export const characterData: Character = {
   activeAfflictions: [],
   talents: [
     { name: 'Peur superstitieuse : Argent', description: '', source: SourceBook.ARCANES },
-    { name: "Saisir l'opportunité", description: '', source: SourceBook.CORE },
-    { name: 'Talent : escarmouche', description: '', source: SourceBook.CORE },
+    {
+      name: "Saisir l'opportunité",
+      description: "Une fois par round, quand le total de votre jet d'attaque est au moins de 20 et qu'il est supérieur d'au moins 5 points au seuil de difficulté, vous pouvez effectuer un autre tour à n'importe quel moment avant la fin du round.",
+      source: SourceBook.CORE,
+    },
+    {
+      name: 'Talent : escarmouche',
+      description: "Vous pouvez utiliser une action pour vous déplacer à la moitié de votre Vitesse. Ce déplacement ne déclenche pas d'attaques gratuites. Pendant ce déplacement, vous pouvez effectuer une attaque. Vous effectuez ce jet d'attaque avec 1 désavantage mais l'attaque inflige 1d6 dégâts supplémentaires. Si vous choisissez ce talent une seconde fois vous pouvez vous déplacer à votre Vitesse normale et non la moitié.",
+      source: SourceBook.CORE,
+    },
+    {
+      name: 'Habile récupération',
+      description: "Vous pouvez utiliser une action pour soigner un nombre de dégâts égal à votre vitesse de guérison et vous déplacer à la moitié de votre Vitesse sans déclencher d'attaques gratuites. Une fois que vous avez utilisé ce talent, vous ne pouvez plus le faire tant que vous ne vous êtes pas complètement reposé.",
+      source: SourceBook.CORE,
+    },
+    {
+      name: 'Ruse',
+      description: "Une fois par round, vous pouvez effectuer un jet d'attaque ou un test avec 1 avantage. Si vous attaquez avec 1 avantage grâce à ce talent, votre attaque inflige 1d6 dégâts supplémentaires.",
+      source: SourceBook.CORE,
+    },
   ],
   magic: {
     power: 0,
