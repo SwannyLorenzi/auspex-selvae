@@ -8,6 +8,7 @@ export const IMMUNITY_EMOJI: Record<string, string> = {
   'immobilisé': '⛓️',
   'ralenti': '🐌',
   'dégâts du froid': '❄️',
+  'degats du froid': '❄️',
 };
 
 export function immunityEmoji(name: string): string {

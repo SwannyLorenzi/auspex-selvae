@@ -42,3 +42,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# PDFs in specs (source documents, not tracked)
+specs/**/*.pdf

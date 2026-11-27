@@ -1,21 +1,22 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { immunityEmoji } from './immunity-emoji';
-
-export const immunityData = (name: string) => ({
-  emoji: immunityEmoji(name),
-  label: name.charAt(0).toUpperCase() + name.slice(1),
-});
+import { Component, ChangeDetectionStrategy, input, signal } from '@angular/core';
+import { type Talent } from '../../demonlord-models';
 
 @Component({
   selector: 'app-talents',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   templateUrl: './talents.html',
   styleUrl: './talents.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalentsComponent {
-  immunities = input.required<string[]>();
-  talents = input.required<string[]>();
+  talents = input.required<Talent[]>();
 
-  protected immunity = immunityData;
+  protected toggleExpanded = (talentName: string): void => {
+    const expanded = this._expanded();
+    const next = expanded === talentName ? '' : talentName;
+    this._expanded.set(next);
+  };
+
+  private _expanded = signal('');
+  readonly expanded = this._expanded;
 }

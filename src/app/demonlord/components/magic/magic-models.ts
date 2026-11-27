@@ -2,6 +2,7 @@ export enum SourceBook {
   CORE = 'Livre de base',
   COMPANION = 'Compagnon',
   PHILOSOPHY = 'Philosophie Occulte',
+  ARCANES = 'Arcanes du Seigneur Démon',
 }
 
 export type SpellMainAttributes = 'Intellect' | 'Volonté';
